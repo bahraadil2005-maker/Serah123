@@ -1090,3 +1090,408 @@
     </script>
 </body>
 </html>
+<script>
+        const seerahData = {
+            levels: [
+                { id: 1, name: "ئاستی یەکەم: مەککەی پێش بەعسەت", desc: "لە لەدایکبوونی پێغەمبەر ﷺ تاوەکو دەستپێکردنی وەحی" },
+                { id: 2, name: "ئاستی دووەم: سەردەمی مەککە", desc: "سەرەتای بانگەواز، ناڕەحەتییەکان و کۆچکردن" },
+                { id: 3, name: "ئاستی سێیەم: سەردەمی مەدینە", desc: "دامەزراندنی دەوڵەت، جەنگەکان و وەفاتی پێغەمبەر ﷺ" }
+            ],
+            lessons: [
+                {
+                    id: 101,
+                    levelId: 1,
+                    title: "لەدایکبوون و نەسبی پێغەمبەر ﷺ",
+                    authenticity: "ڕاست و باوەڕپێکراو (Authentic)",
+                    simpleExplanation: "پێغەمبەر ﷺ لە ساڵی فیل لە مەککە لەدایکبووە. باوکی (عەبدوڵڵا) پێش لەدایکبوونی کۆچی دوایی کردبوو. دواتر دایکی (ئامینە) و باپێری (عەبدولموتەلیب) بەخێویان کرد.",
+                    quranRef: "أَلَمْ يَجِدْكَ يَتِيمًا فَآوَىٰ (سورة الضحى: ٦)",
+                    hadithRef: "رواه مسلم: «أنَا دَعْوَةُ أبِي إبْراهِيمَ، وبُشْرى عِيسى»",
+                    people: ["عەبدوڵڵا کوڕی عەبدولموتەلیب", "ئامینەی کچی وەهب", "حەلیمەی سەعدییە"],
+                    dates: "٥٧١ زایینی (ساڵی فیل)",
+                    teacherMode: {
+                        keyPoints: ["گرنگی نەسب و ڕەچەڵەکی پاکی پێغەمبەر ﷺ", "سێویکەوتن و سێویەتی لە تەمەنی بچووکیدا"],
+                        childVer: "پێغەمبەری نازدارمان لە شارۆچکەی مەککە لەدایکبوو، باوکی نەبینیبوو بەڵام خوای گەورە هەمیشە پارێزگاری لێدەکرد.",
+                        teenVer: "لەدایکبوونی پێغەمبەر ﷺ سەرەتای وەرچەرخانێکی گەورە بوو لە مێژوودا، لە خێزانێکی بەڕێزی قورەیش بەناوی بەنو هاشم لەدایکبوو.",
+                        mistakesToAvoid: "تێکەڵکردنی ڕووداوە ئەفسانەیییە سەلمێنراونەکراوەکان لەگەڵ ڕووداوە مێژووییە دروستەکان."
+                    },
+                    quiz: {
+                        question: "پێغەمبەر ﷺ لە چ ساڵێکدا لەدایکبووە؟",
+                        options: ["ساڵی فیل", "ساڵی حزن (خەم)", "ساڵی فەتحی مەککە"],
+                        correct: 0,
+                        explanation: "پێغەمبەر ﷺ لە ساڵی فیل (٥٧١ زایینی) لەدایکبووە.",
+                        wikiTitle: "Year of the Elephant",
+                        wikiInfo: "ساڵی فیل ئەو ساڵەیە کە ئەبرەهەی حەبەشی هەوڵیدا کەعبەی پیرۆز بڕوخێنێت بەڵام تێکبشکێندرا."
+                    }
+                }
+            ],
+            peopleList: [
+                { name: "خەدیجەی کچی خووەیلید (ڕەزای خوای لێبێت)", role: "هاوسەری پێغەمبەر ﷺ", desc: "یەکەم کەس بوو کە ئیمانی بە پێغەمبەر ﷺ هێنا و بە سەروەت و سامانی پشتگیری کرد." },
+                { name: "ئەبو بەکری صدیق (ڕەزای خوای لێبێت)", role: "خەلیفەی یەکەم و هاوەڵی نێزیک", desc: "یەکەم پیاو بوو کە ئیسلام بوو، لە کۆچکردندا هاوڕێی پێغەمبەر ﷺ بوو." },
+                { name: "عەلی کوڕی ئەیی تالیب (ڕەزای خوای لێبێت)", role: "کوڕی مامی پێغەمبەر ﷺ", desc: "یەکەم منداڵ/گەنج بوو کە ئیسلام بوو، لە شەوی کۆچکردندا لە جێگەی پێغەمبەر ﷺ خەوت." }
+            ],
+            timelineList: [
+                {
+                    year: "٥٧١ زایینی (ساڵی فیل)",
+                    title: "لەدایکبوونی پێغەمبەر ﷺ",
+                    desc: "لەدایکبوون لە شارۆچکەی مەککە لە خێزانی بەنو هاشم.",
+                    details: [
+                        "<b>دایکبوون:</b> ١٢ی ڕەبیعی یەکەم (بەپێی زۆربەی ڕوایەتەکان).",
+                        "<b>ناردن بۆ لادێ:</b> ناردنی بۆ لادێی بەنو سەعد لەلای حەلیمەی سەعدییە بۆ شیردانی.",
+                        "<b>شق الصدر (قڵپکردن و پاککردنەوەی سنگ):</b> ڕووداوێک لە لادێی بەنو سەعد کاتێک جوبرەئیل سنگی پێغەمبەری ﷺ شەق کرد و خاڵێکی ڕەشی (پشکی شەیتان) دەرهێنا."
+                    ]
+                },
+                {
+                    year: "٦١٠ زایینی (تەمەنی ٤٠ ساڵی - ٥ پێش کۆچی)",
+                    title: "سەرەتای وەحی و پێغەمبەرایەتی لە ئەشکەوتی حەڕا",
+                    desc: "دابەزینی یەکەم ئایەتەکانی قورئانی پیرۆز (سُورَة العَلَق) لە ڕەمەزاندا لەڕێگەی جوبرەئیلەوە.",
+                    details: [
+                        "<b>گەڕانەوە بۆ لای خەدیجە (ڕەزای خوای لێبێت):</b> وتنی ڕستەی بەناوبانگی «زَمِّلُونِي زَمِّلُونِي» (داپۆشنم، داپۆشنم).",
+                        "<b>چوون بۆ لای وەرەقەی کوڕی نەوفەل:</b> پشتڕاستکردنەوەی پێغەمبەرایەتیەکەی لەسەر شەرعی موسا (سەلامی خوای لێبێت)."
+                    ]
+                },
+                {
+                    year: "٦٢٢ زایینی (١ی کۆچی)",
+                    title: "کۆچکردن (الهجرة) بۆ مەدینە و دامەزراندنی دەوڵەت",
+                    desc: "دەرچوون لە مەککە و چوون بەرەو یەثریب (مەدینە) لەگەڵ ئەبو بەکری صدیق (ڕەزای خوای لێبێت).",
+                    details: [
+                        "<b>مێنانی ئیمامی عەلی لە جێگەکەی:</b> بۆ گەڕاندنەوەی ئەمانەتەکان بۆ خاوەنەکانیان.",
+                        "<b>مانەوە لە ئەشکەوتی سەور:</b> بەسەربردنی ۳ شەو لە ئەشکەوتەکەدا.",
+                        "<b>دروستکردنی یەکەم مزگەوت (قوباء):</b> بەردی بناغەی دەوڵەتی ئیسلامی."
+                    ]
+                }
+            ]
+        };
+
+        let currentLessonId = 101;
+        let lessonMode = 'student';
+        let userProgress = JSON.parse(localStorage.getItem('seerah_progress')) || {};
+        let userNotes = JSON.parse(localStorage.getItem('seerah_notes')) || {};
+        let userBookmarks = JSON.parse(localStorage.getItem('seerah_bookmarks')) || [];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderRoadmap();
+            renderPeople();
+            renderTimeline();
+            loadLesson(currentLessonId);
+            updateOverallProgress();
+            renderNotesAndBookmarks();
+            initShortcuts();
+        });
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            
+            const selectedPage = document.getElementById(tabId);
+            if (selectedPage) selectedPage.classList.add('active');
+
+            const btnIndex = ['home', 'roadmap', 'lesson', 'arjuzah', 'timeline', 'people', 'notes'].indexOf(tabId);
+            if (btnIndex !== -1) {
+                document.querySelectorAll('.tab-btn')[btnIndex].classList.add('active');
+            }
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const currentTheme = body.getAttribute('data-theme');
+            if (currentTheme === 'dark') {
+                body.removeAttribute('data-theme');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+            }
+        }
+
+        function openShortcutGuide() {
+            document.getElementById('shortcutModal').classList.add('active');
+        }
+
+        function closeShortcutGuide() {
+            document.getElementById('shortcutModal').classList.remove('active');
+        }
+
+        function initShortcuts() {
+            window.addEventListener('keydown', (e) => {
+                const activeElement = document.activeElement;
+                const isInputting = activeElement.tagName === 'INPUT' || activeElement.tagName === 'TEXTAREA' || activeElement.tagName === 'SELECT';
+                
+                if (isInputting) return;
+
+                if (e.ctrlKey || e.metaKey) {
+                    const key = e.key.toLowerCase();
+                    const map = {
+                        'h': 'home',
+                        'l': 'roadmap',
+                        'e': 'lesson',
+                        'q': 'arjuzah',
+                        'd': 'timeline',
+                        'p': 'people'
+                    };
+
+                    if (map[key]) {
+                        e.preventDefault();
+                        switchTab(map[key]);
+                    }
+                }
+            });
+        }
+
+        function renderRoadmap() {
+            const container = document.getElementById('roadmapGrid');
+            container.innerHTML = seerahData.levels.map(lvl => {
+                const lvlLessons = seerahData.lessons.filter(l => l.levelId === lvl.id);
+                return `
+                    <div class="card level-card">
+                        <h3>${lvl.name}</h3>
+                        <p style="color: var(--text-muted); margin: 0.5rem 0;">${lvl.desc}</p>
+                        <div>
+                            ${lvlLessons.length ? lvlLessons.map(l => `
+                                <button class="btn btn-secondary" style="width: 100%; justify-content: space-between; margin-top: 0.5rem;" onclick="openLesson(${l.id})">
+                                    <span>${l.title}</span>
+                                    <span>${userProgress[l.id] === 'Completed' ? '✅' : '➔'}</span>
+                                </button>
+                            `).join('') : '<p style="font-size:0.85rem; color:var(--text-muted); margin-top:0.5rem;">Lessons coming soon...</p>'}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function renderPeople() {
+            const container = document.getElementById('peopleGrid');
+            container.innerHTML = seerahData.peopleList.map(p => `
+                <div class="card">
+                    <span class="badge badge-authentic">${p.role}</span>
+                    <h3 style="margin-top: 0.5rem;">${p.name}</h3>
+                    <p style="color: var(--text-muted); margin-top: 0.5rem; font-size: 0.95rem;">${p.desc}</p>
+                </div>
+            `).join('');
+        }
+
+        function renderTimeline() {
+            const container = document.getElementById('timelineContainer');
+            container.innerHTML = seerahData.timelineList.map(item => `
+                <div class="timeline-item">
+                    <span class="timeline-badge">${item.year}</span>
+                    <h3 class="timeline-section-title">${item.title}</h3>
+                    <p>${item.desc}</p>
+                    <div class="timeline-detail-box">
+                        <b>وردەکارییەکانی ڕووداوەکە:</b>
+                        <ul>
+                            ${item.details.map(d => `<li>${d}</li>`).join('')}
+                        </ul>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function openLesson(id) {
+            currentLessonId = id;
+            loadLesson(id);
+            switchTab('lesson');
+        }
+
+        function continueLearning() {
+            openLesson(currentLessonId);
+        }
+
+        function setLessonMode(mode) {
+            lessonMode = mode;
+            document.getElementById('studentModeBtn').classList.toggle('active', mode === 'student');
+            document.getElementById('teacherModeBtn').classList.toggle('active', mode === 'teacher');
+            loadLesson(currentLessonId);
+        }
+
+        function loadLesson(id) {
+            const lesson = seerahData.lessons.find(l => l.id === id) || seerahData.lessons[0];
+            const container = document.getElementById('lessonContentContainer');
+            const statusSelect = document.getElementById('statusSelect');
+            
+            statusSelect.value = userProgress[lesson.id] || 'Not Started';
+            updateBookmarkBtn();
+
+            if (lessonMode === 'student') {
+                container.innerHTML = `
+                    <span class="badge badge-authentic">${lesson.authenticity}</span>
+                    <h2 style="margin-top: 0.5rem;">${lesson.title}</h2>
+                    <p style="margin-top: 1rem; font-size: 1.1rem; line-height: 1.8;">${lesson.simpleExplanation}</p>
+                    
+                    <div style="margin-top: 1.5rem; padding: 1rem; background: var(--bg-primary); border-radius: 8px;">
+                        <h4>📖 Qur'anic Context</h4>
+                        <p style="font-style: italic; margin-top: 0.3rem;">"${lesson.quranRef}"</p>
+                    </div>
+
+                    <div style="margin-top: 1rem; padding: 1rem; background: var(--bg-primary); border-radius: 8px;">
+                        <h4>📜 Hadith Reference</h4>
+                        <p style="font-style: italic; margin-top: 0.3rem;">"${lesson.hadithRef}"</p>
+                    </div>
+
+                    <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                        <div><b>Key People:</b> ${lesson.people.join(', ')}</div>
+                        <div><b>Key Dates/Period:</b> ${lesson.dates}</div>
+                    </div>
+                `;
+            } else {
+                const tm = lesson.teacherMode;
+                container.innerHTML = `
+                    <h2>🎓 Teacher Guidance: ${lesson.title}</h2>
+                    <p style="color: var(--text-muted); margin-bottom: 1rem;">Pedagogical tips to effectively explain this lesson to different age groups.</p>
+                    
+                    <h4>Key Points to Emphasize:</h4>
+                    <ul style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                        ${tm.keyPoints.map(kp => `<li>${kp}</li>`).join('')}
+                    </ul>
+
+                    <h4>Age-Adapted Explanations:</h4>
+                    <div style="background: var(--bg-primary); padding: 0.8rem; border-radius: 8px; margin-bottom: 0.5rem;">
+                        <b>Children (Ages 5-10):</b> "${tm.childVer}"
+                    </div>
+                    <div style="background: var(--bg-primary); padding: 0.8rem; border-radius: 8px; margin-bottom: 1rem;">
+                        <b>Teens & Adults:</b> "${tm.teenVer}"
+                    </div>
+
+                    <h4>Common Misconceptions to Avoid:</h4>
+                    <p style="color: #dc2626; margin-bottom: 1rem;">⚠️ ${tm.mistakesToAvoid}</p>
+                `;
+            }
+
+            renderLessonQuiz(lesson.quiz);
+            document.getElementById('lessonNotesArea').value = userNotes[lesson.id] || '';
+        }
+
+        function renderLessonQuiz(quiz) {
+            const container = document.getElementById('quizContainer');
+            if (!quiz) {
+                container.innerHTML = '<p style="color: var(--text-muted);">No quiz available for this lesson yet.</p>';
+                return;
+            }
+
+            container.innerHTML = `
+                <p><b>Question:</b> ${quiz.question}</p>
+                <div>
+                    ${quiz.options.map((opt, i) => `
+                        <button class="quiz-option" onclick="checkLessonQuiz(${i},${quiz.correct}, '${quiz.explanation.replace(/'/g, "\\'")}')">${opt}</button>
+                    `).join('')}
+                </div>
+                <div id="quizResult" style="margin-top: 1rem;"></div>
+                ${quiz.wikiTitle ? `
+                    <div class="wiki-box">
+                        🌐 <b>Wikipedia Background Info:</b>
+                        <p style="font-size: 0.9rem; margin-top: 0.4rem;">${quiz.wikiInfo}</p>
+                    </div>
+                ` : ''}
+            `;
+        }
+
+        function checkLessonQuiz(selected, correct, explanation) {
+            const resultDiv = document.getElementById('quizResult');
+            if (selected === correct) {
+                resultDiv.innerHTML = `<p style="color: #166534; font-weight: bold;">✅ Correct! ${explanation}</p>`;
+                updateLessonStatus('Completed');
+            } else {
+                resultDiv.innerHTML = `<p style="color: #dc2626; font-weight: bold;">❌ Incorrect. Try again!</p>`;
+            }
+        }
+
+        function updateLessonStatus(status) {
+            userProgress[currentLessonId] = status;
+            localStorage.setItem('seerah_progress', JSON.stringify(userProgress));
+            document.getElementById('statusSelect').value = status;
+            updateOverallProgress();
+            renderRoadmap();
+        }
+
+        function updateOverallProgress() {
+            const totalLessons = seerahData.lessons.length;
+            const completedLessons = Object.values(userProgress).filter(s => s === 'Completed').length;
+            const percent = totalLessons ? Math.round((completedLessons / totalLessons) * 100) : 0;
+
+            document.getElementById('overallProgressBar').style.width = percent + '%';
+            document.getElementById('overallProgressText').innerText = `${percent}% Completed (${completedLessons}/${totalLessons} lessons)`;
+        }
+
+        function toggleBookmark() {
+            const index = userBookmarks.indexOf(currentLessonId);
+            if (index === -1) {
+                userBookmarks.push(currentLessonId);
+            } else {
+                userBookmarks.splice(index, 1);
+            }
+            localStorage.setItem('seerah_bookmarks', JSON.stringify(userBookmarks));
+            updateBookmarkBtn();
+            renderNotesAndBookmarks();
+        }
+
+        function updateBookmarkBtn() {
+            const isBookmarked = userBookmarks.includes(currentLessonId);
+            document.getElementById('bookmarkIcon').innerText = isBookmarked ? '★' : '☆';
+        }
+
+        function saveLessonNote() {
+            const noteText = document.getElementById('lessonNotesArea').value;
+            userNotes[currentLessonId] = noteText;
+            localStorage.setItem('seerah_notes', JSON.stringify(userNotes));
+            alert('Note saved successfully!');
+            renderNotesAndBookmarks();
+        }
+
+        function renderNotesAndBookmarks() {
+            const bList = document.getElementById('bookmarkedList');
+            if (userBookmarks.length === 0) {
+                bList.innerHTML = '<li style="color:var(--text-muted);">No bookmarked lessons yet.</li>';
+            } else {
+                bList.innerHTML = userBookmarks.map(id => {
+                    const lesson = seerahData.lessons.find(l => l.id === id);
+                    return lesson ? `<li style="margin-bottom:0.3rem;"><a href="#" onclick="openLesson(${lesson.id})" style="color:var(--primary-emerald); text-decoration:none; font-weight:600;">${lesson.title}</a></li>` : '';
+                }).join('');
+            }
+
+            const nContainer = document.getElementById('savedNotesContainer');
+            const noteKeys = Object.keys(userNotes).filter(k => userNotes[k].trim() !== '');
+            if (noteKeys.length === 0) {
+                nContainer.innerHTML = '<p style="color:var(--text-muted);">No notes saved yet.</p>';
+            } else {
+                nContainer.innerHTML = noteKeys.map(id => {
+                    const lesson = seerahData.lessons.find(l => l.id == id);
+                    return `
+                        <div style="background:var(--bg-primary); padding:0.8rem; border-radius:8px; margin-bottom:0.8rem; border:1px solid var(--border-color);">
+                            <b>${lesson ? lesson.title : 'Lesson ' + id}:</b>
+                            <p style="margin-top:0.3rem; font-size:0.95rem;">${userNotes[id]}</p>
+                        </div>
+                    `;
+                }).join('');
+            }
+        }
+
+        function handleSearch() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            if (!query) return;
+
+            const matchedLesson = seerahData.lessons.find(l => 
+                l.title.toLowerCase().includes(query) || 
+                l.simpleExplanation.toLowerCase().includes(query)
+            );
+
+            if (matchedLesson) {
+                openLesson(matchedLesson.id);
+            }
+        }
+
+        function startArjuzahQuiz() {
+            const container = document.getElementById('arjuzahQuizContainer');
+            const type = document.getElementById('arjQuizType').value;
+            const lang = document.getElementById('arjQuizLang').value;
+            
+            container.style.display = 'block';
+            container.innerHTML = `
+                <h3>🎯 Quiz Generated (${lang.toUpperCase()})</h3>
+                <p style="margin-top:0.5rem;"><b>پرسیار:</b> پێغەمبەر ﷺ لە چ مانگێکدا لەدایکبووە بەپێی بەیتی ٥؟</p>
+                <div style="margin-top:1rem;">
+                    <button class="quiz-option" onclick="alert('دروستە! (Correct)')">ڕەمەزان</button>
+                    <button class="quiz-option" onclick="alert('ڕاستە! (Correct)')">ڕەبیعی یەکەم (Rabī' al-Awwal)</button>
+                    <button class="quiz-option" onclick="alert('هەڵەیە!')">ڕەجەب</button>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
