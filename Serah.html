@@ -471,3 +471,205 @@
                     details: [
                         "<b>هێرشی ئەبرەهەی حەبەشی:</b> هەوڵدان بۆ تێکدانی کەعبە و تێکشکاندنی سوپاکەی بە پۆلێک باڵندە (تَیْراً أَبَابِیلَ).",
                         "<b>شیرخۆرین لە لادێ:</b> سپاردنی بە حەلیمەی سەعدییە لە بنەماڵەی بەنو سەعد بۆ وەرگرتنی فەساهەتی زمانی عەرەبی و هەوای پاکی دەشتایی
+question: "What is the core definition of 'Seerah' in Islamic study?",
+                    options: [
+                        "A collection of legal rulings only",
+                        "The biography, life, and teachings of Prophet Muhammad ﷺ",
+                        "A historical account of ancient civilizations",
+                        "The study of Arabic poetry"
+                    ],
+                    correctIndex: 1
+                }
+            }
+        ];
+
+        // Core Application State
+        let activeTab = 'home';
+        let currentLessonId = 101;
+        let lessonMode = 'student';
+        let userNotes = JSON.parse(localStorage.getItem('seerah_notes') || '{}');
+        let bookmarkedLessons = JSON.parse(localStorage.getItem('seerah_bookmarks') || '[]');
+        let lessonStatuses = JSON.parse(localStorage.getItem('seerah_statuses') || '{}');
+
+        // Navigation Function
+        function switchTab(tabId) {
+            activeTab = tabId;
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+
+            const targetPage = document.getElementById(tabId);
+            if (targetPage) targetPage.classList.add('active');
+
+            const activeBtn = Array.from(document.querySelectorAll('.tab-btn')).find(btn => 
+                btn.getAttribute('onclick')?.includes(`'${tabId}'`)
+            );
+            if (activeBtn) activeBtn.classList.add('active');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Mode Switcher (Student / Teacher)
+        function setLessonMode(mode) {
+            lessonMode = mode;
+            document.getElementById('studentModeBtn').classList.toggle('active', mode === 'student');
+            document.getElementById('teacherModeBtn').classList.toggle('active', mode === 'teacher');
+            renderLessonContent();
+        }
+
+        // Render Current Lesson
+        function renderLessonContent() {
+            const lesson = seerahData.lessons.find(l => l.id === currentLessonId);
+            const container = document.getElementById('lessonContentContainer');
+            if (!lesson || !container) return;
+
+            let html = `
+                <div style="display: flex; justify-content: space-between; align-items: start; gap: 1rem;">
+                    <h2>${lesson.title}</h2>
+                    <span class="badge badge-authentic">${lesson.authenticity}</span>
+                </div>
+                <p style="color: var(--text-muted); margin-top: 0.5rem;"><strong>Timeframe / Context:</strong> ${lesson.dates}</p>
+                
+                <div style="margin-top: 1.5rem;">
+                    <h4>Lesson Overview</h4>
+                    <p style="margin-top: 0.5rem;">${lesson.simpleExplanation}</p>
+                </div>
+
+                <div class="card" style="margin-top: 1.5rem; border-left: 4px solid var(--primary-emerald); background: var(--bg-primary);">
+                    <h4>Key Takeaway</h4>
+                    <p style="margin-top: 0.5rem; font-style: italic;">"${lesson.remember}"</p>
+                </div>
+            `;
+
+            if (lessonMode === 'teacher') {
+                html += `
+                    <div class="card" style="margin-top: 1.5rem; border-left: 4px solid var(--gold-accent);">
+                        <h4>🎓 Teacher's Guidance & Primary References</h4>
+                        <p style="margin-top: 0.5rem;"><strong>Qur'anic Reference:</strong> ${lesson.quranRef}</p>
+                        <p style="margin-top: 0.5rem;"><strong>Hadith Reference:</strong> ${lesson.hadithRef}</p>
+                        <p style="margin-top: 0.5rem;"><strong>Pedagogical Insight:</strong> Focus on emphasizing practical moral lessons and character development rather than memorization of dates alone.</p>
+                    </div>
+                `;
+            }
+
+            container.innerHTML = html;
+            renderLessonQuiz(lesson.quiz);
+            loadLessonNote();
+            updateBookmarkButton();
+        }
+
+        // Render Quiz
+        function renderLessonQuiz(quiz) {
+            const container = document.getElementById('quizContainer');
+            if (!quiz || !container) return;
+
+            container.innerHTML = `
+                <p><strong>Question:</strong> ${quiz.question}</p>
+                <div style="margin-top: 0.8rem;">
+                    ${quiz.options.map((opt, index) => `
+                        <button class="quiz-option" onclick="checkQuizAnswer(${index},${quiz.correctIndex})">
+                            ${opt}
+                        </button>
+                    `).join('')}
+                </div>
+                <div id="quizFeedback" style="margin-top: 1rem; font-weight: 600;"></div>
+            `;
+        }
+
+        function checkQuizAnswer(selected, correct) {
+            const feedback = document.getElementById('quizFeedback');
+            if (selected === correct) {
+                feedback.style.color = 'var(--primary-emerald)';
+                feedback.textContent = '✅ Correct! Masha\'Allah.';
+            } else {
+                feedback.style.color = '#dc2626';
+                feedback.textContent = '❌ Incorrect. Please try again.';
+            }
+        }
+
+        // Notes & Bookmarks Management
+        function saveLessonNote() {
+            const text = document.getElementById('lessonNotesArea').value;
+            userNotes[currentLessonId] = text;
+            localStorage.setItem('seerah_notes', JSON.stringify(userNotes));
+            alert('Note saved successfully!');
+        }
+
+        function loadLessonNote() {
+            const area = document.getElementById('lessonNotesArea');
+            if (area) area.value = userNotes[currentLessonId] || '';
+        }
+
+        function toggleBookmark() {
+            const index = bookmarkedLessons.indexOf(currentLessonId);
+            if (index > -1) {
+                bookmarkedLessons.splice(index, 1);
+            } else {
+                bookmarkedLessons.push(currentLessonId);
+            }
+            localStorage.setItem('seerah_bookmarks', JSON.stringify(bookmarkedLessons));
+            updateBookmarkButton();
+        }
+
+        function updateBookmarkButton() {
+            const icon = document.getElementById('bookmarkIcon');
+            if (icon) {
+                icon.textContent = bookmarkedLessons.includes(currentLessonId) ? '★' : '☆';
+            }
+        }
+
+        function updateLessonStatus(status) {
+            lessonStatuses[currentLessonId] = status;
+            localStorage.setItem('seerah_statuses', JSON.stringify(lessonStatuses));
+            calculateOverallProgress();
+        }
+
+        function calculateOverallProgress() {
+            const total = seerahData.lessons.length;
+            const completed = Object.values(lessonStatuses).filter(s => s === 'Completed').length;
+            const percentage = Math.round((completed / total) * 100);
+
+            const bar = document.getElementById('overallProgressBar');
+            const text = document.getElementById('overallProgressText');
+            if (bar) bar.style.width = `${percentage}%`;
+            if (text) text.textContent = `${percentage}% Completed`;
+        }
+
+        // Theme Toggle
+        function toggleTheme() {
+            const isDark = document.body.getAttribute('data-theme') === 'dark';
+            document.body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        }
+
+        // Modal Controls
+        function openShortcutGuide() {
+            document.getElementById('shortcutModal').classList.add('active');
+        }
+
+        function closeShortcutGuide() {
+            document.getElementById('shortcutModal').classList.remove('active');
+        }
+
+        // Keyboard Shortcuts Handler
+        document.addEventListener('keydown', (e) => {
+            if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) return;
+
+            if (e.ctrlKey || e.metaKey) {
+                switch (e.key.toLowerCase()) {
+                    case 'h': e.preventDefault(); switchTab('home'); break;
+                    case 'l': e.preventDefault(); switchTab('roadmap'); break;
+                    case 'e': e.preventDefault(); switchTab('lesson'); break;
+                    case 'q': e.preventDefault(); switchTab('arjuzah'); break;
+                    case 'd': e.preventDefault(); switchTab('timeline'); break;
+                    case 'p': e.preventDefault(); switchTab('people'); break;
+                }
+            }
+        });
+
+        // Initialize Page
+        window.addEventListener('DOMContentLoaded', () => {
+            renderLessonContent();
+            calculateOverallProgress();
+        });
+    </script>
+</body>
+</html>
