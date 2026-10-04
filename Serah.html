@@ -491,3 +491,240 @@
     </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seerah Academy</title>
+    <style>
+        :root {
+            --primary: #1b4332;
+            --primary-light: #2d6a4f;
+            --accent: #d4af37;
+            --bg: #f4f7f5;
+            --card-bg: #ffffff;
+            --text: #2b2d42;
+            --gray-locked: #e0e0e0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav button {
+            background: transparent;
+            border: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        nav button:hover, nav button.active {
+            background-color: var(--primary-light);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        /* Simplified Hero Section */
+        .hero {
+            background-color: var(--primary);
+            color: white;
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .hero h1 {
+            margin: 0;
+            font-size: 2.2rem;
+        }
+
+        /* Beginner Intro Cards */
+        .intro-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--primary-light);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+
+        /* Duolingo-style Path */
+        .path-title {
+            text-align: center;
+            color: var(--primary);
+            margin-bottom: 2rem;
+        }
+
+        .path-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .node {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            cursor: pointer;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .node:hover {
+            transform: scale(1.08);
+        }
+
+        .node.completed {
+            background-color: var(--accent);
+            color: white;
+            border: 4px solid #b39223;
+        }
+
+        .node.active {
+            background-color: var(--primary-light);
+            color: white;
+            border: 4px solid var(--primary);
+            animation: pulse 2s infinite;
+        }
+
+        .node.locked {
+            background-color: var(--gray-locked);
+            color: #888;
+            border: 4px solid #ccc;
+            cursor: not-allowed;
+        }
+
+        /* Zig-zag arrangement offsets */
+        .node:nth-child(odd) { transform: translateX(-30px); }
+        .node:nth-child(even) { transform: translateX(30px); }
+        .node:nth-child(odd):hover { transform: translateX(-30px) scale(1.08); }
+        .node:nth-child(even):hover { transform: translateX(30px) scale(1.08); }
+
+        .node-label {
+            position: absolute;
+            width: 160px;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+            top: 85px;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(45, 106, 79, 0.6); }
+            70% { box-shadow: 0 0 0 12px rgba(45, 106, 79, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(45, 106, 79, 0); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h2>Seerah Academy</h2>
+        <nav>
+            <button class="active">Home</button>
+            <button>Learning Roadmap</button>
+            <button>Lessons</button>
+            <button>Quiz & Exercises</button>
+        </nav>
+    </header>
+
+    <div class="container">
+        <!-- Simplified Header -->
+        <div class="hero">
+            <h1>Welcome to Seerah Academy</h1>
+        </div>
+
+        <!-- Beginner Orientation -->
+        <div class="intro-section">
+            <div class="card">
+                <h3>What is Seerah?</h3>
+                <p>Seerah refers to the detailed biography and life journey of Prophet Muhammad ﷺ, capturing his character, actions, and teachings.</p>
+            </div>
+            <div class="card">
+                <h3>Why Study It?</h3>
+                <p>Studying the Seerah offers practical guidance for personal character, wisdom in challenges, and a deeper understanding of timeless moral values.</p>
+            </div>
+        </div>
+
+        <!-- Interactive Learning Path -->
+        <h2 class="path-title">Beginner Learning Path</h2>
+        
+        <div class="path-container">
+            <div class="node completed" onclick="selectNode(1)">
+                ✓
+                <div class="node-label">1. Early Life & Lineage</div>
+            </div>
+
+            <div class="node active" onclick="selectNode(2)">
+                2
+                <div class="node-label">2. The First Revelation</div>
+            </div>
+
+            <div class="node locked">
+                3
+                <div class="node-label">3. Early Community</div>
+            </div>
+
+            <div class="node locked">
+                4
+                <div class="node-label">4. The Migration (Hijrah)</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function selectNode(step) {
+            if (step === 1) {
+                alert("Reviewing Lesson 1: Early Life & Lineage (Completed)");
+            } else if (step === 2) {
+                alert("Starting Lesson 2: The First Revelation");
+            }
+        }
+    </script>
+</body>
+</html>
