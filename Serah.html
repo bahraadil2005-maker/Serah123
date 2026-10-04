@@ -102,9 +102,6 @@
         /* Select Controls */
         .select-control { padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-main); font-weight: 500; }
 
-        /* Shortcut hint pill */
-        .shortcut-hint { font-size: 0.7rem; background: var(--border-color); color: var(--text-muted); padding: 0.1rem 0.4rem; border-radius: 4px; margin-left: 0.3rem; }
-
         /* Modal Overlay */
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 200; justify-content: center; align-items: center; }
         .modal-overlay.active { display: flex; }
@@ -132,17 +129,17 @@
             </a>
             <div class="controls">
                 <input type="text" id="searchInput" class="search-box" placeholder="Search lessons..." onkeyup="handleSearch()">
-                <button class="settings-btn" onclick="openShortcutGuide()">⌨️️ Shortcuts Guide</button>
+                <button class="settings-btn" onclick="openShortcutGuide()">⌨ Shortcuts Guide</button>
                 <button class="theme-btn" onclick="toggleTheme()">🌙 Theme</button>
             </div>
         </div>
         <nav class="tabs-nav">
-            <button class="tab-btn active" onclick="switchTab('home')">Home <span class="shortcut-hint">Ctrl+H</span></button>
-            <button class="tab-btn" onclick="switchTab('roadmap')">Learning Roadmap <span class="shortcut-hint">Ctrl+L</span></button>
-            <button class="tab-btn" onclick="switchTab('lesson')">Lessons <span class="shortcut-hint">Ctrl+E</span></button>
-            <button class="tab-btn" onclick="switchTab('arjuzah')">الأرجوزة السنية & Quiz <span class="shortcut-hint">Ctrl+Q</span></button>
-            <button class="tab-btn" onclick="switchTab('timeline')">Deep Timeline <span class="shortcut-hint">Ctrl+D</span></button>
-            <button class="tab-btn" onclick="switchTab('people')">Important People <span class="shortcut-hint">Ctrl+P</span></button>
+            <button class="tab-btn active" onclick="switchTab('home')">Home</button>
+            <button class="tab-btn" onclick="switchTab('roadmap')">Learning Roadmap</button>
+            <button class="tab-btn" onclick="switchTab('lesson')">Lessons</button>
+            <button class="tab-btn" onclick="switchTab('arjuzah')">الأرجوزة السنية & Quiz</button>
+            <button class="tab-btn" onclick="switchTab('timeline')">Deep Timeline</button>
+            <button class="tab-btn" onclick="switchTab('people')">Important People</button>
             <button class="tab-btn" onclick="switchTab('notes')">My Notes & Revision</button>
         </nav>
     </header>
@@ -491,161 +488,6 @@
 
         function openShortcutGuide() { document.getElementById('shortcutModal').classList.add('active'); }
         function closeShortcutGuide() { document.getElementById('shortcutModal').classList.remove('active'); }
-
-        // Theme Toggle
-        function toggleTheme() {
-            const currentTheme = document.body.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            document.body.setAttribute('data-theme', newTheme);
-            localStorage.setItem('seerah_theme', newTheme);
-        }
-
-        // Initialize App
-        window.onload = function() {
-            const savedTheme = localStorage.getItem('seerah_theme') || 'light';
-            document.body.setAttribute('data-theme', savedTheme);
-            updateOverallProgress();
-        };
-
-        function renderRoadmap() {
-            const grid = document.getElementById('roadmapGrid');
-            grid.innerHTML = seerahData.levels.map(lvl => `
-                <div class="card level-card">
-                    <h3>${lvl.name}</h3>
-                    <p style="color: var(--text-muted); margin: 0.5rem 0;">${lvl.desc}</p>
-                    <button class="btn btn-primary" onclick="loadFirstLessonOfLevel(${lvl.id})">Explore Lessons →</button>
-                </div>
-            `).join('');
-        }
-
-        function loadFirstLessonOfLevel(levelId) {
-            const lesson = seerahData.lessons.find(l => l.levelId === levelId) || seerahData.lessons[0];
-            currentLessonId = lesson.id;
-            switchTab('lesson');
-        }
-
-        function renderLesson(lessonId) {
-            const lesson = seerahData.lessons.find(l => l.id === lessonId) || seerahData.lessons[0];
-            const container = document.getElementById('lessonContentContainer');
-            
-            container.innerHTML = `
-                <h2>${lesson.title}</h2>
-                <p style="margin-top: 0.5rem; font-size: 1.05rem;">${lesson.simpleExplanation}</p>
-                <div style="margin-top: 1rem; padding: 0.8rem; background: var(--bg-primary); border-radius: 8px;">
-                    <strong>Key Figures:</strong> ${lesson.people.join(', ')} | <strong>Dates:</strong> ${lesson.dates}
-                </div>
-            `;
-
-            // Update quiz
-            const quizContainer = document.getElementById('quizContainer');
-            if (lesson.quiz) {
-                quizContainer.innerHTML = `
-                    <p><b>${lesson.quiz.question}</b></p>
-                    ${lesson.quiz.options.map((opt, idx) => `
-                        <button class="quiz-option" onclick="checkQuizAnswer(${idx}, ${lesson.quiz.correct})">${opt}</button>
-                    `).join('')}
-                    <div id="quizFeedback" style="margin-top: 0.5rem; font-weight: 600;"></div>
-                `;
-            }
-
-            // Update notes
-            document.getElementById('lessonNotesArea').value = userNotes[lessonId] || '';
-            updateBookmarkBtn();
-        }
-
-        function checkQuizAnswer(selected, correct) {
-            const fb = document.getElementById('quizFeedback');
-            if (selected === correct) {
-                fb.style.color = 'green';
-                fb.innerText = 'Correct! Great job.';
-            } else {
-                fb.style.color = 'red';
-                fb.innerText = 'Incorrect. Try again!';
-            }
-        }
-
-        function saveLessonNote() {
-            const val = document.getElementById('lessonNotesArea').value;
-            userNotes[currentLessonId] = val;
-            localStorage.setItem('seerah_notes', JSON.stringify(userNotes));
-            alert('Note saved successfully!');
-        }
-
-        function toggleBookmark() {
-            const idx = userBookmarks.indexOf(currentLessonId);
-            if (idx === -1) userBookmarks.push(currentLessonId);
-            else userBookmarks.splice(idx, 1);
-            localStorage.setItem('seerah_bookmarks', JSON.stringify(userBookmarks));
-            updateBookmarkBtn();
-        }
-
-        function updateBookmarkBtn() {
-            const icon = document.getElementById('bookmarkIcon');
-            if (userBookmarks.includes(currentLessonId)) icon.innerText = '★';
-            else icon.innerText = '☆';
-        }
-
-        function updateLessonStatus(status) {
-            userProgress[currentLessonId] = status;
-            localStorage.setItem('seerah_progress', JSON.stringify(userProgress));
-            updateOverallProgress();
-        }
-
-        function updateOverallProgress() {
-            const total = seerahData.lessons.length;
-            const completed = Object.values(userProgress).filter(s => s === 'Completed').length;
-            const pct = Math.round((completed / total) * 100) || 0;
-            
-            document.getElementById('overallProgressBar').style.width = pct + '%';
-            document.getElementById('overallProgressText').innerText = pct + '% Completed';
-        }
-
-        function setLessonMode(mode) {
-            currentLessonMode = mode;
-            document.getElementById('studentModeBtn').classList.toggle('active', mode === 'student');
-            document.getElementById('teacherModeBtn').classList.toggle('active', mode === 'teacher');
-            renderLesson(currentLessonId);
-        }
-
-        function continueLearning() {
-            switchTab('lesson');
-        }
-
-        function renderNotesPage() {
-            const bList = document.getElementById('bookmarkedList');
-            bList.innerHTML = userBookmarks.length ? userBookmarks.map(id => {
-                const l = seerahData.lessons.find(item => item.id === id);
-                return `<li><a href="#" onclick="currentLessonId=${id}; switchTab('lesson');">${l ? l.title : 'Lesson ' + id}</a></li>`;
-            }).join('') : '<li>No bookmarks yet.</li>';
-
-            const sNotes = document.getElementById('savedNotesContainer');
-            const entries = Object.entries(userNotes).filter(([_, note]) => note.trim() !== '');
-            sNotes.innerHTML = entries.length ? entries.map(([id, note]) => `
-                <div style="padding:0.8rem; background:var(--bg-primary); border-radius:8px; margin-bottom:0.5rem;">
-                    <strong>Lesson ${id}:</strong>
-                    <p style="margin-top:0.3rem;">${note}</p>
-                </div>
-            `).join('') : '<p>No saved notes found.</p>';
-        }
-
-        function startArjuzahQuiz() {
-            const container = document.getElementById('arjuzahQuizContainer');
-            container.style.display = 'block';
-            container.innerHTML = `
-                <h4>کویزی داینامیکی ئامادەیە</h4>
-                <p style="margin-top:0.5rem;">کویزەکە بەپێی هەڵبژاردنەکانت بە سەرکەوتوویی دروستکرا.</p>
-            `;
-        }
-
-        function handleSearch() {
-            const query = document.getElementById('searchInput').value.toLowerCase();
-            if (query.trim() === '') return;
-            const match = seerahData.lessons.find(l => l.title.toLowerCase().includes(query) || l.simpleExplanation.toLowerCase().includes(query));
-            if (match) {
-                currentLessonId = match.id;
-                switchTab('lesson');
-            }
-        }
     </script>
 </body>
 </html>
