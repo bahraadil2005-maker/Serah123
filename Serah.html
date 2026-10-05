@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seerah Academy123 | Interactive Learning Platform</title>
+    <title>Seerah Academy | Interactive Learning Platform</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -64,8 +64,6 @@
         .btn-primary { background: var(--primary-emerald); color: white; }
         .btn-primary:hover { background: var(--primary-hover); }
         .btn-secondary { background: var(--border-color); color: var(--text-main); }
-        .btn-wiki { background: #3366cc; color: white; font-size: 0.85rem; padding: 0.4rem 0.8rem; margin-top: 0.5rem; }
-        .btn-wiki:hover { background: #254db3; }
         
         /* Progress Bar */
         .progress-bar-bg { width: 100%; height: 10px; background: var(--border-color); border-radius: 5px; overflow: hidden; margin: 0.5rem 0; }
@@ -75,7 +73,6 @@
         .level-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
         .level-card { border-left: 5px solid var(--primary-emerald); }
         .badge { padding: 0.25rem 0.6rem; border-radius: 12px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; }
-        .badge-authentic { background: #dcfce7; color: #166534; }
 
         /* Teacher Mode Toggle */
         .mode-toggle { display: flex; background: var(--border-color); padding: 0.25rem; border-radius: 8px; width: fit-content; margin-bottom: 1.5rem; }
@@ -86,20 +83,8 @@
         .timeline { position: relative; padding-left: 2rem; border-left: 3px solid var(--primary-emerald); margin-top: 1.5rem; }
         .timeline-item { position: relative; margin-bottom: 2rem; background: var(--bg-card); border: 1px solid var(--border-color); padding: 1.5rem; border-radius: var(--radius); box-shadow: var(--shadow); }
         .timeline-item::before { content: ''; position: absolute; left: -2.65rem; top: 1.5rem; width: 1.2rem; height: 1.2rem; border-radius: 50%; background: var(--primary-emerald); border: 3px solid var(--bg-primary); }
-        .timeline-badge { background: var(--gold-light); color: var(--gold-accent); padding: 0.3rem 0.7rem; border-radius: 6px; font-weight: bold; font-size: 0.85rem; display: inline-block; margin-bottom: 0.6rem; }
-        .timeline-section-title { color: var(--primary-emerald); border-bottom: 2px solid var(--primary-light); padding-bottom: 0.4rem; margin-bottom: 0.8rem; font-size: 1.2rem; }
-        .timeline-detail-box { background: var(--bg-primary); padding: 1rem; border-radius: 8px; margin-top: 0.8rem; border-right: 4px solid var(--gold-accent); direction: rtl; text-align: right; }
-        .timeline-detail-box ul { padding-right: 1.2rem; margin-top: 0.5rem; }
-
-        /* Quizzes */
-        .quiz-option { display: block; width: 100%; padding: 0.8rem; margin: 0.5rem 0; border: 1px solid var(--border-color); border-radius: 8px; background: var(--bg-card); color: var(--text-main); text-align: left; cursor: pointer; transition: 0.2s; }
-        .quiz-option:hover { background: var(--primary-light); }
         
-        /* Wikipedia Box */
-        .wiki-box { margin-top: 0.8rem; padding: 1rem; border-radius: 8px; background: #f0f4f8; border-left: 4px solid #3366cc; color: #1f2937; }
-        [data-theme="dark"] .wiki-box { background: #1e293b; border-left: 4px solid #3b82f6; color: #f3f4f6; }
-
-        /* Select Controls */
+        /* Quizzes & Select Controls */
         .select-control { padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-main); font-weight: 500; }
 
         /* Modal Overlay */
@@ -121,7 +106,7 @@
 </head>
 <body>
 
-    <!-- Header -->
+    <!-- Header Navigation -->
     <header>
         <div class="nav-container">
             <a href="#" class="logo" onclick="switchTab('home')">
@@ -155,7 +140,7 @@
                 </p>
                 <div style="margin-top: 1.5rem;">
                     <button class="btn btn-primary" onclick="switchTab('roadmap')">Start Learning Journey →</button>
-                    <button class="btn btn-secondary" onclick="continueLearning()" style="margin-left: 0.5rem;">Continue Last Lesson</button>
+                    <button class="btn btn-secondary" onclick="switchTab('lesson')" style="margin-left: 0.5rem;">Continue Last Lesson</button>
                 </div>
             </div>
 
@@ -260,8 +245,6 @@
                         <select id="arjQuizCount" class="select-control" style="margin-top:0.3rem;">
                             <option value="5">5 پرسیار</option>
                             <option value="10">10 پرسیار</option>
-                            <option value="20">20 پرسیار</option>
-                            <option value="30">30 پرسیار</option>
                         </select>
                     </div>
 
@@ -271,8 +254,6 @@
                             <option value="ckb">کوردی (Kurdish)</option>
                             <option value="ar">العربية (Arabic)</option>
                             <option value="en">English</option>
-                            <option value="fa">فارسی (Persian)</option>
-                            <option value="tr">Türkçe (Turkish)</option>
                         </select>
                     </div>
                 </div>
@@ -294,15 +275,15 @@
                     7. وَأَرْضَعَتْهُ سَعْدِيَّةُ حَلِيمَة ... فَبُورِكَتْ بِقُرْبِهِ الْكَرِيمَة<br>
                     8. وَشُقَّ صَدْرُ الْمُصْطَفَى صَغِيرَا ... وَعَادَ لِلأُمِّ نَقِيًّا بَارَّا<br>
                     9. وَمَاتَتِ الأُمُّ وَلَهُ سِتُّ سِنِينْ ... وَكَفَلَهُ الْجَدُّ الرَّحِيمُ فِي الْمَكِينْ<br>
-                    10. ثُمَّ جَدُّهُ ابْنُ عَبْدِ الْمُطَّلِبْ ... تُوُفِّيَ وَكَفَلَهُ ثُمَّ النَّصَبْ (مَامُهُ أَبُو طَالِبٍ)<br>
+                    10. ثُمَّ جَدُّهُ ابْنُ عَبْدِ الْمُطَّلِبْ ... تُوُفِّيَ وَكَفَلَهُ ثُمَّ النَّصَبْ<br>
                 </div>
             </div>
         </section>
 
         <!-- 5. ULTRA DEEP TIMELINE PAGE -->
         <section id="timeline" class="page">
-            <h2>Comprehensive Ultra-Deep Seerah Chronology (کرۆنۆلۆجیای زۆر قووڵی سیرە)</h2>
-            <p style="color: var(--text-muted); margin-bottom: 1rem;">نەخشەیەکی مێژوویی بێوێنە و ژمارە بە ژمارە، کە هەموو ڕووداوە سەربازی، سیاسی، بەردی بناغەییەکان و ژیانی تایبەتی پێغەمبەر ﷺ شیدەکاتەوە:</p>
+            <h2>Comprehensive Ultra-Deep Seerah Chronology</h2>
+            <p style="color: var(--text-muted); margin-bottom: 1rem;">نەخشەیەکی مێژوویی شیکراوە بۆ تێگەیشتن لە ڕووداوە گرنگەکانی سیرە:</p>
             <div class="timeline" id="timelineContainer"></div>
         </section>
 
@@ -327,52 +308,42 @@
         </section>
     </main>
 
-    <!-- KEYBOARD SHORTCUTS SETTINGS & GUIDE MODAL -->
+    <!-- KEYBOARD SHORTCUTS MODAL -->
     <div id="shortcutModal" class="modal-overlay">
         <div class="modal-card">
             <div class="modal-header">
-                <h3>⌨️ Keyboard Shortcuts Guide & Settings</h3>
+                <h3>⌨️ Keyboard Shortcuts Guide</h3>
                 <button class="close-btn" onclick="closeShortcutGuide()">✕</button>
             </div>
             
             <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem;">
-                Keyboard shortcuts allow you to navigate through Seerah Academy quickly without using your mouse.
+                Navigate through Seerah Academy quickly:
             </p>
 
-            <div style="background: var(--bg-primary); padding: 1rem; border-radius: 8px; margin-bottom: 1rem; border: 1px solid var(--border-color);">
-                <h4 style="color: var(--primary-emerald); margin-bottom: 0.5rem;">💡 How to use shortcuts:</h4>
-                <ol style="padding-left: 1.2rem; font-size: 0.9rem; line-height: 1.8;">
-                    <li>Press and hold the <kbd>Ctrl</kbd> key (or <kbd>Cmd ⌘</kbd> on Mac).</li>
-                    <li>While holding <kbd>Ctrl</kbd>, press the designated letter key (e.g., <kbd>H</kbd> for Home).</li>
-                    <li>Shortcuts are automatically disabled when typing inside input boxes or text areas so they won't trigger while writing notes or searching.</li>
-                </ol>
-            </div>
-
-            <h4>List of Available Shortcuts:</h4>
-            <div style="display: flex; flex-direction: column; gap: 0.6rem; margin-top: 0.8rem;">
+            <div style="display: flex; flex-direction: column; gap: 0.6rem;">
                 <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.5rem; border-bottom: 1px solid var(--border-color);">
-                    <span>Go to Home Page</span>
-                    <div><kbd>Ctrl</kbd> + <kbd>H</kbd> / <kbd>Cmd</kbd> + <kbd>H</kbd></div>
+                    <span>Home Page</span>
+                    <div><kbd>Ctrl</kbd> + <kbd>H</kbd></div>
                 </div>
                 <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.5rem; border-bottom: 1px solid var(--border-color);">
-                    <span>Go to Learning Roadmap</span>
-                    <div><kbd>Ctrl</kbd> + <kbd>L</kbd> / <kbd>Cmd</kbd> + <kbd>L</kbd></div>
+                    <span>Learning Roadmap</span>
+                    <div><kbd>Ctrl</kbd> + <kbd>L</kbd></div>
                 </div>
                 <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.5rem; border-bottom: 1px solid var(--border-color);">
-                    <span>Go to Current Lesson</span>
-                    <div><kbd>Ctrl</kbd> + <kbd>E</kbd> / <kbd>Cmd</kbd> + <kbd>E</kbd></div>
+                    <span>Lessons</span>
+                    <div><kbd>Ctrl</kbd> + <kbd>E</kbd></div>
                 </div>
                 <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.5rem; border-bottom: 1px solid var(--border-color);">
-                    <span>Go to Arjuzah & Quiz</span>
-                    <div><kbd>Ctrl</kbd> + <kbd>Q</kbd> / <kbd>Cmd</kbd> + <kbd>Q</kbd></div>
+                    <span>Arjuzah & Quiz</span>
+                    <div><kbd>Ctrl</kbd> + <kbd>Q</kbd></div>
                 </div>
                 <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.5rem; border-bottom: 1px solid var(--border-color);">
-                    <span>Go to Deep Timeline</span>
-                    <div><kbd>Ctrl</kbd> + <kbd>D</kbd> / <kbd>Cmd</kbd> + <kbd>D</kbd></div>
+                    <span>Deep Timeline</span>
+                    <div><kbd>Ctrl</kbd> + <kbd>D</kbd></div>
                 </div>
                 <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.5rem;">
-                    <span>Go to Important People</span>
-                    <div><kbd>Ctrl</kbd> + <kbd>P</kbd> / <kbd>Cmd</kbd> + <kbd>P</kbd></div>
+                    <span>Important People</span>
+                    <div><kbd>Ctrl</kbd> + <kbd>P</kbd></div>
                 </div>
             </div>
 
@@ -380,7 +351,7 @@
         </div>
     </div>
 
-    <!-- JavaScript Logic -->
+    <!-- JavaScript Application Logic -->
     <script>
         const seerahData = {
             levels: [
@@ -391,15 +362,14 @@
                 { id: 5, name: "Level 5: Madinah", desc: "Establishment of the first Muslim community." },
                 { id: 6, name: "Level 6: Major Battles & Treaties", desc: "Badr, Uhud, Khandaq, Hudaybiyyah." },
                 { id: 7, name: "Level 7: Conquest of Makkah", desc: "Events leading to victory." },
-                { id: 8, name: "Level 8: Farewell Hajj & Final Days", desc: "The Farewell Sermon and passing." },
-                { id: 9, name: "Level 9: Advanced Seerah", desc: "Pedagogical methods and strategies." }
+                { id: 8, name: "Level 8: Farewell Hajj & Final Days", desc: "The Farewell Sermon and passing." }
             ],
             lessons: [
                 {
                     id: 101,
                     levelId: 1,
                     title: "Lesson 1: What is the Seerah and Why Study It?",
-                    simpleExplanation: "The word 'Seerah' means a path or biography. Studying the Seerah means learning how Prophet Muhammad ﷺ lived his life as a leader, husband, teacher, and servant of Allah.",
+                    simpleExplanation: "The word 'Seerah' means a path or biography. Studying the Seerah means learning how Prophet Muhammad ﷺ lived his life as a leader, teacher, and servant of Allah.",
                     people: ["Prophet Muhammad ﷺ"],
                     dates: "Ongoing foundation",
                     quranRef: "Say, [O Muhammad], 'If you should love Allah, then follow me...'",
@@ -411,16 +381,11 @@
                         question: "What does the word 'Seerah' literally mean?",
                         options: ["A legal ruling", "A journey or path/biography", "A battle strategy", "A poetry collection"],
                         correct: 1,
-                        explanation: "Seerah literally means a path or trajectory.",
-                        wikiTitle: "Sirah_of_Muhammad",
-                        wikiInfo: "In Islamic terminology, Sīrah or Al-sīrah al-nabawiyyah refers to the biography of the Islamic prophet Muhammad. It covers his life, teachings, military expeditions, and actions."
+                        explanation: "Seerah literally means a path or trajectory."
                     },
                     teacherMode: {
                         keyPoints: ["Define Seerah clearly", "Explain that love stems from knowing him"],
                         childVer: "Seerah is telling the wonderful true story of Allah's final messenger.",
-                        teenVer: "Seerah is a practical blueprint for life.",
-                        questions: ["Why is it important to learn about someone's life?"],
-                        mistakesToAvoid: "Don't present Seerah as just historical dates.",
                         summary: "Seerah translates Islamic principles into practical action."
                     }
                 },
@@ -449,11 +414,14 @@
         // State Management
         let currentLessonId = 101;
         let currentLessonMode = 'student';
-        let userProgress = JSON.parse(localStorage.getItem('seerah_progress')) || {};
-        let userNotes = JSON.parse(localStorage.getItem('seerah_notes')) || {};
-        let userBookmarks = JSON.parse(localStorage.getItem('seerah_bookmarks')) || [];
 
-        // Tab Switching
+        // Initialization
+        document.addEventListener('DOMContentLoaded', () => {
+            renderRoadmap();
+            renderLesson(currentLessonId);
+        });
+
+        // Tab Navigation
         function switchTab(tabId) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -461,7 +429,8 @@
             const targetPage = document.getElementById(tabId);
             if (targetPage) targetPage.classList.add('active');
 
-            const btnIndex = ['home', 'roadmap', 'lesson', 'arjuzah', 'timeline', 'people', 'notes'].indexOf(tabId);
+            const tabOrder = ['home', 'roadmap', 'lesson', 'arjuzah', 'timeline', 'people', 'notes'];
+            const btnIndex = tabOrder.indexOf(tabId);
             if (btnIndex !== -1) {
                 const btns = document.querySelectorAll('.tab-btn');
                 if (btns[btnIndex]) btns[btnIndex].classList.add('active');
@@ -469,764 +438,108 @@
 
             if (tabId === 'roadmap') renderRoadmap();
             if (tabId === 'lesson') renderLesson(currentLessonId);
-            if (tabId === 'notes') renderNotesPage();
         }
 
-        // Keyboard Shortcuts
+        // Render Roadmap
+        function renderRoadmap() {
+            const grid = document.getElementById('roadmapGrid');
+            if (!grid) return;
+            grid.innerHTML = seerahData.levels.map(level => `
+                <div class="card level-card">
+                    <h3>${level.name}</h3>
+                    <p style="color: var(--text-muted); margin: 0.5rem 0;">${level.desc}</p>
+                    <button class="btn btn-primary" style="margin-top:0.5rem;" onclick="loadLevelLessons(${level.id})">Explore Lessons</button>
+                </div>
+            `).join('');
+        }
+
+        function loadLevelLessons(levelId) {
+            const lesson = seerahData.lessons.find(l => l.levelId === levelId) || seerahData.lessons[0];
+            currentLessonId = lesson.id;
+            switchTab('lesson');
+        }
+
+        // Render Lesson View
+        function renderLesson(lessonId) {
+            const lesson = seerahData.lessons.find(l => l.id === lessonId) || seerahData.lessons[0];
+            const container = document.getElementById('lessonContentContainer');
+            if (!container) return;
+
+            container.innerHTML = `
+                <h2>${lesson.title}</h2>
+                <div style="margin: 0.8rem 0;">
+                    <span class="badge" style="background:var(--primary-light); color:var(--primary-emerald);">${lesson.authenticity}</span>
+                    <span style="font-size:0.85rem; color:var(--text-muted); margin-left:0.5rem;">📅 ${lesson.dates}</span>
+                </div>
+                <p style="font-size:1.05rem; margin-bottom:1rem;">${lesson.simpleExplanation}</p>
+                <div style="background:var(--bg-primary); padding:1rem; border-radius:8px; margin-bottom:1rem;">
+                    <strong>📖 Qur'an Reference:</strong> <em>"${lesson.quranRef}"</em>
+                </div>
+                <div style="background:var(--bg-primary); padding:1rem; border-radius:8px;">
+                    <strong>💬 Hadith Reference:</strong> <em>"${lesson.hadithRef}"</em>
+                </div>
+            `;
+
+            renderQuiz(lesson.quiz);
+        }
+
+        function renderQuiz(quiz) {
+            const quizBox = document.getElementById('quizContainer');
+            if (!quizBox || !quiz) return;
+
+            quizBox.innerHTML = `
+                <p><strong>Q: ${quiz.question}</strong></p>
+                <div style="display:flex; flex-direction:column; gap:0.5rem; margin-top:0.5rem;">
+                    ${quiz.options.map((opt, idx) => `
+                        <button class="btn btn-secondary" style="justify-content:flex-start;" onclick="checkAnswer(${idx}, ${quiz.correct}, '${quiz.explanation}')">
+                            ${opt}
+                        </button>
+                    `).join('')}
+                </div>
+                <div id="quizFeedback" style="margin-top:0.8rem; font-weight:600;"></div>
+            `;
+        }
+
+        function checkAnswer(selected, correct, explanation) {
+            const feedback = document.getElementById('quizFeedback');
+            if (selected === correct) {
+                feedback.style.color = 'var(--primary-emerald)';
+                feedback.innerText = `Correct! 🎉 ${explanation}`;
+            } else {
+                feedback.style.color = '#dc2626';
+                feedback.innerText = 'Incorrect, try again!';
+            }
+        }
+
+        function setLessonMode(mode) {
+            currentLessonMode = mode;
+            document.getElementById('studentModeBtn').classList.toggle('active', mode === 'student');
+            document.getElementById('teacherModeBtn').classList.toggle('active', mode === 'teacher');
+            renderLesson(currentLessonId);
+        }
+
+        // Theme Toggle
+        function toggleTheme() {
+            const current = document.documentElement.getAttribute('data-theme');
+            document.documentElement.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+        }
+
+        // Modal Logic
+        function openShortcutGuide() { document.getElementById('shortcutModal').classList.add('active'); }
+        function closeShortcutGuide() { document.getElementById('shortcutModal').classList.remove('active'); }
+
+        // Global Keyboard Navigation
         document.addEventListener('keydown', (e) => {
             if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) return;
             if (e.ctrlKey || e.metaKey) {
                 const key = e.key.toLowerCase();
-                if (key === 'h') { e.preventDefault(); switchTab('home'); }
-                else if (key === 'l') { e.preventDefault(); switchTab('roadmap'); }
-                else if (key === 'e') { e.preventDefault(); switchTab('lesson'); }
-                else if (key === 'q') { e.preventDefault(); switchTab('arjuzah'); }
-                else if (key === 'd') { e.preventDefault(); switchTab('timeline'); }
-                else if (key === 'p') { e.preventDefault(); switchTab('people'); }
+                const keyMap = { h: 'home', l: 'roadmap', e: 'lesson', q: 'arjuzah', d: 'timeline', p: 'people' };
+                if (keyMap[key]) {
+                    e.preventDefault();
+                    switchTab(keyMap[key]);
+                }
             }
         });
-
-        function openShortcutGuide() { document.getElementById('shortcutModal').classList.add('active'); }
-        function closeShortcutGuide() { document.getElementById('shortcutModal').classList.remove('active'); }
     </script>
 </body>
 </html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seerah Academy</title>
-    <style>
-        :root {
-            --primary: #1b4332;
-            --primary-light: #2d6a4f;
-            --accent: #d4af37;
-            --bg: #f4f7f5;
-            --card-bg: #ffffff;
-            --text: #2b2d42;
-            --gray-locked: #e0e0e0;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            margin: 0;
-            padding: 0;
-        }
-
-        header {
-            background-color: var(--primary);
-            color: white;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        nav button {
-            background: transparent;
-            border: none;
-            color: white;
-            padding: 0.5rem 1rem;
-            font-size: 1rem;
-            cursor: pointer;
-            border-radius: 4px;
-        }
-
-        nav button:hover, nav button.active {
-            background-color: var(--primary-light);
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-
-        /* Simplified Hero Section */
-        .hero {
-            background-color: var(--primary);
-            color: white;
-            padding: 2.5rem 2rem;
-            border-radius: 12px;
-            text-align: center;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-
-        .hero h1 {
-            margin: 0;
-            font-size: 2.2rem;
-        }
-
-        /* Beginner Intro Cards */
-        .intro-section {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-        }
-
-        .card {
-            background: var(--card-bg);
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            border-top: 4px solid var(--primary-light);
-        }
-
-        .card h3 {
-            margin-top: 0;
-            color: var(--primary);
-        }
-
-        /* Duolingo-style Path */
-        .path-title {
-            text-align: center;
-            color: var(--primary);
-            margin-bottom: 2rem;
-        }
-
-        .path-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2rem;
-            position: relative;
-            padding: 2rem 0;
-        }
-
-        .node {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: bold;
-            font-size: 1.2rem;
-            cursor: pointer;
-            position: relative;
-            z-index: 2;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.2s, background-color 0.2s;
-        }
-
-        .node:hover {
-            transform: scale(1.08);
-        }
-
-        .node.completed {
-            background-color: var(--accent);
-            color: white;
-            border: 4px solid #b39223;
-        }
-
-        .node.active {
-            background-color: var(--primary-light);
-            color: white;
-            border: 4px solid var(--primary);
-            animation: pulse 2s infinite;
-        }
-
-        .node.locked {
-            background-color: var(--gray-locked);
-            color: #888;
-            border: 4px solid #ccc;
-            cursor: not-allowed;
-        }
-
-        /* Zig-zag arrangement offsets */
-        .node:nth-child(odd) { transform: translateX(-30px); }
-        .node:nth-child(even) { transform: translateX(30px); }
-        .node:nth-child(odd):hover { transform: translateX(-30px) scale(1.08); }
-        .node:nth-child(even):hover { transform: translateX(30px) scale(1.08); }
-
-        .node-label {
-            position: absolute;
-            width: 160px;
-            text-align: center;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--text);
-            top: 85px;
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(45, 106, 79, 0.6); }
-            70% { box-shadow: 0 0 0 12px rgba(45, 106, 79, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(45, 106, 79, 0); }
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <h2>Seerah Academy</h2>
-        <nav>
-            <button class="active">Home</button>
-            <button>Learning Roadmap</button>
-            <button>Lessons</button>
-            <button>Quiz & Exercises</button>
-        </nav>
-    </header>
-
-    <div class="container">
-        <!-- Simplified Header -->
-        <div class="hero">
-            <h1>Welcome to Seerah Academy</h1>
-        </div>
-
-        <!-- Beginner Orientation -->
-        <div class="intro-section">
-            <div class="card">
-                <h3>What is Seerah?</h3>
-                <p>Seerah refers to the detailed biography and life journey of Prophet Muhammad ﷺ, capturing his character, actions, and teachings.</p>
-            </div>
-            <div class="card">
-                <h3>Why Study It?</h3>
-                <p>Studying the Seerah offers practical guidance for personal character, wisdom in challenges, and a deeper understanding of timeless moral values.</p>
-            </div>
-        </div>
-
-        <!-- Interactive Learning Path -->
-        <h2 class="path-title">Beginner Learning Path</h2>
-        
-        <div class="path-container">
-            <div class="node completed" onclick="selectNode(1)">
-                ✓
-                <div class="node-label">1. Early Life & Lineage</div>
-            </div>
-
-            <div class="node active" onclick="selectNode(2)">
-                2
-                <div class="node-label">2. The First Revelation</div>
-            </div>
-
-            <div class="node locked">
-                3
-                <div class="node-label">3. Early Community</div>
-            </div>
-
-            <div class="node locked">
-                4
-                <div class="node-label">4. The Migration (Hijrah)</div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        function selectNode(step) {
-            if (step === 1) {
-                alert("Reviewing Lesson 1: Early Life & Lineage (Completed)");
-            } else if (step === 2) {
-                alert("Starting Lesson 2: The First Revelation");
-            }
-        }
-    </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seerah Academy</title>
-    <style>
-        :root {
-            --primary: #1b4332;
-            --primary-light: #2d6a4f;
-            --accent: #d4af37;
-            --bg: #f8f9fa;
-            --card-bg: #ffffff;
-            --text: #212529;
-            --text-muted: #6c757d;
-            --gray-locked: #e9ecef;
-            --border-color: #e0e0e0;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-
-        header {
-            background-color: var(--primary);
-            color: white;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-        }
-
-        header h2 {
-            margin: 0;
-            font-size: 1.5rem;
-            letter-spacing: 0.5px;
-        }
-
-        nav button {
-            background: transparent;
-            border: none;
-            color: rgba(255, 255, 255, 0.85);
-            padding: 0.6rem 1.1rem;
-            font-size: 0.95rem;
-            font-weight: 500;
-            cursor: pointer;
-            border-radius: 6px;
-            transition: all 0.2s ease;
-        }
-
-        nav button:hover, nav button.active {
-            background-color: var(--primary-light);
-            color: white;
-        }
-
-        .container {
-            max-width: 960px;
-            margin: 2rem auto;
-            padding: 0 1.5rem;
-        }
-
-        /* Clean Hero Banner */
-        .hero {
-            background-color: var(--primary);
-            color: white;
-            padding: 2.5rem 2rem;
-            border-radius: 12px;
-            text-align: center;
-            margin-bottom: 2.5rem;
-            box-shadow: 0 4px 14px rgba(0,0,0,0.08);
-        }
-
-        .hero h1 {
-            margin: 0 0 0.5rem 0;
-            font-size: 2.2rem;
-        }
-
-        .hero p {
-            margin: 0;
-            font-size: 1.05rem;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        /* Detailed Seerah Information Section */
-        .section-header {
-            text-align: center;
-            margin-bottom: 1.5rem;
-            color: var(--primary);
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-        }
-
-        .info-card {
-            background: var(--card-bg);
-            padding: 1.75rem;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
-            border: 1px solid var(--border-color);
-            border-top: 4px solid var(--primary-light);
-        }
-
-        .info-card h3 {
-            margin-top: 0;
-            margin-bottom: 0.75rem;
-            color: var(--primary);
-            font-size: 1.2rem;
-        }
-
-        .info-card p {
-            margin: 0;
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        /* Interactive Path Container */
-        .path-section {
-            background: var(--card-bg);
-            padding: 2.5rem 2rem;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
-        }
-
-        .path-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2.5rem;
-            position: relative;
-            padding: 1.5rem 0;
-        }
-
-        /* Node Styling */
-        .node {
-            width: 75px;
-            height: 75px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: bold;
-            font-size: 1.25rem;
-            cursor: pointer;
-            position: relative;
-            z-index: 2;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: transform 0.2s ease, background-color 0.2s ease;
-        }
-
-        .node.completed {
-            background-color: var(--accent);
-            color: white;
-            border: 4px solid #b39223;
-        }
-
-        .node.active {
-            background-color: var(--primary-light);
-            color: white;
-            border: 4px solid var(--primary);
-            animation: pulse 2s infinite;
-        }
-
-        .node.locked {
-            background-color: var(--gray-locked);
-            color: #adb5bd;
-            border: 4px solid #dee2e6;
-            cursor: not-allowed;
-        }
-
-        /* Alternating path alignment */
-        .node:nth-child(odd) { transform: translateX(-35px); }
-        .node:nth-child(even) { transform: translateX(35px); }
-        
-        .node:nth-child(odd):hover:not(.locked) { transform: translateX(-35px) scale(1.08); }
-        .node:nth-child(even):hover:not(.locked) { transform: translateX(35px) scale(1.08); }
-
-        .node-label {
-            position: absolute;
-            width: 180px;
-            text-align: center;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--text);
-            top: 82px;
-            line-height: 1.3;
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(45, 106, 79, 0.5); }
-            70% { box-shadow: 0 0 0 12px rgba(45, 106, 79, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(45, 106, 79, 0); }
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <h2>Seerah Academy</h2>
-        <nav>
-            <button class="active">Home</button>
-            <button>Learning Roadmap</button>
-            <button>Lessons</button>
-            <button>Quiz & Exercises</button>
-        </nav>
-    </header>
-
-    <div class="container">
-        <!-- Hero Banner -->
-        <div class="hero">
-            <h1>Welcome to Seerah Academy</h1>
-            <p>Interactive platform for studying the life, character, and lessons of Prophet Muhammad ﷺ</p>
-        </div>
-
-        <!-- Expanded Seerah Explanation -->
-        <div class="section-header">
-            <h2>Understanding the Seerah</h2>
-        </div>
-        
-        <div class="info-grid">
-            <div class="info-card">
-                <h3>What is Seerah?</h3>
-                <p>The term <em>Seerah</em> literally means a journey or path. In Islamic knowledge, it refers to the detailed biography and historical record of Prophet Muhammad ﷺ—covering his early life, character, teachings, social interactions, and leadership.</p>
-            </div>
-            <div class="info-card">
-                <h3>Why Study the Seerah?</h3>
-                <p>Studying the Seerah provides context to moral teachings, offers a personal model for patience and compassion, and helps us understand how historical events shaped communities and values across generations.</p>
-            </div>
-            <div class="info-card">
-                <h3>How to Learn Here</h3>
-                <p>Follow the structured path below step by step. Complete interactive lessons and quizzes to unlock new stages, track your personal reading progress, and build deep knowledge at your own pace.</p>
-            </div>
-        </div>
-
-        <!-- Duolingo-style Progressive Roadmap -->
-        <div class="path-section">
-            <div class="section-header">
-                <h2>Beginner Progression Path</h2>
-            </div>
-
-            <div class="path-container">
-                <div class="node completed" onclick="selectNode(1)">
-                    ✓
-                    <div class="node-label">1. Early Life & Lineage</div>
-                </div>
-
-                <div class="node active" onclick="selectNode(2)">
-                    2
-                    <div class="node-label">2. The First Revelation</div>
-                </div>
-
-                <div class="node locked" onclick="selectNode(3)">
-                    3
-                    <div class="node-label">3. Early Community</div>
-                </div>
-
-                <div class="node locked" onclick="selectNode(4)">
-                    4
-                    <div class="node-label">4. The Migration (Hijrah)</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        function selectNode(step) {
-            if (step === 1) {
-                alert("Reviewing Lesson 1: Early Life & Lineage (Completed)");
-            } else if (step === 2) {
-                alert("Starting Lesson 2: The First Revelation");
-            } else {
-                alert("This lesson is currently locked. Complete previous steps to unlock!");
-            }
-        }
-    </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seerah Academy</title>
-    <style>
-        :root {
-            --primary: #1b4332;
-            --primary-light: #2d6a4f;
-            --accent: #d4af37;
-            --bg: #f8f9fa;
-            --card-bg: #ffffff;
-            --text: #212529;
-            --text-muted: #6c757d;
-            --gray-locked: #e9ecef;
-            --border-color: #e0e0e0;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-
-        header {
-            background-color: var(--primary);
-            color: white;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-        }
-
-        header h2 {
-            margin: 0;
-            font-size: 1.5rem;
-            letter-spacing: 0.5px;
-        }
-
-        nav button {
-            background: transparent;
-            border: none;
-            color: rgba(255, 255, 255, 0.85);
-            padding: 0.6rem 1.1rem;
-            font-size: 0.95rem;
-            font-weight: 500;
-            cursor: pointer;
-            border-radius: 6px;
-            transition: all 0.2s ease;
-        }
-
-        nav button:hover, nav button.active {
-            background-color: var(--primary-light);
-            color: white;
-        }
-
-        .container {
-            max-width: 960px;
-            margin: 2rem auto;
-            padding: 0 1.5rem;
-        }
-
-        /* Clean Hero Banner */
-        .hero {
-            background-color: var(--primary);
-            color: white;
-            padding: 2.5rem 2rem;
-            border-radius: 12px;
-            text-align: center;
-            margin-bottom: 2.5rem;
-            box-shadow: 0 4px 14px rgba(0,0,0,0.08);
-        }
-
-        .hero h1 {
-            margin: 0 0 0.5rem 0;
-            font-size: 2.2rem;
-        }
-
-        .hero p {
-            margin: 0;
-            font-size: 1.05rem;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        /* Detailed Seerah Information Section */
-        .section-header {
-            text-align: center;
-            margin-bottom: 1.5rem;
-            color: var(--primary);
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-        }
-
-        .info-card {
-            background: var(--card-bg);
-            padding: 1.75rem;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
-            border: 1px solid var(--border-color);
-            border-top: 4px solid var(--primary-light);
-        }
-
-        .info-card h3 {
-            margin-top: 0;
-            margin-bottom: 0.75rem;
-            color: var(--primary);
-            font-size: 1.2rem;
-        }
-
-        .info-card p {
-            margin: 0;
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        /* Interactive Path Container */
-        .path-section {
-            background: var(--card-bg);
-            padding: 2.5rem 2rem;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
-        }
-
-        .path-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2.5rem;
-            position: relative;
-            padding: 1.5rem 0;
-        }
-
-        /* Node Styling */
-        .node {
-            width: 75px;
-            height: 75px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: bold;
-            font-size: 1.25rem;
-            cursor: pointer;
-            position: relative;
-            z-index: 2;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: transform 0.2s ease, background-color 0.2s ease;
-        }
-
-        .node.completed {
-            background-color: var(--accent);
-            color: white;
-            border: 4px solid #b39223;
-        }
-
-        .node.active {
-            background-color: var(--primary-light);
-            color: white;
-            border: 4px solid var(--primary);
-            animation: pulse 2s infinite;
-        }
-
-        .node.locked {
-            background-color: var(--gray-locked);
-            color: #adb5bd;
-            border: 4px solid #dee2e6;
-            cursor: not-allowed;
-        }
-
-        /* Alternating path alignment */
-        .node:nth-child(odd) { transform: translateX(-35px); }
-        .node:nth-child(even) { transform: translateX(35px); }
-        
-        .node:nth-child(odd):hover:not(.locked) { transform: translateX(-35px) scale(1.08); }
-        .node:nth-child(even):hover:not(.locked) { transform: translateX(35px) scale(1.08); }
-
-        .node-label {
-            position: absolute;
-            width: 180px;
-            text-align: center;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--text);
-            top: 82px;
-            line-height: 1.3;
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(45, 106, 79, 0.5); }
-            70% { box-shadow: 0 0 0 12px rgba(45, 106, 79, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(45, 106, 79, 0); }
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <h2>Seerah Academy</h2>
-        <nav>
-            <button class="active">Home</button>
-            <button>Learning Roadmap</button>
-            <button>Lessons</button>
