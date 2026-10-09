@@ -769,3 +769,775 @@
     </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seerah Academy | Interactive Learning Platform</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #f8fafc;
+            --bg-card: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --primary-emerald: #065f46;
+            --primary-light: #d1fae5;
+            --primary-hover: #047857;
+            --gold-accent: #d97706;
+            --gold-light: #fef3c7;
+            --border-color: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            --radius: 12px;
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #0f172a;
+            --bg-card: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --primary-emerald: #10b981;
+            --primary-light: #064e3b;
+            --primary-hover: #34d399;
+            --gold-accent: #fbbf24;
+            --gold-light: #78350f;
+            --border-color: #334155;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg-primary); color: var(--text-main); transition: background-color 0.3s, color 0.3s; line-height: 1.6; }
+        .arabic { font-family: 'Amiri', serif; font-size: 1.25rem; direction: rtl; }
+
+        /* Header Navigation */
+        header { background-color: var(--bg-card); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 100; }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.5rem; }
+        .logo { font-size: 1.4rem; font-weight: 700; color: var(--primary-emerald); display: flex; align-items: center; gap: 0.5rem; text-decoration: none; }
+        .controls { display: flex; align-items: center; gap: 0.8rem; }
+        .search-box { padding: 0.5rem 1rem; border: 1px solid var(--border-color); border-radius: 20px; background: var(--bg-primary); color: var(--text-main); font-size: 0.9rem; }
+        .theme-btn, .settings-btn { background: none; border: 1px solid var(--border-color); padding: 0.5rem 1rem; border-radius: 20px; cursor: pointer; color: var(--text-main); font-size: 0.85rem; font-weight: 500; }
+
+        /* Main Tabs */
+        .tabs-nav { display: flex; overflow-x: auto; max-width: 1200px; margin: 0 auto; padding: 0.5rem 1.5rem; gap: 0.5rem; border-bottom: 1px solid var(--border-color); }
+        .tab-btn { padding: 0.6rem 1.2rem; border: none; background: none; color: var(--text-muted); cursor: pointer; font-weight: 500; border-radius: 8px; white-space: nowrap; transition: 0.2s; }
+        .tab-btn.active { background: var(--primary-emerald); color: #ffffff; }
+
+        /* Container Layout */
+        main { max-width: 1200px; margin: 2rem auto; padding: 0 1.5rem; min-height: 80vh; }
+        .page { display: none; }
+        .page.active { display: block; }
+
+        /* Cards & Components */
+        .card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: var(--shadow); }
+        .btn { padding: 0.6rem 1.2rem; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; transition: 0.2s; text-decoration: none; }
+        .btn-primary { background: var(--primary-emerald); color: white; }
+        .btn-primary:hover { background: var(--primary-hover); }
+        .btn-secondary { background: var(--border-color); color: var(--text-main); }
+        
+        /* Video Responsive Container */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: var(--radius);
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow);
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Progress Bar */
+        .progress-bar-bg { width: 100%; height: 10px; background: var(--border-color); border-radius: 5px; overflow: hidden; margin: 0.5rem 0; }
+        .progress-bar-fill { height: 100%; background: var(--primary-emerald); width: 0%; transition: width 0.4s ease; }
+
+        /* Grid */
+        .level-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+        .level-card { border-left: 5px solid var(--primary-emerald); }
+        .badge { padding: 0.25rem 0.6rem; border-radius: 12px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; }
+
+        /* Teacher Mode Toggle */
+        .mode-toggle { display: flex; background: var(--border-color); padding: 0.25rem; border-radius: 8px; width: fit-content; margin-bottom: 1.5rem; }
+        .mode-btn { padding: 0.4rem 1rem; border: none; background: none; border-radius: 6px; cursor: pointer; font-weight: 600; color: var(--text-muted); }
+        .mode-btn.active { background: var(--bg-card); color: var(--text-main); box-shadow: var(--shadow); }
+
+        /* Ultra-Deep Timeline Layout */
+        .timeline { position: relative; padding-left: 2rem; border-left: 3px solid var(--primary-emerald); margin-top: 1.5rem; }
+        .timeline-item { position: relative; margin-bottom: 2rem; background: var(--bg-card); border: 1px solid var(--border-color); padding: 1.5rem; border-radius: var(--radius); box-shadow: var(--shadow); }
+        .timeline-item::before { content: ''; position: absolute; left: -2.65rem; top: 1.5rem; width: 1.2rem; height: 1.2rem; border-radius: 50%; background: var(--primary-emerald); border: 3px solid var(--bg-primary); }
+        
+        /* Select Controls */
+        .select-control { padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-main); font-weight: 500; }
+
+        /* Modal Overlay */
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 200; justify-content: center; align-items: center; }
+        .modal-overlay.active { display: flex; }
+        .modal-card { background: var(--bg-card); border-radius: var(--radius); border: 1px solid var(--border-color); width: 90%; max-width: 550px; padding: 1.5rem; box-shadow: var(--shadow); max-height: 90vh; overflow-y: auto; }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; }
+        .close-btn { background: none; border: none; font-size: 1.2rem; cursor: pointer; color: var(--text-muted); }
+        
+        kbd { background: var(--bg-primary); border: 1px solid var(--border-color); border-bottom-width: 2px; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.85rem; font-weight: 600; font-family: monospace; color: var(--primary-emerald); }
+
+        @media (max-width: 768px) {
+            .nav-container { flex-direction: column; gap: 1rem; }
+            .tabs-nav { padding: 0.5rem; }
+            .timeline { padding-left: 1.2rem; }
+            .timeline-item::before { left: -1.85rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo" onclick="switchTab('home')">
+                <span>🕌</span> Seerah Academy
+            </a>
+            <div class="controls">
+                <input type="text" id="searchInput" class="search-box" placeholder="Search lessons..." onkeyup="handleSearch()">
+                <button class="settings-btn" onclick="openShortcutGuide()">⌨ Shortcuts Guide</button>
+                <button class="theme-btn" onclick="toggleTheme()">🌙 Theme</button>
+            </div>
+        </div>
+        <nav class="tabs-nav">
+            <button class="tab-btn active" onclick="switchTab('home')">Home</button>
+            <button class="tab-btn" onclick="switchTab('roadmap')">Learning Roadmap</button>
+            <button class="tab-btn" onclick="switchTab('lesson')">Lessons</button>
+            <button class="tab-btn" onclick="switchTab('arjuzah')">الأرجوزة السنية & Quiz</button>
+            <button class="tab-btn" onclick="switchTab('timeline')">Deep Timeline</button>
+            <button class="tab-btn" onclick="switchTab('people')">Important People</button>
+            <button class="tab-btn" onclick="switchTab('notes')">My Notes & Revision</button>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- 1. HOME PAGE -->
+        <section id="home" class="page active">
+            <div class="card" style="background: linear-gradient(135deg, var(--primary-light), var(--bg-card));">
+                <h2>Welcome to Seerah Academy</h2>
+                <p style="margin-top: 0.5rem; color: var(--text-muted);">
+                    <strong>Seerah (سيرة)</strong> refers to the comprehensive study of the life, character, and teachings of Prophet Muhammad ﷺ.
+                </p>
+                <div style="margin-top: 1.5rem;">
+                    <button class="btn btn-primary" onclick="switchTab('roadmap')">Start Learning Journey →</button>
+                    <button class="btn btn-secondary" onclick="switchTab('lesson')" style="margin-left: 0.5rem;">Continue Last Lesson</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <h3>Keyboard Shortcuts Guide ⌨️</h3>
+                    <button class="btn btn-secondary" onclick="openShortcutGuide()" style="font-size: 0.8rem; padding: 0.3rem 0.6rem;">How to Use →</button>
+                </div>
+                <p style="color: var(--text-muted); margin: 0.5rem 0 0.8rem 0; font-size: 0.9rem;">Navigate through pages quickly using key combinations:</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.8rem; font-size: 0.9rem;">
+                    <div><kbd>Ctrl</kbd> + <kbd>H</kbd> : Home</div>
+                    <div><kbd>Ctrl</kbd> + <kbd>L</kbd> : Learning Roadmap</div>
+                    <div><kbd>Ctrl</kbd> + <kbd>E</kbd> : Lessons</div>
+                    <div><kbd>Ctrl</kbd> + <kbd>Q</kbd> : Quiz & Arjuzah</div>
+                    <div><kbd>Ctrl</kbd> + <kbd>D</kbd> : Deep Timeline</div>
+                    <div><kbd>Ctrl</kbd> + <kbd>P</kbd> : Important People</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Overall Learning Progress</h3>
+                <div class="progress-bar-bg">
+                    <div id="overallProgressBar" class="progress-bar-fill"></div>
+                </div>
+                <p id="overallProgressText" style="font-size: 0.9rem; color: var(--text-muted);">0% Completed</p>
+            </div>
+
+            <div class="card" style="border-left: 4px solid var(--gold-accent);">
+                <span class="badge" style="background: var(--gold-light); color: var(--gold-accent);">Daily Seerah Reflection</span>
+                <h4 style="margin-top: 0.5rem;">The Character of the Prophet ﷺ</h4>
+                <p style="font-style: italic; margin: 0.5rem 0;" class="arabic">"وَإِنَّكَ لَعَلَىٰ خُلُقٍ عَظِيمٍ"</p>
+                <p style="font-size: 0.95rem;">"And indeed, you are of a great moral character." — (Qur'an 68:4)</p>
+            </div>
+        </section>
+
+        <!-- 2. LEARNING ROADMAP PAGE -->
+        <section id="roadmap" class="page">
+            <h2>Learning Roadmap</h2>
+            <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Step-by-step learning path.</p>
+            <div class="level-grid" id="roadmapGrid"></div>
+        </section>
+
+        <!-- 3. LESSON VIEW PAGE -->
+        <section id="lesson" class="page">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 1rem;">
+                <div class="mode-toggle">
+                    <button id="studentModeBtn" class="mode-btn active" onclick="setLessonMode('student')">Student View</button>
+                    <button id="teacherModeBtn" class="mode-btn" onclick="setLessonMode('teacher')">Teacher Mode 🎓</button>
+                </div>
+                <div>
+                    <button class="btn btn-secondary" onclick="toggleBookmark()"><span id="bookmarkIcon">☆</span> Bookmark</button>
+                    <select id="statusSelect" onchange="updateLessonStatus(this.value)" class="select-control">
+                        <option value="Not Started">Status: Not Started</option>
+                        <option value="In Progress">Status: In Progress</option>
+                        <option value="Completed">Status: Completed</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="lessonContentContainer" class="card"></div>
+
+            <div class="card">
+                <h3>Lesson Checkup Quiz</h3>
+                <div id="quizContainer" style="margin-top: 1rem;"></div>
+            </div>
+
+            <div class="card">
+                <h3>My Personal Notes for this Lesson</h3>
+                <textarea id="lessonNotesArea" placeholder="Write down your insights..." style="width: 100%; height: 100px; padding: 0.8rem; margin-top: 0.5rem; border: 1px solid var(--border-color); border-radius: 8px; background: var(--bg-primary); color: var(--text-main);"></textarea>
+                <button class="btn btn-primary" onclick="saveLessonNote()" style="margin-top: 0.5rem;">Save Notes</button>
+            </div>
+        </section>
+
+        <!-- 4. ARJUZAH SUNNIYYAH & MULTI-LINGUAL QUIZ PAGE -->
+        <section id="arjuzah" class="page">
+            <h2>الأرجوزة السنية في ذكر سيرة خير البرية ﷺ</h2>
+            <p style="color: var(--text-muted); margin-bottom: 1rem;">نظم: الأمين موافقي (أبو عبيدة الجزائري) - بە دەنگی ظفر النتيفات</p>
+
+            <div class="card" style="background: linear-gradient(135deg, var(--gold-light), var(--bg-card));">
+                <h3>🎥 فیلمی الرسالة / Al Resalah Movie</h3>
+                <p style="margin: 0.5rem 0;">دەتوانیت تەماشای فیلمی «الرسالة» بە کوالیتی بەرز بکەیت راستەوخۆ لە خوارەوە:</p>
+                
+                <!-- Video Embedded Player -->
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/n4_1Zlb1orE" title="Al Resalah Movie" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+
+                <a href="https://www.youtube.com/watch?v=n4_1Zlb1orE" target="_blank" class="btn btn-primary">
+                    ▶ بینینی فیلمەکە لە YouTube
+                </a>
+            </div>
+
+            <div class="card" style="border-top: 4px solid var(--primary-emerald);">
+                <h3>🎯 سیستەمی کویزی داینامیکی (Quiz Generator)</h3>
+                <p style="color: var(--text-muted); margin-bottom: 1rem;">دیاری بکە: جۆری کویز، ژمارەی پرسیار، و زمانی وەڵامدانەوە:</p>
+                
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                    <div>
+                        <label><b>جۆری کویز:</b></label><br>
+                        <select id="arjQuizType" class="select-control" style="margin-top:0.3rem;">
+                            <option value="meaning">کویزی مانا و تێگەیشتن (Comprehension)</option>
+                            <option value="vocab">کویزی مانای وشەکان (Vocabulary)</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label><b>ژمارەی پرسیار:</b></label><br>
+                        <select id="arjQuizCount" class="select-control" style="margin-top:0.3rem;">
+                            <option value="3">3 پرسیار</option>
+                            <option value="5">5 پرسیار</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label><b>زمان / Language:</b></label><br>
+                        <select id="arjQuizLang" class="select-control" style="margin-top:0.3rem;">
+                            <option value="ckb">کوردی (Kurdish)</option>
+                            <option value="ar">العربية (Arabic)</option>
+                            <option value="en">English</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" onclick="startArjuzahQuiz()">دروستکردنی کویز (Generate Quiz)</button>
+            </div>
+
+            <div id="arjuzahQuizContainer" class="card" style="display:none;"></div>
+
+            <div class="card">
+                <h3>📜 دەقی تەواوی (الأرجوزة السنية في ذكر سيرة خير البرية)</h3>
+                <div class="arabic" style="line-height: 2.2; margin-top: 1rem; max-height: 400px; overflow-y: auto; padding-right: 1rem; background: var(--bg-primary); padding: 1rem; border-radius: 8px;">
+                    1. الْحَمْدُ لِلَّهِ الَّذِي هَدَانَا ... لِدِينِهِ الْقَوِيمِ وَاجْتَبَانَا<br>
+                    2. ثُمَّ الصَّلَاةُ وَالسَّلَامُ السَّارِي ... عَلَى الرَّسُولِ الْمُصْطَفَى الْمُخْتَارِ<br>
+                    3. وَآلِهِ وَصَحْبِهِ الأَبْرَارِ ... مَا غَرَّدَ الْقُمْرِيُّ فِي الأَسْحَارِ<br>
+                    4. وَبَعْدُ فَاعْلَمْ أَنَّ خَيْرَ السِّيرَةِ ... سِيرَةُ بَدْرِ الأُمَّةِ الْمُنِيرَةِ<br>
+                    5. مَوْلِدُهُ فِي عَامِ فِيلٍ قَدْ أَتَى ... فِي شَهْرِ رَبِيعٍ الأَوَّلِ يَا فَتَى<br>
+                    6. وَمَاتَ عَبْدُ اللَّهِ قَبْلَ وِلاَدَتِهْ ... وَأُمُّهُ كَرِيمَةٌ فِي شِينَتِهْ<br>
+                    7. وَأَرْضَعَتْهُ سَعْدِيَّةُ حَلِيمَة ... فَبُورِكَتْ بِقُرْبِهِ الْكَرِيمَة<br>
+                    8. وَشُقَّ صَدْرُ الْمُصْطَفَى صَغِيرَا ... وَعَادَ لِلأُمِّ نَقِيًّا بَارَّا<br>
+                    9. وَمَاتَتِ الأُمُّ وَلَهُ سِتُّ سِنِينْ ... وَكَفَلَهُ الْجَدُّ الرَّحِيمُ فِي الْمَكِينْ<br>
+                    10. ثُمَّ جَدُّهُ ابْنُ عَبْدِ الْمُطَّلِبْ ... تُوُفِّيَ وَكَفَلَهُ ثُمَّ النَّصَبْ<br>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. ULTRA DEEP TIMELINE PAGE -->
+        <section id="timeline" class="page">
+            <h2>Comprehensive Ultra-Deep Seerah Chronology</h2>
+            <p style="color: var(--text-muted); margin-bottom: 1rem;">نەخشەیەکی مێژوویی شیکراوە بۆ تێگەیشتن لە ڕووداوە گرنگەکانی سیرە:</p>
+            <div class="timeline" id="timelineContainer"></div>
+        </section>
+
+        <!-- 6. IMPORTANT PEOPLE PAGE -->
+        <section id="people" class="page">
+            <h2>Important Figures in the Seerah</h2>
+            <div class="level-grid" id="peopleGrid" style="margin-top: 1rem;"></div>
+        </section>
+
+        <!-- 7. MY NOTES & REVISION PAGE -->
+        <section id="notes" class="page">
+            <h2>My Study & Revision Hub</h2>
+            <div class="card">
+                <h3>Bookmarked Lessons</h3>
+                <ul id="bookmarkedList" style="margin-top: 0.5rem; padding-left: 1.2rem;"></ul>
+            </div>
+
+            <div class="card">
+                <h3>Saved Study Notes</h3>
+                <div id="savedNotesContainer" style="margin-top: 0.5rem;"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- KEYBOARD SHORTCUTS MODAL -->
+    <div id="shortcutModal" class="modal-overlay">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>⌨️ Keyboard Shortcuts Guide</h3>
+                <button class="close-btn" onclick="closeShortcutGuide()">✕</button>
+            </div>
+            
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem;">
+                Navigate through Seerah Academy quickly:
+            </p>
+
+            <div style="display: flex; flex-direction: column; gap: 0.6rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.5rem; border-bottom: 1px solid var(--border-color);">
+                    <span>Home Page</span>
+                    <div><kbd>Ctrl</kbd> + <kbd>H</kbd></div>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.5rem; border-bottom: 1px solid var(--border-color);">
+                    <span>Learning Roadmap</span>
+                    <div><kbd>Ctrl</kbd> + <kbd>L</kbd></div>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.5rem; border-bottom: 1px solid var(--border-color);">
+                    <span>Lessons</span>
+                    <div><kbd>Ctrl</kbd> + <kbd>E</kbd></div>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.5rem; border-bottom: 1px solid var(--border-color);">
+                    <span>Arjuzah & Quiz</span>
+                    <div><kbd>Ctrl</kbd> + <kbd>Q</kbd></div>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.5rem; border-bottom: 1px solid var(--border-color);">
+                    <span>Deep Timeline</span>
+                    <div><kbd>Ctrl</kbd> + <kbd>D</kbd></div>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.5rem;">
+                    <span>Important People</span>
+                    <div><kbd>Ctrl</kbd> + <kbd>P</kbd></div>
+                </div>
+            </div>
+
+            <button class="btn btn-primary" onclick="closeShortcutGuide()" style="margin-top: 1.2rem; width: 100%; justify-content: center;">Got it!</button>
+        </div>
+    </div>
+
+    <!-- JavaScript Application Logic (COMPLETE & FIXED) -->
+    <script>
+        const seerahData = {
+            levels: [
+                { id: 1, name: "Level 1: Seerah Fundamentals", desc: "Understanding the importance and methodology." },
+                { id: 2, name: "Level 2: Before Prophethood", desc: "Arabian Peninsula prior to Islam, lineage, birth." },
+                { id: 3, name: "Level 3: Early Makkah", desc: "First revelation and public invitation." },
+                { id: 4, name: "Level 4: Persecution & Migration", desc: "Hardships, Abyssinia, Isra & Mi'raj, Hijrah." },
+                { id: 5, name: "Level 5: Madinah", desc: "Establishment of the first Muslim community." },
+                { id: 6, name: "Level 6: Major Battles & Treaties", desc: "Badr, Uhud, Khandaq, Hudaybiyyah." },
+                { id: 7, name: "Level 7: Conquest of Makkah", desc: "Events leading to victory." },
+                { id: 8, name: "Level 8: Farewell Hajj & Final Days", desc: "The Farewell Sermon and passing." }
+            ],
+            lessons: [
+                {
+                    id: 101,
+                    levelId: 1,
+                    title: "Lesson 1: What is the Seerah and Why Study It?",
+                    simpleExplanation: "The word 'Seerah' means a path or biography. Studying the Seerah means learning how Prophet Muhammad ﷺ lived his life as a leader, teacher, and servant of Allah.",
+                    dates: "Ongoing foundation",
+                    quranRef: "Say, [O Muhammad], 'If you should love Allah, then follow me...'",
+                    hadithRef: "Sahih Bukhari #15: 'None of you has faith until I am more beloved to him...'",
+                    authenticity: "Authentic",
+                    quiz: {
+                        question: "What does the word 'Seerah' literally mean?",
+                        options: ["A legal ruling", "A journey or path/biography", "A battle strategy", "A poetry collection"],
+                        correct: 1,
+                        explanation: "Seerah literally means a path or trajectory."
+                    },
+                    teacherMode: {
+                        keyPoints: ["Define Seerah clearly", "Explain that love stems from knowing him"],
+                        childVer: "Seerah is telling the wonderful true story of Allah's final messenger.",
+                        summary: "Seerah translates Islamic principles into practical action."
+                    }
+                },
+                {
+                    id: 201,
+                    levelId: 2,
+                    title: "Lesson 2: The Year of the Elephant and Birth",
+                    simpleExplanation: "Prophet Muhammad ﷺ was born in Makkah during the 'Year of the Elephant' (around 570 CE).",
+                    dates: "570 CE",
+                    quranRef: "Surah Al-Fil (105:1-5)",
+                    hadithRef: "Sahih Muslim #1162",
+                    authenticity: "Authentic",
+                    quiz: {
+                        question: "In which year was Prophet Muhammad ﷺ born?",
+                        options: ["Year of the Trench", "Year of Sorrow", "Year of the Elephant", "Year of Delegation"],
+                        correct: 2,
+                        explanation: "He was born in the Year of the Elephant."
+                    },
+                    teacherMode: {
+                        keyPoints: ["Protection of the Ka'bah", "Miraculous events at birth"],
+                        childVer: "Allah saved the Holy Ka'bah from big elephants when Prophet Muhammad was born!",
+                        summary: "The Year of the Elephant prepared Makkah for the prophet's arrival."
+                    }
+                }
+            ],
+            timeline: [
+                { year: "570 CE", title: "Year of the Elephant & Birth", desc: "Birth of Prophet Muhammad ﷺ in Makkah; death of his father Abdullah before his birth." },
+                { year: "610 CE", title: "The First Revelation (First Wahy)", desc: "Angel Jibril visits Prophet Muhammad ﷺ in Cave Hira with Surah Al-Alaq." },
+                { year: "615 CE", title: "Migration to Abyssinia (Habashah)", desc: "Early Muslims migrate to escape severe persecution by Quraish." },
+                { year: "620 CE", title: "Isra and Mi'raj (Night Journey)", desc: "The miraculous journey from Makkah to Jerusalem and ascending to the Heavens." },
+                { year: "622 CE", title: "The Great Hijrah to Madinah", desc: "Migration to Yathrib (Madinah), marking Year 1 of the Islamic Hijri Calendar." },
+                { year: "624 CE", title: "The Great Battle of Badr", desc: "First major military victory for Muslims against Quraish forces." },
+                { year: "630 CE", title: "Conquest of Makkah (Fath Makkah)", desc: "Peaceful victory and cleansing of idols from the Ka'bah." },
+                { year: "632 CE", title: "Farewell Hajj & Death", desc: "The Farewell Sermon and the passing away of the Prophet ﷺ." }
+            ],
+            people: [
+                { name: "Khadijah bint Khuwaylid (رَضِيَ ٱللَّٰهُ عَنْهَا)", role: "First Wife & First Believer", desc: "Supported the Prophet ﷺ emotionally and financially at the onset of Islam." },
+                { name: "Abu Bakr Al-Siddiq (رَضِيَ ٱللَّٰهُ عَنْهُ)", role: "Best Friend & First Caliph", desc: "The first adult male to accept Islam and loyal companion during Hijrah." },
+                { name: "Abu Talib", role: "Uncle & Protector", desc: "Protected the Prophet ﷺ from Quraish spite despite not embracing Islam." },
+                { name: "Ali ibn Abi Talib (رَضِيَ ٱللَّٰهُ عَنْهُ)", role: "Cousin & Son-in-law", desc: "Slept in the Prophet's bed during Hijrah to deceive Quraish." },
+                { name: "Aisha bint Abu Bakr (رَضِيَ ٱللَّٰهُ عَنْهَا)", role: "Wife & Scholar", desc: "Narrated thousands of ahadith, preserving the sunnah and daily life of the Prophet." }
+            ],
+            arjuzahQuizzes: {
+                ckb: [
+                    { q: "پەیامبەر ﷺ لە چ ساڵێکدا لەدایکبووە؟", opts: ["ساڵی فیل (عام الفيل)", "ساڵی خەم (عام الحزن)", "ساڵی کۆچ (عام الهجرة)"], c: 0, exp: "لە نەزمی ئەرجوزەکەدا هاتوو: مَوْلِدُهُ فِي عَامِ فِيلٍ قَدْ أَتَى" },
+                    { q: "ناوی دایکی شیری پەیامبەر ﷺ کێ بوو؟", opts: ["حەلیمەی سەعدییە", "ئامینە", "فاطمة"], c: 0, exp: "وَأَرْضَعَتْهُ سَعْدِيَّةُ حَلِيمَة" },
+                    { q: "پەیامبەر ﷺ چەند ساڵ بوو کاتێک دایکی کۆچی دوایی کرد؟", opts: ["4 ساڵ", "6 ساڵ", "8 ساڵ"], c: 1, exp: "وَمَاتَتِ الأُمُّ وَلَهُ سِتُّ سِنِينْ" }
+                ],
+                ar: [
+                    { q: "في أي عام ولد النبي صلى الله عليه وسلم؟", opts: ["عام الفيل", "عام الحزن", "عام الوفود"], c: 0, exp: "مولده في عام فيل قد أتى" },
+                    { q: "من هي مرضعة النبي صلى الله عليه وسلم؟", opts: ["حليمة السعدية", "أميمة", "خديجة"], c: 0, exp: "وأرضعته سعدية حليمة" },
+                    { q: "كم كان عمر النبي صلى الله عليه وسلم عند وفاة أمه؟", opts: ["أربع سنين", "ست سنين", "ثماني سنين"], c: 1, exp: "وماتت الأم وله ست سنين" }
+                ],
+                en: [
+                    { q: "In which year was Prophet Muhammad ﷺ born?", opts: ["Year of the Elephant", "Year of Sorrow", "Year of Migration"], c: 0, exp: "Born in the Year of the Elephant." },
+                    { q: "Who was his wet-nurse?", opts: ["Halimah Al-Sa'diyyah", "Aminah", "Khadijah"], c: 0, exp: "Halimah Al-Sa'diyyah took care of him." },
+                    { q: "How old was he when his mother passed away?", opts: ["4 years old", "6 years old", "8 years old"], c: 1, exp: "His mother passed away when he was 6 years old." }
+                ]
+            }
+        };
+
+        // App States
+        let currentLessonId = 101;
+        let currentLessonMode = 'student';
+        let savedNotes = JSON.parse(localStorage.getItem('seerah_notes') || '{}');
+        let bookmarkedLessons = JSON.parse(localStorage.getItem('seerah_bookmarks') || '[]');
+        let lessonStatuses = JSON.parse(localStorage.getItem('seerah_statuses') || '{}');
+
+        // Init App
+        document.addEventListener('DOMContentLoaded', () => {
+            renderRoadmap();
+            renderLesson(currentLessonId);
+            renderTimeline();
+            renderPeople();
+            renderNotesAndBookmarks();
+            updateProgress();
+        });
+
+        // Tab Switching
+        function switchTab(tabId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            
+            const targetPage = document.getElementById(tabId);
+            if (targetPage) targetPage.classList.add('active');
+
+            const tabOrder = ['home', 'roadmap', 'lesson', 'arjuzah', 'timeline', 'people', 'notes'];
+            const btnIndex = tabOrder.indexOf(tabId);
+            if (btnIndex !== -1) {
+                const btns = document.querySelectorAll('.tab-btn');
+                if (btns[btnIndex]) btns[btnIndex].classList.add('active');
+            }
+
+            if (tabId === 'notes') renderNotesAndBookmarks();
+        }
+
+        // Render Roadmap
+        function renderRoadmap() {
+            const grid = document.getElementById('roadmapGrid');
+            if (!grid) return;
+            grid.innerHTML = seerahData.levels.map(level => `
+                <div class="card level-card">
+                    <h3>${level.name}</h3>
+                    <p style="color: var(--text-muted); margin: 0.5rem 0;">${level.desc}</p>
+                    <button class="btn btn-primary" style="margin-top:0.5rem;" onclick="loadLevelLessons(${level.id})">Explore Lessons</button>
+                </div>
+            `).join('');
+        }
+
+        function loadLevelLessons(levelId) {
+            const lesson = seerahData.lessons.find(l => l.levelId === levelId) || seerahData.lessons[0];
+            currentLessonId = lesson.id;
+            switchTab('lesson');
+            renderLesson(currentLessonId);
+        }
+
+        // Render Lesson Page
+        function renderLesson(lessonId) {
+            const lesson = seerahData.lessons.find(l => l.id === lessonId) || seerahData.lessons[0];
+            const container = document.getElementById('lessonContentContainer');
+            if (!container) return;
+
+            // Update Header Controls
+            document.getElementById('bookmarkIcon').innerText = bookmarkedLessons.includes(lesson.id) ? '★' : '☆';
+            document.getElementById('statusSelect').value = lessonStatuses[lesson.id] || 'Not Started';
+            document.getElementById('lessonNotesArea').value = savedNotes[lesson.id] || '';
+
+            if (currentLessonMode === 'student') {
+                container.innerHTML = `
+                    <h2>${lesson.title}</h2>
+                    <div style="margin: 0.8rem 0;">
+                        <span class="badge" style="background:var(--primary-light); color:var(--primary-emerald);">${lesson.authenticity}</span>
+                        <span style="font-size:0.85rem; color:var(--text-muted); margin-left:0.5rem;">📅 ${lesson.dates}</span>
+                    </div>
+                    <p style="font-size:1.05rem; margin-bottom:1rem;">${lesson.simpleExplanation}</p>
+                    <div style="background:var(--bg-primary); padding:1rem; border-radius:8px; margin-bottom:1rem;">
+                        <strong>📖 Qur'an Reference:</strong> <em>"${lesson.quranRef}"</em>
+                    </div>
+                    <div style="background:var(--bg-primary); padding:1rem; border-radius:8px;">
+                        <strong>💬 Hadith Reference:</strong> <em>"${lesson.hadithRef}"</em>
+                    </div>
+                `;
+            } else {
+                container.innerHTML = `
+                    <h2>🎓 Teacher Mode: ${lesson.title}</h2>
+                    <div style="background:var(--gold-light); color:var(--gold-accent); padding:1rem; border-radius:8px; margin:1rem 0;">
+                        <strong>Child-Friendly Explanation:</strong><br>${lesson.teacherMode.childVer}
+                    </div>
+                    <h4>Key Teaching Points:</h4>
+                    <ul style="padding-left:1.2rem; margin:0.5rem 0 1rem 0;">
+                        ${lesson.teacherMode.keyPoints.map(p => `<li>${p}</li>`).join('')}
+                    </ul>
+                    <p><strong>Lesson Summary:</strong> ${lesson.teacherMode.summary}</p>
+                `;
+            }
+
+            renderQuiz(lesson.quiz);
+        }
+
+        function renderQuiz(quiz) {
+            const quizBox = document.getElementById('quizContainer');
+            if (!quizBox || !quiz) return;
+
+            quizBox.innerHTML = `
+                <p><strong>Q: ${quiz.question}</strong></p>
+                <div style="display:flex; flex-direction:column; gap:0.5rem; margin-top:0.5rem;">
+                    ${quiz.options.map((opt, idx) => `
+                        <button class="btn btn-secondary" style="justify-content:flex-start;" onclick="checkAnswer(${idx}, ${quiz.correct}, '${quiz.explanation}')">
+                            ${opt}
+                        </button>
+                    `).join('')}
+                </div>
+                <div id="quizFeedback" style="margin-top:0.8rem; font-weight:600;"></div>
+            `;
+        }
+
+        function checkAnswer(selected, correct, explanation) {
+            const feedback = document.getElementById('quizFeedback');
+            if (selected === correct) {
+                feedback.style.color = 'var(--primary-emerald)';
+                feedback.innerText = `Correct! 🎉 ${explanation}`;
+            } else {
+                feedback.style.color = '#dc2626';
+                feedback.innerText = 'Incorrect, try again!';
+            }
+        }
+
+        function setLessonMode(mode) {
+            currentLessonMode = mode;
+            document.getElementById('studentModeBtn').classList.toggle('active', mode === 'student');
+            document.getElementById('teacherModeBtn').classList.toggle('active', mode === 'teacher');
+            renderLesson(currentLessonId);
+        }
+
+        function toggleBookmark() {
+            if (bookmarkedLessons.includes(currentLessonId)) {
+                bookmarkedLessons = bookmarkedLessons.filter(id => id !== currentLessonId);
+            } else {
+                bookmarkedLessons.push(currentLessonId);
+            }
+            localStorage.setItem('seerah_bookmarks', JSON.stringify(bookmarkedLessons));
+            renderLesson(currentLessonId);
+        }
+
+        function updateLessonStatus(status) {
+            lessonStatuses[currentLessonId] = status;
+            localStorage.setItem('seerah_statuses', JSON.stringify(lessonStatuses));
+            updateProgress();
+        }
+
+        function saveLessonNote() {
+            const val = document.getElementById('lessonNotesArea').value;
+            savedNotes[currentLessonId] = val;
+            localStorage.setItem('seerah_notes', JSON.stringify(savedNotes));
+            alert('Notes saved successfully!');
+        }
+
+        // Render Arjuzah Quiz
+        function startArjuzahQuiz() {
+            const lang = document.getElementById('arjQuizLang').value;
+            const count = parseInt(document.getElementById('arjQuizCount').value);
+            const questions = seerahData.arjuzahQuizzes[lang].slice(0, count);
+
+            const container = document.getElementById('arjuzahQuizContainer');
+            container.style.display = 'block';
+
+            container.innerHTML = `
+                <h3>🎯 Quiz Result / ئەنجامی کویز</h3>
+                <div style="margin-top:1rem;">
+                    ${questions.map((q, qIdx) => `
+                        <div style="margin-bottom:1.5rem; padding-bottom:1rem; border-bottom:1px solid var(--border-color);">
+                            <p><strong>${qIdx + 1}.${q.q}</strong></p>
+                            <div style="display:flex; flex-direction:column; gap:0.4rem; margin-top:0.5rem;">
+                                ${q.opts.map((opt, oIdx) => `
+                                    <button class="btn btn-secondary" style="justify-content:flex-start;" onclick="checkArjAnswer(${qIdx}, ${oIdx}, ${q.c}, '${q.exp}')">
+                                        ${opt}
+                                    </button>
+                                `).join('')}
+                            </div>
+                            <div id="arjFb_${qIdx}" style="margin-top:0.5rem; font-weight:600;"></div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        function checkArjAnswer(qIdx, selected, correct, exp) {
+            const fb = document.getElementById(`arjFb_${qIdx}`);
+            if (selected === correct) {
+                fb.style.color = 'var(--primary-emerald)';
+                fb.innerText = `ڕاستە! ✨ (${exp})`;
+            } else {
+                fb.style.color = '#dc2626';
+                fb.innerText = `هەڵەیە، دووبارە هەوڵبدەرەوە!`;
+            }
+        }
+
+        // Render Timeline
+        function renderTimeline() {
+            const container = document.getElementById('timelineContainer');
+            if (!container) return;
+            container.innerHTML = seerahData.timeline.map(item => `
+                <div class="timeline-item">
+                    <span class="badge" style="background:var(--primary-light); color:var(--primary-emerald);">${item.year}</span>
+                    <h3 style="margin-top:0.4rem;">${item.title}</h3>
+                    <p style="color:var(--text-muted); margin-top:0.2rem;">${item.desc}</p>
+                </div>
+            `).join('');
+        }
+
+        // Render People
+        function renderPeople() {
+            const grid = document.getElementById('peopleGrid');
+            if (!grid) return;
+            grid.innerHTML = seerahData.people.map(person => `
+                <div class="card" style="border-top:4px solid var(--primary-emerald);">
+                    <h3>${person.name}</h3>
+                    <span class="badge" style="background:var(--gold-light); color:var(--gold-accent); margin:0.3rem 0; display:inline-block;">${person.role}</span>
+                    <p style="color:var(--text-muted); font-size:0.95rem;">${person.desc}</p>
+                </div>
+            `).join('');
+        }
+
+        // Render Notes and Bookmarks Hub
+        function renderNotesAndBookmarks() {
+            const bmList = document.getElementById('bookmarkedList');
+            const notesContainer = document.getElementById('savedNotesContainer');
+
+            if (bmList) {
+                if (bookmarkedLessons.length === 0) {
+                    bmList.innerHTML = '<li style="color:var(--text-muted);">No bookmarked lessons yet.</li>';
+                } else {
+                    bmList.innerHTML = bookmarkedLessons.map(id => {
+                        const l = seerahData.lessons.find(x => x.id === id);
+                        return `<li><a href="#" onclick="loadLessonDirect(${id})" style="color:var(--primary-emerald); font-weight:600;">${l ? l.title : 'Lesson ' + id}</a></li>`;
+                    }).join('');
+                }
+            }
+
+            if (notesContainer) {
+                const keys = Object.keys(savedNotes).filter(k => savedNotes[k].trim() !== '');
+                if (keys.length === 0) {
+                    notesContainer.innerHTML = '<p style="color:var(--text-muted);">No saved notes found.</p>';
+                } else {
+                    notesContainer.innerHTML = keys.map(k => {
+                        const l = seerahData.lessons.find(x => x.id == k);
+                        return `
+                            <div style="background:var(--bg-primary); padding:1rem; border-radius:8px; margin-bottom:0.8rem;">
+                                <strong>${l ? l.title : 'Lesson ' + k}:</strong>
+                                <p style="margin-top:0.3rem; color:var(--text-muted);">${savedNotes[k]}</p>
+                            </div>
+                        `;
+                    }).join('');
+                }
+            }
+        }
+
+        function loadLessonDirect(id) {
+            currentLessonId = id;
+            switchTab('lesson');
+            renderLesson(id);
+        }
+
+        // Progress Calculation
+        function updateProgress() {
+            const total = seerahData.lessons.length;
+            const completed = Object.values(lessonStatuses).filter(s => s === 'Completed').length;
+            const percentage = total > 0 ? Math.round((completed / total) * 100) : 0;
+
+            const bar = document.getElementById('overallProgressBar');
+            const txt = document.getElementById('overallProgressText');
+            if (bar) bar.style.width = percentage + '%';
+            if (txt) txt.innerText = `${percentage}% Completed (${completed}/${total} Lessons)`;
+        }
+
+        // Theme Toggle
+        function toggleTheme() {
+            const current = document.documentElement.getAttribute('data-theme');
+            document.documentElement.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+        }
+
+        // Shortcuts Modal Controls
+        function openShortcutGuide() { document.getElementById('shortcutModal').classList.add('active'); }
+        function closeShortcutGuide() { document.getElementById('shortcutModal').classList.remove('active'); }
+
+        // Global Keyboard Navigation
+        document.addEventListener('keydown', (e) => {
+            if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) return;
+            if (e.ctrlKey || e.metaKey) {
+                const key = e.key.toLowerCase();
+                const keyMap = { h: 'home', l: 'roadmap', e: 'lesson', q: 'arjuzah', d: 'timeline', p: 'people' };
+                if (keyMap[key]) {
+                    e.preventDefault();
+                    switchTab(keyMap[key]);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+
