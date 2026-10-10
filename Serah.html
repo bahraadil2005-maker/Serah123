@@ -65,6 +65,10 @@
         .btn-primary:hover { background: var(--primary-hover); }
         .btn-secondary { background: var(--border-color); color: var(--text-main); }
         
+        /* Clickable Person Card */
+        .person-card { cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; border-top: 4px solid var(--gold-accent); }
+        .person-card:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+
         /* Video Responsive Container */
         .video-container {
             position: relative;
@@ -108,11 +112,11 @@
         .select-control { padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-main); font-weight: 500; }
 
         /* Modal Overlay */
-        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 200; justify-content: center; align-items: center; }
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); z-index: 200; justify-content: center; align-items: center; }
         .modal-overlay.active { display: flex; }
-        .modal-card { background: var(--bg-card); border-radius: var(--radius); border: 1px solid var(--border-color); width: 90%; max-width: 550px; padding: 1.5rem; box-shadow: var(--shadow); max-height: 90vh; overflow-y: auto; }
-        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; }
-        .close-btn { background: none; border: none; font-size: 1.2rem; cursor: pointer; color: var(--text-muted); }
+        .modal-card { background: var(--bg-card); border-radius: var(--radius); border: 1px solid var(--border-color); width: 90%; max-width: 600px; padding: 2rem; box-shadow: var(--shadow); max-height: 90vh; overflow-y: auto; }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.8rem; }
+        .close-btn { background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--text-muted); }
         
         kbd { background: var(--bg-primary); border: 1px solid var(--border-color); border-bottom-width: 2px; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.85rem; font-weight: 600; font-family: monospace; color: var(--primary-emerald); }
 
@@ -310,7 +314,7 @@
         <!-- 6. IMPORTANT PEOPLE PAGE -->
         <section id="people" class="page">
             <h2>Important Figures in the Seerah & Al-Resalah Film Mentions</h2>
-            <p style="color: var(--text-muted); margin-bottom: 1rem;">کەسایەتییە دیارەکانی ناو سیرەی پێغەمبەر ﷺ و بەشداری و ناوهێنانیان لە فیلمی الرسالة:</p>
+            <p style="color: var(--text-muted); margin-bottom: 1rem;">کەسایەتییە دیارەکانی ناو سیرەی پێغەمبەر ﷺ. <b>کلیک لەسەر هەر کەسێک بکە</b> بۆ زانیاری تەواو لەسەر شوێنی ژیان و هۆکاری ناوبانگیان لە ئیسلامدا:</p>
             <div class="level-grid" id="peopleGrid" style="margin-top: 1rem;"></div>
         </section>
 
@@ -328,6 +332,20 @@
             </div>
         </section>
     </main>
+
+    <!-- PERSON DETAIL MODAL -->
+    <div id="personModal" class="modal-overlay">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3 id="modalPersonName" style="color: var(--primary-emerald);">Person Details</h3>
+                <button class="close-btn" onclick="closePersonModal()">✕</button>
+            </div>
+            <div id="modalPersonContent">
+                <!-- Dynamically injected info -->
+            </div>
+            <button class="btn btn-primary" onclick="closePersonModal()" style="margin-top: 1.5rem; width: 100%; justify-content: center;">تەواو (Close)</button>
+        </div>
+    </div>
 
     <!-- KEYBOARD SHORTCUTS MODAL -->
     <div id="shortcutModal" class="modal-overlay">
@@ -420,40 +438,58 @@
             ],
             people: [
                 { 
+                    id: "khadijah",
                     name: "Khadijah bint Khuwaylid (رَضِيَ ٱللَّٰهُ عَنْهَا)", 
                     role: "First Wife & First Believer", 
+                    lived: "مەککە (Makkah)",
+                    famousWhy: "یەکەم کەس بوو کە باوەڕی بە پەیامبەری هێنا و تەواوی سامان و پشتیوانی دەروونی خۆی بەخشە بە ئیسلام لە سەردەمە سختە سەرەتاییەکاندا.",
                     desc: "Supported the Prophet ﷺ emotionally and financially at the onset of Islam.",
                     filmMention: "🎬 لە فیلمی الرسالةدا: ڕۆڵی گەورەی هەیە لە پاڵپشتیکردنی پێغەمبەر ﷺ لە سەرەتای نیگا و بڵاوکردنەوەی بانگەواز لە مەککەدا." 
                 },
                 { 
+                    id: "abubakr",
                     name: "Abu Bakr Al-Siddiq (رَضِيَ ٱللَّٰهُ عَنْهُ)", 
                     role: "Best Friend & First Caliph", 
+                    lived: "مەککە و پاشان مدینە (Makkah & Madinah)",
+                    famousWhy: "یەکەم پیاوی پێگەیشتوو بوو کە ئیسلام بوو، هەروەها یاوەری پێغەمبەر ﷺ بوو لە غاری سەور لە کاتی هجرتدا و بوو بە یەکەم خەلیفەی ئیسلام.",
                     desc: "The first adult male to accept Islam and loyal companion during Hijrah.",
-                    filmMention: "🎬 لە فیلمی الرسالةدا: وەک هاوڕێی نزیک و یاوەری پێغەمبەر ﷺ لە کۆچکردن بۆ مەدینە (هجرت) و کڕینی بلال بە دیمەنی کاریگەر دەردەکەوێت." 
+                    filmMention: "🎬 لە فیلمی الرسالةدا: وەک هاوڕێی نزیک و یاوەری پێغەمبەر ﷺ لە کۆچکردن بۆ مەدینە و کڕینی بلال دەردەکەوێت." 
                 },
                 { 
+                    id: "hamza",
                     name: "Hamza ibn Abdul-Muttalib (رَضِيَ ٱللَّٰهُ عَنْهُ)", 
                     role: "Uncle & Lion of Allah", 
+                    lived: "مەککە (Makkah)",
+                    famousWhy: "بە شێری خودا و پێغەمبەر ناسرابوو، بە بوێری بەرگری لە بانگەوازی ئیسلام کرد لە بەرامبەر سەرکردەکانی قورەیشدا.",
                     desc: "Fierce defender of Islam who embraced faith to protect his nephew.",
                     filmMention: "🎬 لە فیلمی الرسالةدا: دیمەنی ئیسلامهێنانی حەمزە و بەرگریکردنی لە پێغەمبەر ﷺ بەرامبەر ئەبو جهل یەکێکە لە دیارترین دیمەنەکانی فیلمەکە." 
                 },
                 { 
+                    id: "bilal",
                     name: "Bilal ibn Rabah (رَضِيَ ٱللَّٰهُ عَنْهُ)", 
                     role: "The First Mu'adhdhin", 
+                    lived: "مەککە و مدینە (Makkah & Madinah)",
+                    famousWhy: "نموونەی باڵای خۆڕاگری بوو بەرامبەر ئەشکەنجە لە مەککەدا، و بوو بە یەکەم بانگبێژی ئیسلام کە بانگی لەسەر کەبە گوت.",
                     desc: "Endured severe torture for his faith and became the voice of Islam.",
-                    filmMention: "🎬 لە فیلمی الرسالةدا: چیرۆکی ئازاردانی لەژێر خۆری گەرمی مەکە و دواتر بانگدانی لەسەر کەبە بە دەنگی بەرز لە کۆتایی فیلمەکەدا زۆر بەرچاوە." 
+                    filmMention: "🎬 لە فیلمی الرسالةدا: چیرۆکی ئازاردانی لەژێر خۆری گەرمی مەکە و دواتر بانگدانی لەسەر کەبە بە دەنگی بەرز زۆر بەرچاوە." 
                 },
                 { 
+                    id: "ali",
                     name: "Ali ibn Abi Talib (رَضِيَ ٱللَّٰهُ عَنْهُ)", 
                     role: "Cousin & Son-in-law", 
+                    lived: "مەککە و مدینە (Makkah & Madinah)",
+                    famousWhy: "یەکەم منداڵ بوو کە ئیسلام بوو، و لە شەوە گرنگەکەی هجرتدا لە جێگەی پێغەمبەردا خەوت بۆ پاراستنی.",
                     desc: "Slept in the Prophet's bed during Hijrah to deceive Quraish.",
                     filmMention: "🎬 لە فیلمی الرسالةدا: لە سەرەتای هجرتدا لە جێگەی پێغەمبەردا دەخەوێت بۆ چەواشەکردنی سیخوڕەکانی قورەیش." 
                 },
                 { 
+                    id: "abujahl",
                     name: "Abu Jahl (Amr ibn Hisham)", 
                     role: "Enemy of Islam", 
+                    lived: "مەککە (Makkah)",
+                    famousWhy: "سەرکردەی سەرەکی دژایەتیکردنی ئیسلام و ستەمکارترین کەس بوو بەرامبەر موسڵمانانی سەرەتای مەککە.",
                     desc: "Leader of the opposition against Muslims in Makkah.",
-                    filmMention: "🎬 لە فیلمی الرسالةدا: وەک سەرەکیترین دوژمن و سەرکردەی ستەمکاری قورەیش کە دژایەتی توندی بانگەوازی دەکرد ڕۆڵی دەبینرێت." 
+                    filmMention: "🎬 لە فیلمی الرسالةدا: وەک سەرەکیترین دوژمن و سەرکردەی ستەمکاری قورەیش ڕۆڵی دەبینرێت." 
                 }
             ],
             arjuzahQuizzes: {
@@ -745,18 +781,44 @@
             `).join('');
         }
 
-        // People & Film Mentions
+        // People & Clickable Modal Details
         function renderPeople() {
             const grid = document.getElementById('peopleGrid');
             if (!grid) return;
             grid.innerHTML = seerahData.people.map(p => `
-                <div class="card" style="border-top: 4px solid var(--gold-accent);">
+                <div class="card person-card" onclick="openPersonModal('${p.id}')">
                     <h3>${p.name}</h3>
                     <span class="badge" style="background: var(--gold-light); color: var(--gold-accent); display:inline-block; margin: 0.4rem 0;">${p.role}</span>
                     <p style="color: var(--text-muted); margin-top: 0.3rem;">${p.desc}</p>
-                    <p style="margin-top: 0.6rem; font-size: 0.9rem; background: var(--bg-primary); padding: 0.6rem; border-radius: 6px;">${p.filmMention}</p>
+                    <p style="margin-top: 0.6rem; font-size: 0.85rem; color: var(--primary-emerald); font-weight: 600;">🔍 کلیک بکە بۆ زانیاری زیاتر (Click for details)</p>
                 </div>
             `).join('');
+        }
+
+        function openPersonModal(personId) {
+            const person = seerahData.people.find(p => p.id === personId);
+            if (!person) return;
+
+            document.getElementById('modalPersonName').textContent = person.name;
+            document.getElementById('modalPersonContent').innerHTML = `
+                <div style="margin-bottom: 1rem;">
+                    <span class="badge" style="background: var(--gold-light); color: var(--gold-accent); display: inline-block; margin-bottom: 0.5rem;">${person.role}</span>
+                    <p style="margin-top: 0.5rem;"><b>📍 شوێنی ژیان (Where they lived):</b> ${person.lived}</p>
+                </div>
+                <div style="margin-bottom: 1rem; background: var(--bg-primary); padding: 1rem; border-radius: 8px;">
+                    <p style="font-weight: 600; color: var(--primary-emerald); margin-bottom: 0.3rem;">🌟 بۆچی لە ئیسلامدا ناودارە؟ (Why famous in Islam):</p>
+                    <p>${person.famousWhy}</p>
+                </div>
+                <div>
+                    <p style="font-weight: 600; color: var(--gold-accent); margin-bottom: 0.3rem;">🎬 لە فیلمی الرسالةدا (Al-Resalah Film Mention):</p>
+                    <p>${person.filmMention}</p>
+                </div>
+            `;
+            document.getElementById('personModal').classList.add('active');
+        }
+
+        function closePersonModal() {
+            document.getElementById('personModal').classList.remove('active');
         }
 
         // Notes & Bookmarks Management
