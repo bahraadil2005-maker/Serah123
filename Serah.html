@@ -142,7 +142,7 @@
             <button class="tab-btn active" onclick="switchTab('home')">Home</button>
             <button class="tab-btn" onclick="switchTab('roadmap')">Learning Roadmap</button>
             <button class="tab-btn" onclick="switchTab('lesson')">Lessons</button>
-            <button class="tab-btn" onclick="switchTab('arjuzah')">الأرجوزة السنية & Quiz</button>
+            <button class="tab-btn" onclick="switchTab('arjuzah')">الأرجوزة السنية & Film Quiz</button>
             <button class="tab-btn" onclick="switchTab('timeline')">Deep Timeline</button>
             <button class="tab-btn" onclick="switchTab('people')">Important People</button>
             <button class="tab-btn" onclick="switchTab('notes')">My Notes & Revision</button>
@@ -234,14 +234,14 @@
             </div>
         </section>
 
-        <!-- 4. ARJUZAH SUNNIYYAH & MULTI-LINGUAL QUIZ PAGE -->
+        <!-- 4. AL-RISALAH FILM & TIMED QUIZ PAGE -->
         <section id="arjuzah" class="page">
-            <h2>الأرجوزة السنية في ذكر سيرة خير البرية ﷺ</h2>
-            <p style="color: var(--text-muted); margin-bottom: 1rem;">نظم: الأمين موافقي (أبو عبيدة الجزائري) - بە دەنگی ظفر النتيفات</p>
+            <h2>الأرجوزة السنية & Al-Resalah Film Timed Quiz</h2>
+            <p style="color: var(--text-muted); margin-bottom: 1rem;">تەماشای فیلمی «الرسالة» بکە لەگەڵ هاوڕێکانت و دوای هەر بەشێکی کاتی فیلمەکە کویزەکە تاقی بکەرەوە!</p>
 
             <div class="card" style="background: linear-gradient(135deg, var(--gold-light), var(--bg-card));">
-                <h3>🎥 فیلمی الرسالة / Al Resalah Movie</h3>
-                <p style="margin: 0.5rem 0;">دەتوانیت تەماشای فیلمی «الرسالة» بە کوالیتی بەرز بکەیت راستەوخۆ لە خوارەوە لەگەڵ هاوڕێکانت:</p>
+                <h3>🎥 فیلمی الرسالة / The Message Movie Link</h3>
+                <p style="margin: 0.5rem 0;">لینک و پەخشکەری سەرەکی فیلمی الرسالة بۆ بینین لەگەڵ هاوڕێکانت:</p>
                 
                 <!-- Video Embedded Player -->
                 <div class="video-container">
@@ -250,17 +250,17 @@
 
                 <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem;">
                     <a href="https://www.youtube.com/watch?v=9niQMEUQSf8" target="_blank" class="btn btn-primary">
-                        ▶ بينینی فیلمەکە لە YouTube
+                        ▶ تەماشاکردن لە یوتیوب (Watch on YouTube)
                     </a>
                     <button class="btn btn-secondary" onclick="document.getElementById('arjuzahQuizContainer').scrollIntoView({behavior: 'smooth'})">
-                        🎯 دەستپێکردنی کویزی فیلمەکە (10 Questions Quiz)
+                        🎯 دەستپێکردنی کویزی کاتەکانی فیلم (Timed Quiz)
                     </button>
                 </div>
             </div>
 
             <div class="card" style="border-top: 4px solid var(--primary-emerald);">
-                <h3>🎯 سیستەمی کویزی داینامیکی (Quiz Generator - 10 Questions)</h3>
-                <p style="color: var(--text-muted); margin-bottom: 1rem;">هەڵبژاردەی زمان دیاری بکە بۆ دەستپێکردنی کویزی 10 پرسیاری:</p>
+                <h3>⏱️ کویزی بەستراو بە کاتەکانی فیلم (Film Timestamp Quiz Generator)</h3>
+                <p style="color: var(--text-muted); margin-bottom: 1rem;">زمان و بەشی کاتی فیلمەکە هەڵبژێرە بۆ تاقیکردنەوەی تێگەیشتنت:</p>
                 
                 <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem;">
                     <div>
@@ -273,7 +273,7 @@
                     </div>
                 </div>
 
-                <button class="btn btn-primary" onclick="startArjuzahQuiz()">دەستپێکردنی کویز (Start 10-Q Quiz)</button>
+                <button class="btn btn-primary" onclick="startArjuzahQuiz()">دەستپێکردنی کویزی 10 پرسیاری (Start Quiz)</button>
             </div>
 
             <div id="arjuzahQuizContainer" class="card" style="display:none;"></div>
@@ -421,40 +421,40 @@
             ],
             arjuzahQuizzes: {
                 ckb: [
-                    { q: "پەیامبەر ﷺ لە چ ساڵێکدا لەدایکبووە؟", opts: ["ساڵی فیل (عام الفيل)", "ساڵی خەم (عام الحزن)", "ساڵی کۆچ (عام الهجرة)"], c: 0, exp: "لە عام الفيل لەدایکبووە." },
-                    { q: "ناوی دایکی شیری پەیامبەر ﷺ کێ بوو؟", opts: ["حەلیمەی سەعدییە", "ئامینە", "فاتمە"], c: 0, exp: "حەلیمەی سەعدییە دایکی شیری بوو." },
-                    { q: "پەیامبەر ﷺ چەند ساڵ بوو کاتێک دایکی کۆچی دوایی کرد؟", opts: ["4 ساڵ", "6 ساڵ", "8 ساڵ"], c: 1, exp: "لە تەمەنی 6 ساڵیدا دایکی کۆچی دوایی کرد." },
-                    { q: "ناوی باوکی پێغەمبەر ﷺ چی بوو؟", opts: ["عەبدوڵڵا", "عەبدولموتەڵیب", "ئەبو تالیب"], c: 0, exp: "ناوی باوکی عەبدوڵڵا بوو." },
-                    { q: "یەکەم نیگای خوای گەورە لە کوێ دابەزی؟", opts: ["غاری حرا", "غاری سەور", "مسجد النبوی"], c: 0, exp: "لە غاری حرا دابەزی." },
-                    { q: "کێ یەکەم ژن بوو کە باوەڕی بە پێغەمبەر ﷺ هێنا؟", opts: ["خەدیجە کچی خووەیلید", "عائیشە کچی ئەبو بەکر", "فاتمەی زەهرا"], c: 0, exp: "خەدیجەی خێزانی یەکەم باوەڕهێنەر بوو." },
-                    { q: "کۆچکردنی موسڵمانان بۆ سەرەتای ئیسلام بۆ کوێ بوو؟", opts: ["حەبەشە (ئەفریقیا)", "مەدینە", "تائیف"], c: 0, exp: "کۆچی یەکەم بۆ حەبەشە بوو." },
-                    { q: "ناوی گەورەترین جەنگی سەرەتای ئیسلام چی بوو؟", opts: ["جەنگی بەدر", "جەنگی ئوحود", "جەنگی خەندەق"], c: 0, exp: "جەنگی بەدر یەکەم جەنگی گەورە بوو." },
-                    { q: "کەی شاری مەکە فەتح کرا؟", opts: ["ساڵی 8 کۆچی", "ساڵی 2 کۆچی", "ساڵی 10 کۆچی"], c: 0, exp: "لە ساڵی 8ی کۆچی فەتح کرا." },
-                    { q: "کامیان لەم کەسایەتیانە ئامۆزای پێغەمبەر ﷺ بوو؟", opts: ["عەلی کوڕی ئەبوتالیب", "ئەبو بەکر", "عومەر"], c: 0, exp: "عەلی کوڕی ئەبوتالیب ئامۆزا و زاوای بوو." }
+                    { q: "لە دەستپێکی فیلمەکەدا (کاتژمێر 0:00 تا 0:15)، دیمەنی سەرەکی باسی چ سەردەمێک دەکات؟", opts: ["جاهلیة و باری مەککە پێش اسلام", "سەردەمی خەلافەتی عومەر", "رۆژانی کۆتایی مدینە"], c: 0, exp: "باسی باری ژیان و کۆمەڵگەی جاهلیەتی مەکە دەکات." },
+                    { q: "لە سەرەتای فیلمەکەدا، پەیامبەر ﷺ لە چ ساڵێکدا لەدایکبووە کە لە فیلمەکەدا باس دەکرێت؟", opts: ["ساڵی فیل (عام الفيل)", "ساڵی خەم", "ساڵی حەج"], c: 0, exp: "فیلمەکە بە ڕووداوی عام الفيل دەست پێدەکات." },
+                    { q: "کاتێک نامەکان بۆ پادشاهەکان دەنێردرێت (بەشی ناوەڕاستی فیلم)، کێ نامەکەی بۆ ئیمپراتۆری ڕۆم (هەرقل) برد؟", opts: ["دحیة الکلبی", "عمار بن یاسر", "بلال الحبشی"], c: 0, exp: "دحیة الکلبی نێررا بۆ لای هەرقل." },
+                    { q: "لە بەشی یەکەمی فیلمەکەدا، چ کێشەیەک رووبەڕووی موسڵمانە سەرەتاییەکان بووەوە لە مەکە؟", opts: ["ئازار و ئەشکەنجەی قورەیش", "کۆچکردن بۆ شام", "برسیەتی گەورە"], c: 0, exp: "ئازاردانی قورەیش بۆ سەر موسڵمانان." },
+                    { q: "کاتی باسكردنی هجرت بۆ حەبەشە لە فیلمەکەدا، پاشای حەبەشە ناوی چی بوو؟", opts: ["نجاشی (أسحمة)", "هەرقل", "کیسرا"], c: 0, exp: "نجاشی پاشای دادپەروەری حەبەشە بوو." },
+                    { q: "لە نیوەی فیلمەکەدا، حەمزەی ئامۆزای پێغەمبەر چۆن اسلام هێنا لە فیلمەکەدا؟", opts: ["دواتر بەرگری لە پێغەمبەر کرد لە بەرامبەر ئەبو جهل", "لە غاری حرا بوو", "لە مەدینە بوو"], c: 0, exp: "بەرگری توند لە پێغەمبەر کرد بەرامبەر قورەیش." },
+                    { q: "لە کاتی جەنگی بەدردا (بەشی پێشکەوتوی فیلم)، ژمارەی سوپای موسڵمانان چەند بوو بەراورد بە قورەیش؟", opts: ["کەمتر بوون (نزیکەی 313 کەس)", "زیاتر بوون", "یەکسان بوون"], c: 0, exp: "سوپای موسڵمانان نزیکەی 313 کەس بوون." },
+                    { q: "لە فیلمەکەدا، کێ بانگبێژی یەکەم بوو کە لەسەر کەبە بانگی دا؟", opts: ["بلال بن رباح", "عمار بن یاسر", "صەهەیب رومی"], c: 0, exp: "بلال الحبشی بانگبێژ بوو." },
+                    { q: "لە کۆتایی فیلمەکەدا (فەتحی مەکە)، ڕووداوەکان چۆن کۆتایی هاتن؟", opts: ["بێ خوێنڕێژی مەکە فەتح کرا و بتەکان شکێنران", "جەنگێکی گەورە روویدا", "رێککەوتن کرا"], c: 0, exp: "فەتحی مەکە بە بێ جەنگ و خوێنڕێژی بوو." },
+                    { q: "فیلمی الرسالة لە دەرهێنانی کێ بوو؟", opts: ["مصطفی عقاد", "یوسف شاهین", "ستيفن سبيلبيرغ"], c: 0, exp: "دەرهێنەری گەورە مصطفی عقاد بوو." }
                 ],
                 ar: [
-                    { q: "في أي عام ولد النبي صلى الله عليه وسلم؟", opts: ["عام الفيل", "عام الحزن", "عام الهجرة"], c: 0, exp: "ولد في عام الفيل." },
-                    { q: "من هي مرضعة النبي صلى الله عليه وسلم؟", opts: ["حليمة السعدية", "آمنة بنت وهب", "فاطمة"], c: 0, exp: "حليمة السعدية مرضعته." },
-                    { q: "كم كان عمر النبي صلى الله عليه وسلم عند وفاة أمه؟", opts: ["أربع سنين", "ست سنين", "ثماني سنين"], c: 1, exp: "توفيت أمه وعمره ست سنين." },
-                    { q: "ما هو اسم والد النبي صلى الله عليه وسلم؟", opts: ["عبدالله", "عبدالمطلب", "أبو طالب"], c: 0, exp: "والده هو عبدالله." },
-                    { q: "أين نزلت أول آية من الوحي؟", opts: ["غار حراء", "غار ثور", "المسجد الحرام"], c: 0, exp: "نزلت في غار حراء." },
-                    { q: "من هي أول امرأة أسلمت وآمنت بالرسول ﷺ؟", opts: ["خديجة بنت خويلد", "عائشة بنت أبي بكر", "فاطمة الزهراء"], c: 0, exp: "خديجة رضي الله عنها." },
-                    { q: "إلى أين كانت الهجرة الأولى للمسلمين؟", opts: ["الحبشة", "المدينة المنورة", "الطائف"], c: 0, exp: "كانت إلى أرض الحبشة." },
-                    { q: "ما اسم أول غزوة كبرى في الإسلام؟", opts: ["غزوة بدر", "غزوة أحد", "غزوة الخندق"], c: 0, exp: "غزوة بدر الكبرى." },
-                    { q: "في أي عام هجري تم فتح مكة المكرمة؟", opts: ["السنة الثامنة للهجرة", "السنة الثانية للهجرة", "السنة العاشرة"], c: 0, exp: "في السنة الثامنة للهجرة." },
-                    { q: "من هو ابن عم النبي وزوجه ابنته فاطمة رضي الله عنهما؟", opts: ["علي بن أبي طالب", "عمر بن الخطاب", "عثمان بن عفان"], c: 0, exp: "علي بن أبي طالب." }
+                    { q: "في بداية الفيلم (الدقائق الأولى)، ماذا يصور المشهد عن حال العرب؟", opts: ["العصر الجاهلي وحالة مكة قبل الإسلام", "عصر الخلفاء الراشدين", "فتح الأندلس"], c: 0, exp: "يصور الحياة في الجاهلية وقريش." },
+                    { q: "في أي عام ولد النبي ﷺ حسب أحداث الفيلم التاريخية؟", opts: ["عام الفيل", "عام الحزن", "عام الهجرة"], c: 0, exp: "يبدأ سرد قصة مولده في عام الفيل." },
+                    { q: "عند إرسال الرسائل للملوك (في منتصف الفيلم)، من الذي حمل رسالة النبي إلى هرقل قيصر الروم؟", opts:يحملها ["دحية الكلبي", "عمار بن ياسر", "بلال بن رباح"], c: 0, exp: "دحية الكلبي رضي الله عنه." },
+                    { q: "ما هو التحدي الأكبر الذي واجه المسلمين الأوائل في مكة حسب أحداث الفيلم؟", opts: ["اضطهاد وتعذيب قريش", "قلة الماء", "الهجرة إلى الشام"], c: 0, exp: "تعذيب قريش للمسلمين المستضعفين." },
+                    { q: "عندما هاجر المسلمون إلى الحبشة، ما اسم النجاشي ملك الحبشة العادل في الفيلم؟", opts: ["النجاشي أصحمة", "هرقل", "كسرى"], c: 0, exp: "النجاشي أصحمة." },
+                    { q: "كيف نصر حمزة بن عبد المطلب الإسلام في المشاهد الأولى بمكة؟", opts: ["دفاعه العلني عن النبي أمام أبا جهل وجفوة قريش", "بالمال فقط", "بالهجرة المبكرة"], c: 0, exp: "بدفاعه القوي عن رسول الله ﷺ." },
+                    { q: "في مشاهد غزوة بدر الكبرى بالفيلم، كم بلغ تقريباً عدد المسلمين مقارنة بالمشركين؟", opts: ["قلة (حوالي 313 مقاتلاً)", "ألفان مقاتل", "متساوون تماماً"], c: 0, exp: "كانوا حوالي 313 مقاتلاً." },
+                    { q: "من هو الصحابي الذي أذن على الكعبة المشرفة بعد الفتح في لقطات الفيلم المؤثرة؟", opts: ["بلال بن رباح", "عمار بن ياسر", "صيب الرومي"], c: 0, exp: "بلال بن رباح رضي الله عنه." },
+                    { q: "كيف انتهت أحداث فتح مكة في آخر الفيلم؟", opts: ["دخول مكة سلماً وتحطيم الأصنام عفو عام", "بحرب طاحنة", "بمعاهدة صلح طويلة"], c: 0, exp: "دخول مكة سلماً والعفو العام." },
+                    { q: "من هو مخرج فيلم (الرسالة) التاريخي الشهير؟", opts: ["مصطفى العقاد", "يوسف شاهين", "عاطف الطيب"], c: 0, exp: "المخرج المبدع مصطفى العقاد." }
                 ],
                 en: [
-                    { q: "In which year was Prophet Muhammad ﷺ born?", opts: ["Year of the Elephant", "Year of Sorrow", "Year of Migration"], c: 0, exp: "Born in the Year of the Elephant." },
-                    { q: "Who was his wet-nurse?", opts: ["Halimah Al-Sa'diyyah", "Aminah", "Khadijah"], c: 0, exp: "Halimah Al-Sa'diyyah took care of him." },
-                    { q: "How old was he when his mother passed away?", opts: ["4 years old", "6 years old", "8 years old"], c: 1, exp: "His mother passed away when he was 6 years old." },
-                    { q: "What was the name of the Prophet's father?", opts: ["Abdullah", "Abdul-Muttalib", "Abu Talib"], c: 0, exp: "His father's name was Abdullah." },
-                    { q: "Where did the first revelation take place?", opts: ["Cave Hira", "Cave Thawr", "Al-Masjid an-Nabawi"], c: 0, exp: "It took place in Cave Hira." },
-                    { q: "Who was the first person to accept Islam?", opts: ["Khadijah bint Khuwaylid", "Aisha bint Abu Bakr", "Ali ibn Abi Talib"], c: 0, exp: "Khadijah was the first to believe." },
-                    { q: "Where did the early Muslims first migrate to escape persecution?", opts: ["Abyssinia (Habashah)", "Madinah", "Taif"], c: 0, exp: "They migrated to Abyssinia." },
-                    { q: "What was the name of the first major military battle in Islam?", opts: ["Battle of Badr", "Battle of Uhud", "Battle of the Trench"], c: 0, exp: "The Battle of Badr." },
-                    { q: "In which year did the Conquest of Makkah occur?", opts: ["8th Year after Hijrah", "2nd Year after Hijrah", "10th Year after Hijrah"], c: 0, exp: "It occurred in the 8th year AH." },
-                    { q: "Who was the Prophet's cousin and son-in-law?", opts: ["Ali ibn Abi Talib", "Umar ibn Al-Khattab", "Uthman ibn Affan"], c: 0, exp: "Ali ibn Abi Talib." }
+                    { q: "At the very beginning of the film, what is depicted about pre-Islamic Arabia?", opts: ["The Jahiliyyah era and life in Makkah", "The life in Madinah", "The Persian Empire"], c: 0, exp: "It portrays the social conditions before Islam." },
+                    { q: "According to the film's timeline, in which year was the Prophet born?", opts: ["Year of the Elephant", "Year of Sorrow", "Year of Migration"], c: 0, exp: "The narrative begins around the Year of the Elephant." },
+                    { q: "When messengers were sent to foreign rulers, who delivered the letter to Heraclius, Emperor of Rome?", opts: ["Dihyah al-Kalbi", "Ammar ibn Yasir", "Bilal ibn Rabah"], c: 0, exp: "Dihyah al-Kalbi delivered the message." },
+                    { q: "What primary hardship did the early Muslims face in Makkah in the movie?", opts: ["Severe persecution by the Quraish leaders", "A severe famine", "Exile to the desert"], c: 0, exp: "Persecution and torture by Quraish." },
+                    { q: "During the migration to Abyssinia, what was the name of the righteous Christian king?", opts: ["The Negus ( النجاشي أصحمة )", "Heraclius", "Chosroes"], c: 0, exp: "The Negus (Ashama)." },
+                    { q: "How did Hamza (the Prophet's uncle) publicly declare his support for Islam in the film?", opts: ["By confronting Abu Jahl after hearing of the abuse against Muhammad ﷺ", "By migrating alone", "By paying a ransom"], c: 0, exp: "By standing up to Abu Jahl." },
+                    { q: "In the Battle of Badr scenes, roughly how many Muslims fought against the large Quraish army?", opts: ["Around 313 Muslims", "1,000 Muslims", "5,000 Muslims"], c: 0, exp: "Approximately 313 Muslims." },
+                    { q: "Who is famously shown performing the Adhan atop the Ka'bah after Makkah's conquest?", opts: ["Bilal ibn Rabah", "Ammar ibn Yasir", "Zayd ibn Harithah"], c: 0, exp: "Bilal ibn Rabah." },
+                    { q: "How did the conquest of Makkah conclude in the film's climax?", opts: ["Peaceful entry, amnesty, and smashing of the idols", "A month-long siege", "A naval blockade"], c: 0, exp: "Peaceful entry and general amnesty." },
+                    { q: "Who directed the cinematic masterpiece 'The Message' (Al-Risalah)?", opts: ["Moustapha Akkad", "Youssef Chahine", "Ridley Scott"], c: 0, exp: "Directed by Moustapha Akkad." }
                 ]
             }
         };
@@ -593,7 +593,7 @@
             renderLesson(currentLessonId);
         }
 
-        // Arjuzah & 10-Question Quiz Generator with Result Summary
+        // Timed Film Quiz Generator with Result Summary
         let activeQuizLang = 'ckb';
         let activeQuizQuestions = [];
 
@@ -605,8 +605,8 @@
             const container = document.getElementById('arjuzahQuizContainer');
             container.style.display = 'block';
             container.innerHTML = `
-                <h3>🎯 Al-Resalah & Seerah Quiz (10 Questions)</h3>
-                <p style="color: var(--text-muted); margin-bottom: 1rem;">Answer all 10 questions below, then click submit to check your results!</p>
+                <h3>⏱️ Al-Resalah Movie Timed Quiz (10 Questions)</h3>
+                <p style="color: var(--text-muted); margin-bottom: 1rem;">وەڵامی 10 پرسیارەکە بدەرەوە دوای تەماشاکردنی بەشەکانی فیلمەکە، پاشان ئەنجامەکەت ببیندە!</p>
                 <div style="margin-top: 1rem;">
                     ${activeQuizQuestions.map((item, qIdx) => `
                         <div style="margin-bottom: 1.8rem; padding-bottom: 1.2rem; border-bottom: 1px solid var(--border-color);" id="qBlock_${qIdx}">
@@ -668,14 +668,13 @@
                 }
             });
 
-            // Display Results Summary Banner
             const banner = document.getElementById('quizResultBanner');
             const percentage = Math.round((score / total) * 100);
-            let performanceMsg = percentage >= 80 ? "🌟 Excellent understanding of the film and Seerah!" : percentage >= 50 ? "👍 Good job! Review the movie details to master it." : "📖 Keep studying and re-watching the film to improve!";
+            let performanceMsg = percentage >= 80 ? "🌟 عالییە! ئێوە و هاوڕێکانتان فیلمەکەتان بە باشی تێگەیشتووە!" : percentage >= 50 ? "👍 باشە! دەتوانیت جارێکی تر بەشەکانی فیلمەکە سەیر بکەیتەوە." : "📖 پێویستە فیلمەکە دووبارە تەماشا بکەنەوە!";
 
             banner.innerHTML = `
                 <div class="card" style="background: linear-gradient(135deg, var(--primary-light), var(--bg-card)); border: 2px solid var(--primary-emerald); text-align: center;">
-                    <h3>📊 Quiz Results Summary</h3>
+                    <h3>📊 Film Quiz Results Summary</h3>
                     <p style="font-size: 1.4rem; font-weight: 700; color: var(--primary-emerald); margin: 0.5rem 0;">Score: ${score} / ${total} (${percentage}%)</p>
                     <p style="color: var(--text-muted);">${performanceMsg}</p>
                 </div>
