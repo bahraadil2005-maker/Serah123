@@ -253,32 +253,16 @@
                         ▶ بينینی فیلمەکە لە YouTube
                     </a>
                     <button class="btn btn-secondary" onclick="document.getElementById('arjuzahQuizContainer').scrollIntoView({behavior: 'smooth'})">
-                        🎯 دەستپێکردنی کویزی فیلمەکە (Take Quiz)
+                        🎯 دەستپێکردنی کویزی فیلمەکە (10 Questions Quiz)
                     </button>
                 </div>
             </div>
 
             <div class="card" style="border-top: 4px solid var(--primary-emerald);">
-                <h3>🎯 سیستەمی کویزی داینامیکی (Quiz Generator)</h3>
-                <p style="color: var(--text-muted); margin-bottom: 1rem;">دیاری بکە: جۆری کویز، ژمارەی پرسیار، و زمانی وەڵامدانەوە:</p>
+                <h3>🎯 سیستەمی کویزی داینامیکی (Quiz Generator - 10 Questions)</h3>
+                <p style="color: var(--text-muted); margin-bottom: 1rem;">هەڵبژاردەی زمان دیاری بکە بۆ دەستپێکردنی کویزی 10 پرسیاری:</p>
                 
                 <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem;">
-                    <div>
-                        <label><b>جۆری کویز:</b></label><br>
-                        <select id="arjQuizType" class="select-control" style="margin-top:0.3rem;">
-                            <option value="meaning">کویزی مانا و تێگەیشتن (Comprehension)</option>
-                            <option value="vocab">کویزی مانای وشەکان (Vocabulary)</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label><b>ژمارەی پرسیار:</b></label><br>
-                        <select id="arjQuizCount" class="select-control" style="margin-top:0.3rem;">
-                            <option value="3">3 پرسیار</option>
-                            <option value="5">5 پرسیار</option>
-                        </select>
-                    </div>
-
                     <div>
                         <label><b>زمان / Language:</b></label><br>
                         <select id="arjQuizLang" class="select-control" style="margin-top:0.3rem;">
@@ -289,7 +273,7 @@
                     </div>
                 </div>
 
-                <button class="btn btn-primary" onclick="startArjuzahQuiz()">دروستکردنی کویز (Generate Quiz)</button>
+                <button class="btn btn-primary" onclick="startArjuzahQuiz()">دەستپێکردنی کویز (Start 10-Q Quiz)</button>
             </div>
 
             <div id="arjuzahQuizContainer" class="card" style="display:none;"></div>
@@ -416,27 +400,6 @@
                         childVer: "Seerah is telling the wonderful true story of Allah's final messenger.",
                         summary: "Seerah translates Islamic principles into practical action."
                     }
-                },
-                {
-                    id: 201,
-                    levelId: 2,
-                    title: "Lesson 2: The Year of the Elephant and Birth",
-                    simpleExplanation: "Prophet Muhammad ﷺ was born in Makkah during the 'Year of the Elephant' (around 570 CE).",
-                    dates: "570 CE",
-                    quranRef: "Surah Al-Fil (105:1-5)",
-                    hadithRef: "Sahih Muslim #1162",
-                    authenticity: "Authentic",
-                    quiz: {
-                        question: "In which year was Prophet Muhammad ﷺ born?",
-                        options: ["Year of the Trench", "Year of Sorrow", "Year of the Elephant", "Year of Delegation"],
-                        correct: 2,
-                        explanation: "He was born in the Year of the Elephant."
-                    },
-                    teacherMode: {
-                        keyPoints: ["Protection of the Ka'bah", "Miraculous events at birth"],
-                        childVer: "Allah saved the Holy Ka'bah from big elephants when Prophet Muhammad was born!",
-                        summary: "The Year of the Elephant prepared Makkah for the prophet's arrival."
-                    }
                 }
             ],
             timeline: [
@@ -458,29 +421,51 @@
             ],
             arjuzahQuizzes: {
                 ckb: [
-                    { q: "پەیامبەر ﷺ لە چ ساڵێکدا لەدایکبووە؟", opts: ["ساڵی فیل (عام الفيل)", "ساڵی خەم (عام الحزن)", "ساڵی کۆچ (عام الهجرة)"], c: 0, exp: "لە نەزمی ئەرجوزەکەدا هاتوو: مَوْلِدُهُ فِي عَامِ فِيلٍ قَدْ أَتَى" },
-                    { q: "ناوی دایکی شیری پەیامبەر ﷺ کێ بوو؟", opts: ["حەلیمەی سەعدییە", "ئامینە", "فاطمة"], c: 0, exp: "وَأَرْضَعَتْهُ سَعْدِيَّةُ حَلِيمَة" },
-                    { q: "پەیامبەر ﷺ چەند ساڵ بوو کاتێک دایکی کۆچی دوایی کرد؟", opts: ["4 ساڵ", "6 ساڵ", "8 ساڵ"], c: 1, exp: "وَمَاتَتِ الأُمُّ وَلَهُ سِتُّ سِنِينْ" }
+                    { q: "پەیامبەر ﷺ لە چ ساڵێکدا لەدایکبووە؟", opts: ["ساڵی فیل (عام الفيل)", "ساڵی خەم (عام الحزن)", "ساڵی کۆچ (عام الهجرة)"], c: 0, exp: "لە عام الفيل لەدایکبووە." },
+                    { q: "ناوی دایکی شیری پەیامبەر ﷺ کێ بوو؟", opts: ["حەلیمەی سەعدییە", "ئامینە", "فاتمە"], c: 0, exp: "حەلیمەی سەعدییە دایکی شیری بوو." },
+                    { q: "پەیامبەر ﷺ چەند ساڵ بوو کاتێک دایکی کۆچی دوایی کرد؟", opts: ["4 ساڵ", "6 ساڵ", "8 ساڵ"], c: 1, exp: "لە تەمەنی 6 ساڵیدا دایکی کۆچی دوایی کرد." },
+                    { q: "ناوی باوکی پێغەمبەر ﷺ چی بوو؟", opts: ["عەبدوڵڵا", "عەبدولموتەڵیب", "ئەبو تالیب"], c: 0, exp: "ناوی باوکی عەبدوڵڵا بوو." },
+                    { q: "یەکەم نیگای خوای گەورە لە کوێ دابەزی؟", opts: ["غاری حرا", "غاری سەور", "مسجد النبوی"], c: 0, exp: "لە غاری حرا دابەزی." },
+                    { q: "کێ یەکەم ژن بوو کە باوەڕی بە پێغەمبەر ﷺ هێنا؟", opts: ["خەدیجە کچی خووەیلید", "عائیشە کچی ئەبو بەکر", "فاتمەی زەهرا"], c: 0, exp: "خەدیجەی خێزانی یەکەم باوەڕهێنەر بوو." },
+                    { q: "کۆچکردنی موسڵمانان بۆ سەرەتای ئیسلام بۆ کوێ بوو؟", opts: ["حەبەشە (ئەفریقیا)", "مەدینە", "تائیف"], c: 0, exp: "کۆچی یەکەم بۆ حەبەشە بوو." },
+                    { q: "ناوی گەورەترین جەنگی سەرەتای ئیسلام چی بوو؟", opts: ["جەنگی بەدر", "جەنگی ئوحود", "جەنگی خەندەق"], c: 0, exp: "جەنگی بەدر یەکەم جەنگی گەورە بوو." },
+                    { q: "کەی شاری مەکە فەتح کرا؟", opts: ["ساڵی 8 کۆچی", "ساڵی 2 کۆچی", "ساڵی 10 کۆچی"], c: 0, exp: "لە ساڵی 8ی کۆچی فەتح کرا." },
+                    { q: "کامیان لەم کەسایەتیانە ئامۆزای پێغەمبەر ﷺ بوو؟", opts: ["عەلی کوڕی ئەبوتالیب", "ئەبو بەکر", "عومەر"], c: 0, exp: "عەلی کوڕی ئەبوتالیب ئامۆزا و زاوای بوو." }
                 ],
                 ar: [
-                    { q: "في أي عام ولد النبي صلى الله عليه وسلم؟", opts: ["عام الفيل", "عام الحزن", "عام الوفود"], c: 0, exp: "مولده في عام فيل قد أتى" },
-                    { q: "من هي مرضعة النبي صلى الله عليه وسلم؟", opts: ["حليمة السعدية", "أميمة", "خديجة"], c: 0, exp: "وأرضعته سعدية حليمة" },
-                    { q: "كم كان عمر النبي صلى الله عليه وسلم عند وفاة أمه؟", opts: ["أربع سنين", "ست سنين", "ثماني سنين"], c: 1, exp: "وماتت الأم وله ست سنين" }
+                    { q: "في أي عام ولد النبي صلى الله عليه وسلم؟", opts: ["عام الفيل", "عام الحزن", "عام الهجرة"], c: 0, exp: "ولد في عام الفيل." },
+                    { q: "من هي مرضعة النبي صلى الله عليه وسلم؟", opts: ["حليمة السعدية", "آمنة بنت وهب", "فاطمة"], c: 0, exp: "حليمة السعدية مرضعته." },
+                    { q: "كم كان عمر النبي صلى الله عليه وسلم عند وفاة أمه؟", opts: ["أربع سنين", "ست سنين", "ثماني سنين"], c: 1, exp: "توفيت أمه وعمره ست سنين." },
+                    { q: "ما هو اسم والد النبي صلى الله عليه وسلم؟", opts: ["عبدالله", "عبدالمطلب", "أبو طالب"], c: 0, exp: "والده هو عبدالله." },
+                    { q: "أين نزلت أول آية من الوحي؟", opts: ["غار حراء", "غار ثور", "المسجد الحرام"], c: 0, exp: "نزلت في غار حراء." },
+                    { q: "من هي أول امرأة أسلمت وآمنت بالرسول ﷺ؟", opts: ["خديجة بنت خويلد", "عائشة بنت أبي بكر", "فاطمة الزهراء"], c: 0, exp: "خديجة رضي الله عنها." },
+                    { q: "إلى أين كانت الهجرة الأولى للمسلمين؟", opts: ["الحبشة", "المدينة المنورة", "الطائف"], c: 0, exp: "كانت إلى أرض الحبشة." },
+                    { q: "ما اسم أول غزوة كبرى في الإسلام؟", opts: ["غزوة بدر", "غزوة أحد", "غزوة الخندق"], c: 0, exp: "غزوة بدر الكبرى." },
+                    { q: "في أي عام هجري تم فتح مكة المكرمة؟", opts: ["السنة الثامنة للهجرة", "السنة الثانية للهجرة", "السنة العاشرة"], c: 0, exp: "في السنة الثامنة للهجرة." },
+                    { q: "من هو ابن عم النبي وزوجه ابنته فاطمة رضي الله عنهما؟", opts: ["علي بن أبي طالب", "عمر بن الخطاب", "عثمان بن عفان"], c: 0, exp: "علي بن أبي طالب." }
                 ],
                 en: [
                     { q: "In which year was Prophet Muhammad ﷺ born?", opts: ["Year of the Elephant", "Year of Sorrow", "Year of Migration"], c: 0, exp: "Born in the Year of the Elephant." },
                     { q: "Who was his wet-nurse?", opts: ["Halimah Al-Sa'diyyah", "Aminah", "Khadijah"], c: 0, exp: "Halimah Al-Sa'diyyah took care of him." },
-                    { q: "How old was he when his mother passed away?", opts: ["4 years old", "6 years old", "8 years old"], c: 1, exp: "His mother passed away when he was 6 years old." }
+                    { q: "How old was he when his mother passed away?", opts: ["4 years old", "6 years old", "8 years old"], c: 1, exp: "His mother passed away when he was 6 years old." },
+                    { q: "What was the name of the Prophet's father?", opts: ["Abdullah", "Abdul-Muttalib", "Abu Talib"], c: 0, exp: "His father's name was Abdullah." },
+                    { q: "Where did the first revelation take place?", opts: ["Cave Hira", "Cave Thawr", "Al-Masjid an-Nabawi"], c: 0, exp: "It took place in Cave Hira." },
+                    { q: "Who was the first person to accept Islam?", opts: ["Khadijah bint Khuwaylid", "Aisha bint Abu Bakr", "Ali ibn Abi Talib"], c: 0, exp: "Khadijah was the first to believe." },
+                    { q: "Where did the early Muslims first migrate to escape persecution?", opts: ["Abyssinia (Habashah)", "Madinah", "Taif"], c: 0, exp: "They migrated to Abyssinia." },
+                    { q: "What was the name of the first major military battle in Islam?", opts: ["Battle of Badr", "Battle of Uhud", "Battle of the Trench"], c: 0, exp: "The Battle of Badr." },
+                    { q: "In which year did the Conquest of Makkah occur?", opts: ["8th Year after Hijrah", "2nd Year after Hijrah", "10th Year after Hijrah"], c: 0, exp: "It occurred in the 8th year AH." },
+                    { q: "Who was the Prophet's cousin and son-in-law?", opts: ["Ali ibn Abi Talib", "Umar ibn Al-Khattab", "Uthman ibn Affan"], c: 0, exp: "Ali ibn Abi Talib." }
                 ]
             }
         };
 
-        // App States
+        // App States & Storage Tracking for Quiz Results
         let currentLessonId = 101;
         let currentLessonMode = 'student';
         let savedNotes = JSON.parse(localStorage.getItem('seerah_notes') || '{}');
         let bookmarkedLessons = JSON.parse(localStorage.getItem('seerah_bookmarks') || '[]');
         let lessonStatuses = JSON.parse(localStorage.getItem('seerah_statuses') || '{}');
+        let quizUserAnswers = {};
 
         // Init App
         document.addEventListener('DOMContentLoaded', () => {
@@ -535,7 +520,6 @@
             currentLessonId = lessonId;
             const lesson = seerahData.lessons.find(l => l.id === lessonId) || seerahData.lessons[0];
             
-            // Container
             const container = document.getElementById('lessonContentContainer');
             if (currentLessonMode === 'student') {
                 container.innerHTML = `
@@ -561,7 +545,6 @@
                 `;
             }
 
-            // Quiz
             const quizContainer = document.getElementById('quizContainer');
             quizContainer.innerHTML = `
                 <p><b>${lesson.quiz.question}</b></p>
@@ -575,11 +558,9 @@
                 <p id="quizFeedback" style="margin-top: 0.8rem; font-weight: 600;"></p>
             `;
 
-            // Notes textarea & status
             document.getElementById('lessonNotesArea').value = savedNotes[lessonId] || '';
             document.getElementById('statusSelect').value = lessonStatuses[lessonId] || 'Not Started';
             
-            // Bookmark icon
             const isBookmarked = bookmarkedLessons.includes(lessonId);
             document.getElementById('bookmarkIcon').textContent = isBookmarked ? '★' : '☆';
         }
@@ -612,53 +593,94 @@
             renderLesson(currentLessonId);
         }
 
-        // Arjuzah & Quiz Generator
+        // Arjuzah & 10-Question Quiz Generator with Result Summary
+        let activeQuizLang = 'ckb';
+        let activeQuizQuestions = [];
+
         function startArjuzahQuiz() {
-            const lang = document.getElementById('arjQuizLang').value;
-            const count = parseInt(document.getElementById('arjQuizCount').value);
-            const questions = seerahData.arjuzahQuizzes[lang] || seerahData.arjuzahQuizzes['ckb'];
+            activeQuizLang = document.getElementById('arjQuizLang').value;
+            activeQuizQuestions = seerahData.arjuzahQuizzes[activeQuizLang] || seerahData.arjuzahQuizzes['ckb'];
+            quizUserAnswers = {};
+
             const container = document.getElementById('arjuzahQuizContainer');
-            
             container.style.display = 'block';
             container.innerHTML = `
-                <h3>قوتابخانەی کویز (Quiz Session)</h3>
+                <h3>🎯 Al-Resalah & Seerah Quiz (10 Questions)</h3>
+                <p style="color: var(--text-muted); margin-bottom: 1rem;">Answer all 10 questions below, then click submit to check your results!</p>
                 <div style="margin-top: 1rem;">
-                    ${questions.slice(0, count).map((item, qIdx) => `
-                        <div style="margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color);">
-                            <p><b>قەترە ${qIdx + 1}:${item.q}</b></p>
-                            <div style="display: flex; flex-direction: column; gap: 0.4rem; margin-top: 0.5rem;" id="arjOpt_${qIdx}">
+                    ${activeQuizQuestions.map((item, qIdx) => `
+                        <div style="margin-bottom: 1.8rem; padding-bottom: 1.2rem; border-bottom: 1px solid var(--border-color);" id="qBlock_${qIdx}">
+                            <p><b>Question ${qIdx + 1}:${item.q}</b></p>
+                            <div style="display: flex; flex-direction: column; gap: 0.4rem; margin-top: 0.6rem;" id="arjOpt_${qIdx}">
                                 ${item.opts.map((o, oIdx) => `
-                                    <button class="btn btn-secondary" style="justify-content: flex-start;" onclick="checkArjQuiz(${qIdx}, ${oIdx}, ${item.c}, '${btoa(item.exp)}')">
-                                        ${o}
+                                    <button class="btn btn-secondary" style="justify-content: flex-start; text-align: left;" onclick="selectArjOption(${qIdx}, ${oIdx})">
+                                        ${String.fromCharCode(65 + oIdx)}. ${o}
                                     </button>
                                 `).join('')}
                             </div>
-                            <p id="arjFb_${qIdx}" style="margin-top: 0.5rem; font-weight: 600;"></p>
+                            <p id="arjFb_${qIdx}" style="margin-top: 0.5rem; font-weight: 600; font-size: 0.9rem;"></p>
                         </div>
                     `).join('')}
                 </div>
+                <button class="btn btn-primary" onclick="submitArjuzahQuiz()" style="width: 100%; justify-content: center; margin-top: 1rem;">Submit & View Results 🏆</button>
+                <div id="quizResultBanner" style="margin-top: 1.5rem;"></div>
             `;
+            container.scrollIntoView({ behavior: 'smooth' });
         }
 
-        function checkArjQuiz(qIdx, selected, correct, encodedExp) {
+        function selectArjOption(qIdx, oIdx) {
+            quizUserAnswers[qIdx] = oIdx;
             const parent = document.getElementById(`arjOpt_${qIdx}`);
             const btns = parent.querySelectorAll('button');
-            const feedback = document.getElementById(`arjFb_${qIdx}`);
-            const exp = atob(encodedExp);
-
             btns.forEach((b, idx) => {
-                b.disabled = true;
-                if (idx === correct) b.style.background = '#10b981', b.style.color = '#fff';
-                else if (idx === selected) b.style.background = '#ef4444', b.style.color = '#fff';
+                if (idx === oIdx) {
+                    b.style.background = 'var(--primary-emerald)';
+                    b.style.color = '#fff';
+                } else {
+                    b.style.background = 'var(--border-color)';
+                    b.style.color = 'var(--text-main)';
+                }
+            });
+        }
+
+        function submitArjuzahQuiz() {
+            let score = 0;
+            const total = activeQuizQuestions.length;
+
+            activeQuizQuestions.forEach((item, qIdx) => {
+                const parent = document.getElementById(`arjOpt_${qIdx}`);
+                const btns = parent.querySelectorAll('button');
+                const feedback = document.getElementById(`arjFb_${qIdx}`);
+                const userChoice = quizUserAnswers[qIdx];
+
+                btns.forEach(b => b.disabled = true);
+
+                if (userChoice === item.c) {
+                    score++;
+                    feedback.style.color = '#10b981';
+                    feedback.textContent = `✔ Correct! ${item.exp}`;
+                    if (btns[userChoice]) btns[userChoice].style.background = '#10b981';
+                } else {
+                    feedback.style.color = '#ef4444';
+                    feedback.textContent = `✖ Incorrect. Correct Answer: (${String.fromCharCode(65 + item.c)}). ${item.exp}`;
+                    if (userChoice !== undefined && btns[userChoice]) btns[userChoice].style.background = '#ef4444';
+                    if (btns[item.c]) btns[item.c].style.background = '#10b981';
+                }
             });
 
-            if (selected === correct) {
-                feedback.style.color = '#10b981';
-                feedback.textContent = `✔ زۆر باشە! ڕاستە. (${exp})`;
-            } else {
-                feedback.style.color = '#ef4444';
-                feedback.textContent = `✖ هەڵەیە. (${exp})`;
-            }
+            // Display Results Summary Banner
+            const banner = document.getElementById('quizResultBanner');
+            const percentage = Math.round((score / total) * 100);
+            let performanceMsg = percentage >= 80 ? "🌟 Excellent understanding of the film and Seerah!" : percentage >= 50 ? "👍 Good job! Review the movie details to master it." : "📖 Keep studying and re-watching the film to improve!";
+
+            banner.innerHTML = `
+                <div class="card" style="background: linear-gradient(135deg, var(--primary-light), var(--bg-card)); border: 2px solid var(--primary-emerald); text-align: center;">
+                    <h3>📊 Quiz Results Summary</h3>
+                    <p style="font-size: 1.4rem; font-weight: 700; color: var(--primary-emerald); margin: 0.5rem 0;">Score: ${score} / ${total} (${percentage}%)</p>
+                    <p style="color: var(--text-muted);">${performanceMsg}</p>
+                </div>
+            `;
+            banner.scrollIntoView({ behavior: 'smooth' });
         }
 
         // Timeline
