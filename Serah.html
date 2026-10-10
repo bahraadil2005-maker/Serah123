@@ -144,7 +144,7 @@
             <button class="tab-btn" onclick="switchTab('lesson')">Lessons</button>
             <button class="tab-btn" onclick="switchTab('arjuzah')">الأرجوزة السنية & Film Quiz</button>
             <button class="tab-btn" onclick="switchTab('timeline')">Deep Timeline</button>
-            <button class="tab-btn" onclick="switchTab('people')">Important People</button>
+            <button class="tab-btn" onclick="switchTab('people')">Important People & Film</button>
             <button class="tab-btn" onclick="switchTab('notes')">My Notes & Revision</button>
         </nav>
     </header>
@@ -309,7 +309,8 @@
 
         <!-- 6. IMPORTANT PEOPLE PAGE -->
         <section id="people" class="page">
-            <h2>Important Figures in the Seerah</h2>
+            <h2>Important Figures in the Seerah & Al-Resalah Film Mentions</h2>
+            <p style="color: var(--text-muted); margin-bottom: 1rem;">کەسایەتییە دیارەکانی ناو سیرەی پێغەمبەر ﷺ و بەشداری و ناوهێنانیان لە فیلمی الرسالة:</p>
             <div class="level-grid" id="peopleGrid" style="margin-top: 1rem;"></div>
         </section>
 
@@ -418,11 +419,42 @@
                 { year: "632 CE", title: "Farewell Hajj & Death", desc: "The Farewell Sermon and the passing away of the Prophet ﷺ." }
             ],
             people: [
-                { name: "Khadijah bint Khuwaylid (رَضِيَ ٱللَّٰهُ عَنْهَا)", role: "First Wife & First Believer", desc: "Supported the Prophet ﷺ emotionally and financially at the onset of Islam." },
-                { name: "Abu Bakr Al-Siddiq (رَضِيَ ٱللَّٰهُ عَنْهُ)", role: "Best Friend & First Caliph", desc: "The first adult male to accept Islam and loyal companion during Hijrah." },
-                { name: "Abu Talib", role: "Uncle & Protector", desc: "Protected the Prophet ﷺ from Quraish spite despite not embracing Islam." },
-                { name: "Ali ibn Abi Talib (رَضِيَ ٱللَّٰهُ عَنْهُ)", role: "Cousin & Son-in-law", desc: "Slept in the Prophet's bed during Hijrah to deceive Quraish." },
-                { name: "Aisha bint Abu Bakr (رَضِيَ ٱللَّٰهُ عَنْهَا)", role: "Wife & Scholar", desc: "Narrated thousands of ahadith, preserving the sunnah and daily life of the Prophet." }
+                { 
+                    name: "Khadijah bint Khuwaylid (رَضِيَ ٱللَّٰهُ عَنْهَا)", 
+                    role: "First Wife & First Believer", 
+                    desc: "Supported the Prophet ﷺ emotionally and financially at the onset of Islam.",
+                    filmMention: "🎬 لە فیلمی الرسالةدا: ڕۆڵی گەورەی هەیە لە پاڵپشتیکردنی پێغەمبەر ﷺ لە سەرەتای نیگا و بڵاوکردنەوەی بانگەواز لە مەککەدا." 
+                },
+                { 
+                    name: "Abu Bakr Al-Siddiq (رَضِيَ ٱللَّٰهُ عَنْهُ)", 
+                    role: "Best Friend & First Caliph", 
+                    desc: "The first adult male to accept Islam and loyal companion during Hijrah.",
+                    filmMention: "🎬 لە فیلمی الرسالةدا: وەک هاوڕێی نزیک و یاوەری پێغەمبەر ﷺ لە کۆچکردن بۆ مەدینە (هجرت) و کڕینی بلال بە دیمەنی کاریگەر دەردەکەوێت." 
+                },
+                { 
+                    name: "Hamza ibn Abdul-Muttalib (رَضِيَ ٱللَّٰهُ عَنْهُ)", 
+                    role: "Uncle & Lion of Allah", 
+                    desc: "Fierce defender of Islam who embraced faith to protect his nephew.",
+                    filmMention: "🎬 لە فیلمی الرسالةدا: دیمەنی ئیسلامهێنانی حەمزە و بەرگریکردنی لە پێغەمبەر ﷺ بەرامبەر ئەبو جهل یەکێکە لە دیارترین دیمەنەکانی فیلمەکە." 
+                },
+                { 
+                    name: "Bilal ibn Rabah (رَضِيَ ٱللَّٰهُ عَنْهُ)", 
+                    role: "The First Mu'adhdhin", 
+                    desc: "Endured severe torture for his faith and became the voice of Islam.",
+                    filmMention: "🎬 لە فیلمی الرسالةدا: چیرۆکی ئازاردانی لەژێر خۆری گەرمی مەکە و دواتر بانگدانی لەسەر کەبە بە دەنگی بەرز لە کۆتایی فیلمەکەدا زۆر بەرچاوە." 
+                },
+                { 
+                    name: "Ali ibn Abi Talib (رَضِيَ ٱللَّٰهُ عَنْهُ)", 
+                    role: "Cousin & Son-in-law", 
+                    desc: "Slept in the Prophet's bed during Hijrah to deceive Quraish.",
+                    filmMention: "🎬 لە فیلمی الرسالةدا: لە سەرەتای هجرتدا لە جێگەی پێغەمبەردا دەخەوێت بۆ چەواشەکردنی سیخوڕەکانی قورەیش." 
+                },
+                { 
+                    name: "Abu Jahl (Amr ibn Hisham)", 
+                    role: "Enemy of Islam", 
+                    desc: "Leader of the opposition against Muslims in Makkah.",
+                    filmMention: "🎬 لە فیلمی الرسالةدا: وەک سەرەکیترین دوژمن و سەرکردەی ستەمکاری قورەیش کە دژایەتی توندی بانگەوازی دەکرد ڕۆڵی دەبینرێت." 
+                }
             ],
             arjuzahQuizzes: {
                 ckb: {
@@ -713,7 +745,7 @@
             `).join('');
         }
 
-        // People
+        // People & Film Mentions
         function renderPeople() {
             const grid = document.getElementById('peopleGrid');
             if (!grid) return;
@@ -722,6 +754,7 @@
                     <h3>${p.name}</h3>
                     <span class="badge" style="background: var(--gold-light); color: var(--gold-accent); display:inline-block; margin: 0.4rem 0;">${p.role}</span>
                     <p style="color: var(--text-muted); margin-top: 0.3rem;">${p.desc}</p>
+                    <p style="margin-top: 0.6rem; font-size: 0.9rem; background: var(--bg-primary); padding: 0.6rem; border-radius: 6px;">${p.filmMention}</p>
                 </div>
             `).join('');
         }
