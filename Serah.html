@@ -141,11 +141,11 @@
         </div>
         <nav class="tabs-nav">
             <button class="tab-btn active" onclick="switchTab('home')">Home</button>
-            <button class="tab-btn" onclick="switchTab('roadmap')">Learning Roadmap</button>
-            <button class="tab-btn" onclick="switchTab('lesson')">Lessons</button>
-            <button class="tab-btn" onclick="switchTab('arjuzah')">الأرجوزة السنية & Film Quiz</button>
+            <button class="tab-btn" onclick="switchTab('roadmap')">3-Tier Learning Roadmap</button>
+            <button class="tab-btn" onclick="switchTab('lesson')">Lessons & References</button>
+            <button class="tab-btn" onclick="switchTab('arjuzah')">Al-Resalah Film Quiz</button>
             <button class="tab-btn" onclick="switchTab('timeline')">Deep Timeline</button>
-            <button class="tab-btn" onclick="switchTab('people')">Important People & Film</button>
+            <button class="tab-btn" onclick="switchTab('people')">Important People</button>
             <button class="tab-btn" onclick="switchTab('notes')">My Notes & Revision</button>
         </nav>
     </header>
@@ -157,11 +157,11 @@
             <div class="card" style="background: linear-gradient(135deg, var(--primary-light), var(--bg-card));">
                 <h2>Welcome to Seerah Academy</h2>
                 <p style="margin-top: 0.5rem; color: var(--text-muted);">
-                    <strong>Seerah (سيرة)</strong> refers to the comprehensive study of the life, character, and teachings of Prophet Muhammad ﷺ.
+                    Explore authentic historical milestones from classical reference books like <strong>الرحيق المختوم (Al-Raheeq Al-Makhtum)</strong> and <strong>سيرة ابن هشام (Ibn Hisham)</strong> with embedded Quranic context.
                 </p>
                 <div style="margin-top: 1.5rem;">
-                    <button class="btn btn-primary" onclick="switchTab('roadmap')">Start Learning Journey →</button>
-                    <button class="btn btn-secondary" onclick="switchTab('lesson')" style="margin-left: 0.5rem;">Continue Last Lesson</button>
+                    <button class="btn btn-primary" onclick="switchTab('roadmap')">Explore 3-Tier Roadmap →</button>
+                    <button class="btn btn-secondary" onclick="switchTab('lesson')" style="margin-left: 0.5rem;">Start Lessons</button>
                 </div>
             </div>
 
@@ -174,10 +174,10 @@
             </div>
         </section>
 
-        <!-- 2. LEARNING ROADMAP PAGE -->
+        <!-- 2. 3-TIER ROADMAP PAGE -->
         <section id="roadmap" class="page">
-            <h2>Learning Roadmap</h2>
-            <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Step-by-step learning path.</p>
+            <h2>3-Tier Proficiency Learning Roadmap</h2>
+            <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Choose your learning level based on depth and complexity:</p>
             <div class="level-grid" id="roadmapGrid"></div>
         </section>
 
@@ -212,26 +212,23 @@
             </div>
         </section>
 
-        <!-- 4. AL-RISALAH FILM & TIMED 5-CHAPTER QUIZ PAGE -->
+        <!-- 4. AL-RISALAH FILM & 5-CHAPTER QUIZ PAGE -->
         <section id="arjuzah" class="page">
-            <h2>الأرجوزة السنية & Al-Resalah Film 5-Chapter Quiz</h2>
-            <p style="color: var(--text-muted); margin-bottom: 1rem;">تەماشای فیلمی «الرسالة» بکە لەگەڵ هاوڕێکانت و هەر کاتێک هەر بەشێک تەواو بوو، کاتی خۆت هەڵبژێرە بۆ تاقیکردنەوە!</p>
+            <h2>Al-Resalah Film 5-Chapter Quiz & References</h2>
+            <p style="color: var(--text-muted); margin-bottom: 1rem;">تەماشای فیلمی «الرسالة» بکە و بە پێی بەشەکان کویزەکان ئەنجام بدە!</p>
 
-            <!-- Clickable Lightweight Film Link Card -->
             <a href="https://www.youtube.com/watch?v=9niQMEUQSf8" target="_blank" class="film-poster-card">
                 <div>
                     <span class="badge" style="background: var(--gold-light); color: var(--gold-accent);">Clickable Film Link</span>
                     <h3 style="margin-top: 0.4rem;">🎥 فیلمی الرسالة (The Message) - Full Movie</h3>
-                    <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 0.2rem;">کلیک بکە بۆ تەماشاکردنی فیلمەکە لە یوتیوب لەگەڵ هاوڕێکانت</p>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 0.2rem;">کلیک بکە بۆ تەماشاکردنی فیلمەکە لە یوتیوب</p>
                 </div>
                 <span class="btn btn-primary" style="white-space: nowrap;">▶ Play on YouTube</span>
             </a>
 
             <div class="card" style="border-top: 4px solid var(--primary-emerald);">
                 <h3>⏱️ هەڵبژاردنی بەشی کاتی فیلم بۆ کویز (Choose Film Chapter/Timestamp)</h3>
-                <p style="color: var(--text-muted); margin-bottom: 1rem;">زمان و ئەو بەشەی فیلمەکە هەڵبژێرە کە تەماشات کردووە تا کویزەکەی لەسەر بکەیت:</p>
-                
-                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; margin-top: 0.8rem;">
                     <div>
                         <label><b>زمان / Language:</b></label><br>
                         <select id="arjQuizLang" class="select-control" style="margin-top:0.3rem;">
@@ -257,22 +254,6 @@
             </div>
 
             <div id="arjuzahQuizContainer" class="card" style="display:none;"></div>
-
-            <div class="card">
-                <h3>📜 دەقی تەواوی (الأرجوزة السنية في ذكر سيرة خير البرية)</h3>
-                <div class="arabic" style="line-height: 2.2; margin-top: 1rem; max-height: 400px; overflow-y: auto; padding-right: 1rem; background: var(--bg-primary); padding: 1rem; border-radius: 8px;">
-                    1. الْحَمْدُ لِلَّهِ الَّذِي هَدَانَا ... لِدِينِهِ الْقَوِيمِ وَاجْتَبَانَا<br>
-                    2. ثُمَّ الصَّلَاةُ وَالسَّلَامُ السَّارِي ... عَلَى الرَّسُولِ الْمُصْطَفَى الْمُخْتَارِ<br>
-                    3. وَآلِهِ وَصَحْبِهِ الأَبْرَارِ ... مَا غَرَّدَ الْقُمْرِيُّ فِي الأَسْحَارِ<br>
-                    4. وَبَعْدُ فَاعْلَمْ أَنَّ خَيْرَ السِّيرَةِ ... سِيرَةُ بَدْرِ الأُمَّةِ الْمُنِيرَةِ<br>
-                    5. مَوْلِدُهُ فِي عَامِ فِيلٍ قَدْ أَتَى ... فِي شَهْرِ رَبِيعٍ الأَوَّلِ يَا فَتَى<br>
-                    6. وَمَاتَ عَبْدُ اللَّهِ قَبْلَ وِلاَدَتِهْ ... وَأُمُّهُ كَرِيمَةٌ فِي شِينَتِهْ<br>
-                    7. وَأَرْضَعَتْهُ سَعْدِيَّةُ حَلِيمَة ... فَبُورِكَتْ بِقُرْبِهِ الْكَرِيمَة<br>
-                    8. وَشُقَّ صَدْرُ الْمُصْطَفَى صَغِيرَا ... وَعَادَ لِلأُمِّ نَقِيًّا بَارَّا<br>
-                    9. وَمَاتَتِ الأُمُّ وَلَهُ سِتُّ سِنِينْ ... وَكَفَلَهُ الْجَدُّ الرَّحِيمُ فِي الْمَكِينْ<br>
-                    10. ثُمَّ جَدُّهُ ابْنُ عَبْدِ الْمُطَّلِبْ ... تُوُفِّيَ وَكَفَلَهُ ثُمَّ النَّصَبْ<br>
-                </div>
-            </div>
         </section>
 
         <!-- 5. ULTRA DEEP TIMELINE PAGE -->
@@ -284,8 +265,8 @@
 
         <!-- 6. IMPORTANT PEOPLE PAGE -->
         <section id="people" class="page">
-            <h2>Important Figures in the Seerah & Al-Resalah Film Mentions</h2>
-            <p style="color: var(--text-muted); margin-bottom: 1rem;">کەسایەتییە دیارەکانی ناو سیرەی پێغەمبەر ﷺ. <b>کلیک لەسەر هەر کەسێک بکە</b> بۆ زانیاری تەواو لەسەر شوێنی ژیان و هۆکاری ناوبانگیان لە ئیسلامدا:</p>
+            <h2>Important Figures in the Seerah</h2>
+            <p style="color: var(--text-muted); margin-bottom: 1rem;">کەسایەتییە دیارەکانی ناو سیرەی پێغەمبەر ﷺ. <b>کلیک لەسەر هەر کەسێک بکە</b>:</p>
             <div class="level-grid" id="peopleGrid" style="margin-top: 1rem;"></div>
         </section>
 
@@ -319,48 +300,95 @@
     <!-- JavaScript Application Logic -->
     <script>
         const seerahData = {
-            levels: [
-                { id: 1, name: "Level 1: Seerah Fundamentals", desc: "Understanding the importance and methodology." },
-                { id: 2, name: "Level 2: Before Prophethood", desc: "Arabian Peninsula prior to Islam, lineage, birth." },
-                { id: 3, name: "Level 3: Early Makkah", desc: "First revelation and public invitation." },
-                { id: 4, name: "Level 4: Persecution & Migration", desc: "Hardships, Abyssinia, Isra & Mi'raj, Hijrah." },
-                { id: 5, name: "Level 5: Madinah", desc: "Establishment of the first Muslim community." },
-                { id: 6, name: "Level 6: Major Battles & Treaties", desc: "Badr, Uhud, Khandaq, Hudaybiyyah." },
-                { id: 7, name: "Level 7: Conquest of Makkah", desc: "Events leading to victory." },
-                { id: 8, name: "Level 8: Farewell Hajj & Final Days", desc: "The Farewell Sermon and passing." }
+            tiers: [
+                { 
+                    id: "beginner", 
+                    name: "Tier 1: Beginner (سەرەتایی)", 
+                    desc: "Focuses on lineage, the Arabian Peninsula context, birth of the Prophet ﷺ, and early life events referenced in Ibn Hisham.",
+                    lessonId: 101
+                },
+                { 
+                    id: "intermediate", 
+                    name: "Tier 2: Intermediate (ناوەند)", 
+                    desc: "Covers the first revelation in Cave Hira, secret and public invitation, persecution in Makkah, and migration to Abyssinia.",
+                    lessonId: 102
+                },
+                { 
+                    id: "advanced", 
+                    name: "Tier 3: Advanced (پێشکەوتوو)", 
+                    desc: "Deep analysis of strategic military campaigns (Badr & Uhud), the Treaty of Hudaybiyyah, and the Conquest of Makkah based on Al-Raheeq Al-Makhtum.",
+                    lessonId: 103
+                }
             ],
             lessons: [
                 {
                     id: 101,
-                    levelId: 1,
-                    title: "Lesson 1: What is the Seerah and Why Study It?",
-                    simpleExplanation: "The word 'Seerah' means a path or biography. Studying the Seerah means learning how Prophet Muhammad ﷺ lived his life as a leader, teacher, and servant of Allah.",
-                    dates: "Ongoing foundation",
-                    quranRef: "Say, [O Muhammad], 'If you should love Allah, then follow me...'",
-                    hadithRef: "Sahih Bukhari #15: 'None of you has faith until I am more beloved to him...'",
-                    authenticity: "Authentic",
+                    tier: "beginner",
+                    title: "Lesson 1: The Noble Lineage & Year of the Elephant (عام الفيل)",
+                    simpleExplanation: "According to classical sources like Ibn Hisham, the Prophet Muhammad ﷺ was born into the noble clan of Banu Hashim within the tribe of Quraish. His birth occurred in 570 CE, known as the Year of the Elephant, when Abraha attempted to destroy the Ka'bah.",
+                    quranRef: "Surah Al-Fil (105:1-5): 'Did you not see how your Lord dealt with the companions of the elephant?'",
+                    hadithRef: "Sahih Muslim: 'I am Muhammad, the son of Abdullah, the son of Abdul-Muttalib...'",
+                    famousBookRef: "Source Reference: سيرة ابن هشام (Ibn Hisham's Seerah) - Chapter on Noble Ancestry.",
                     quiz: {
-                        question: "What does the word 'Seerah' literally mean?",
-                        options: ["A legal ruling", "A journey or path/biography", "A battle strategy", "A poetry collection"],
-                        correct: 1,
-                        explanation: "Seerah literally means a path or trajectory."
+                        question: "In which year did the event of the Elephant (عام الفيل) take place in Makkah?",
+                        options: ["570 CE", "610 CE", "622 CE", "632 CE"],
+                        correct: 0,
+                        explanation: "The Year of the Elephant corresponds to 570 CE, the year of the Prophet's birth."
                     },
                     teacherMode: {
-                        keyPoints: ["Define Seerah clearly", "Explain that love stems from knowing him"],
-                        childVer: "Seerah is telling the wonderful true story of Allah's final messenger.",
-                        summary: "Seerah translates Islamic principles into practical action."
+                        keyPoints: ["Explain the geopolitical context of pre-Islamic Arabia", "Highlight Surah Al-Fil as a divine protection of the Ka'bah"],
+                        childVer: "Allah protected His sacred House from Abraha's army with flocks of birds.",
+                        summary: "Establishes the historical foundation and divine protection surrounding the Prophet's birth."
+                    }
+                },
+                {
+                    id: 102,
+                    tier: "intermediate",
+                    title: "Lesson 2: First Revelation in Cave Hira & Early Persecution",
+                    simpleExplanation: "At the age of 40, while meditating in Cave Hira, Angel Jibril brought the very first revelation of the Quran (Surah Al-Alaq). This marked the transition from pre-Islamic ignorance to divine guidance. As Islam spread publicly, early believers faced severe opposition from Quraish leaders.",
+                    quranRef: "Surah Al-Alaq (96:1-5): 'Recite in the name of your Lord who created...'",
+                    hadithRef: "Sahih Bukhari #3: The detailed narration of the first revelation and Khadijah's comforting words.",
+                    famousBookRef: "Source Reference: الرحيق المختوم (Al-Raheeq Al-Makhtum by Safi-ur-Rahman al-Mubarakpuri) - Chapter on First Revelation.",
+                    quiz: {
+                        question: "Which Surah and verses were revealed first to Prophet Muhammad ﷺ in Cave Hira?",
+                        options: ["Surah Al-Fatihah (1-7)", "Surah Al-Alaq (1-5)", "Surah Al-Muzzammil (1-4)", "Surah Al-Mudaththir (1-3)"],
+                        correct: 1,
+                        explanation: "The first five verses of Surah Al-Alaq were the initial revelation."
+                    },
+                    teacherMode: {
+                        keyPoints: ["Discuss the psychological weight of the first revelation", "Explain the supportive role of Khadijah (RA)"],
+                        childVer: "Jibril visited the Prophet in the cave and commanded him to read in Allah's name.",
+                        summary: "Details the commencement of prophethood and the beginning of patience under persecution."
+                    }
+                },
+                {
+                    id: 103,
+                    tier: "advanced",
+                    title: "Lesson 3: Strategic Lessons from the Battle of Badr & Uhud",
+                    simpleExplanation: "Analyzed thoroughly in Al-Raheeq Al-Makhtum, the Battle of Badr (2 AH) established the Muslim community as a recognized sovereign force despite being heavily outnumbered. The subsequent Battle of Uhud tested discipline, obedience to leadership, and perseverance through trial.",
+                    quranRef: "Surah Ali 'Imran (3:123): 'And already had Allah given you victory at Badr when you were weak...'",
+                    hadithRef: "Sahih Bukhari: Narratives concerning the angelic assistance at Badr and the lessons of Uhud.",
+                    famousBookRef: "Source Reference: الرحيق المختوم (Al-Raheeq Al-Makhtum) - Military Campaigns Analysis.",
+                    quiz: {
+                        question: "In which Hijri year did the pivotal Battle of Badr take place?",
+                        options: ["1 AH", "2 AH", "5 AH", "8 AH"],
+                        correct: 1,
+                        explanation: "The Battle of Badr occurred in the month of Ramadan, 2 AH."
+                    },
+                    teacherMode: {
+                        keyPoints: ["Examine military strategy, command structure, and divine intervention", "Analyze why discipline on the mountain at Uhud was crucial"],
+                        childVer: "Badr taught us that true strength comes from trust in Allah and unity.",
+                        summary: "Provides advanced tactical and spiritual insights into early Islamic statehood and warfare."
                     }
                 }
             ],
             timeline: [
-                { year: "570 CE", title: "Year of the Elephant & Birth", desc: "Birth of Prophet Muhammad ﷺ in Makkah; death of his father Abdullah before his birth." },
+                { year: "570 CE", title: "Year of the Elephant & Birth", desc: "Birth of Prophet Muhammad ﷺ in Makkah; death of his father Abdullah before birth." },
                 { year: "610 CE", title: "The First Revelation (First Wahy)", desc: "Angel Jibril visits Prophet Muhammad ﷺ in Cave Hira with Surah Al-Alaq." },
                 { year: "615 CE", title: "Migration to Abyssinia (Habashah)", desc: "Early Muslims migrate to escape severe persecution by Quraish." },
-                { year: "620 CE", title: "Isra and Mi'raj (Night Journey)", desc: "The miraculous journey from Makkah to Jerusalem and ascending to the Heavens." },
-                { year: "622 CE", title: "The Great Hijrah to Madinah", desc: "Migration to Yathrib (Madinah), marking Year 1 of the Islamic Hijri Calendar." },
-                { year: "624 CE", title: "The Great Battle of Badr", desc: "First major military victory for Muslims against Quraish forces." },
-                { year: "630 CE", title: "Conquest of Makkah (Fath Makkah)", desc: "Peaceful victory and cleansing of idols from the Ka'bah." },
-                { year: "632 CE", title: "Farewell Hajj & Death", desc: "The Farewell Sermon and the passing away of the Prophet ﷺ." }
+                { year: "622 CE", title: "The Great Hijrah to Madinah", desc: "Migration to Yathrib, marking Year 1 of the Islamic Hijri Calendar." },
+                { year: "624 CE", title: "The Great Battle of Badr", desc: "First major military victory for Muslims against Quraish forces (2 AH)." },
+                { year: "630 CE", title: "Conquest of Makkah (Fath Makkah)", desc: "Peaceful victory and general amnesty declared ('اذهبوا فأنتم الطلقاء')." }
             ],
             people: [
                 { 
@@ -368,54 +396,27 @@
                     name: "Khadijah bint Khuwaylid (رَضِيَ ٱللَّٰهُ عَنْهَا)", 
                     role: "First Wife & First Believer", 
                     lived: "مەککە (Makkah)",
-                    famousWhy: "یەکەم کەس بوو کە باوەڕی بە پەیامبەری هێنا و تەواوی سامان و پشتیوانی دەروونی خۆی بەخشە بە ئیسلام لە سەردەمە سختە سەرەتاییەکاندا.",
+                    famousWhy: "یەکەم کەس بوو کە باوەڕی بە پەیامبەری هێنا و تەواوی سامان و پشتیوانی خۆی بەخشە.",
                     desc: "Supported the Prophet ﷺ emotionally and financially at the onset of Islam.",
-                    filmMention: "🎬 لە فیلمی الرسالةدا: ڕۆڵی گەورەی هەیە لە پاڵپشتیکردنی پێغەمبەر ﷺ لە سەرەتای نیگا و بڵاوکردنەوەی بانگەواز لە مەککەدا." 
+                    filmMention: "🎬 لە فیلمی الرسالةدا: ڕۆڵی گەورەی هەیە لە پاڵپشتیکردنی پێغەمبەر ﷺ لە سەرەتای نیگا." 
                 },
                 { 
                     id: "abubakr",
                     name: "Abu Bakr Al-Siddiq (رَضِيَ ٱللَّٰهُ عَنْهُ)", 
                     role: "Best Friend & First Caliph", 
-                    lived: "مەککە و پاشان مدینە (Makkah & Madinah)",
-                    famousWhy: "یەکەم پیاوی پێگەیشتوو بوو کە ئیسلام بوو، هەروەها یاوەری پێغەمبەر ﷺ بوو لە غاری سەور لە کاتی هجرتدا و بوو بە یەکەم خەلیفەی ئیسلام.",
+                    lived: "مەککە و مدینە (Makkah & Madinah)",
+                    famousWhy: "یەکەم پیاوی پێگەیشتوو بوو کە ئیسلام بوو، هەروەها یاوەری پێغەمبەر ﷺ بوو لە غاری سەور.",
                     desc: "The first adult male to accept Islam and loyal companion during Hijrah.",
-                    filmMention: "🎬 لە فیلمی الرسالةدا: وەک هاوڕێی نزیک و یاوەری پێغەمبەر ﷺ لە کۆچکردن بۆ مەدینە و کڕینی بلال دەردەکەوێت." 
+                    filmMention: "🎬 لە فیلمی الرسالةدا: وەک هاوڕێی نزیک و یاوەری پێغەمبەر ﷺ دەردەکەوێت." 
                 },
                 { 
                     id: "hamza",
                     name: "Hamza ibn Abdul-Muttalib (رَضِيَ ٱللَّٰهُ عَنْهُ)", 
                     role: "Uncle & Lion of Allah", 
                     lived: "مەککە (Makkah)",
-                    famousWhy: "بە شێری خودا و پێغەمبەر ناسرابوو، بە بوێری بەرگری لە بانگەوازی ئیسلام کرد لە بەرامبەر سەرکردەکانی قورەیشدا.",
+                    famousWhy: "بە شێری خودا و پێغەمبەر ناسرابوو، بە بوێری بەرگری لە بانگەوازی ئیسلام کرد.",
                     desc: "Fierce defender of Islam who embraced faith to protect his nephew.",
-                    filmMention: "🎬 لە فیلمی الرسالةدا: دیمەنی ئیسلامهێنانی حەمزە و بەرگریکردنی لە پێغەمبەر ﷺ بەرامبەر ئەبو جهل یەکێکە لە دیارترین دیمەنەکانی فیلمەکە." 
-                },
-                { 
-                    id: "bilal",
-                    name: "Bilal ibn Rabah (رَضِيَ ٱللَّٰهُ عَنْهُ)", 
-                    role: "The First Mu'adhdhin", 
-                    lived: "مەککە و مدینە (Makkah & Madinah)",
-                    famousWhy: "نموونەی باڵای خۆڕاگری بوو بەرامبەر ئەشکەنجە لە مەککەدا، و بوو بە یەکەم بانگبێژی ئیسلام کە بانگی لەسەر کەبە گوت.",
-                    desc: "Endured severe torture for his faith and became the voice of Islam.",
-                    filmMention: "🎬 لە فیلمی الرسالةدا: چیرۆکی ئازاردانی لەژێر خۆری گەرمی مەکە و دواتر بانگدانی لەسەر کەبە بە دەنگی بەرز زۆر بەرچاوە." 
-                },
-                { 
-                    id: "ali",
-                    name: "Ali ibn Abi Talib (رَضِيَ ٱللَّٰهُ عَنْهُ)", 
-                    role: "Cousin & Son-in-law", 
-                    lived: "مەککە و مدینە (Makkah & Madinah)",
-                    famousWhy: "یەکەم منداڵ بوو کە ئیسلام بوو، و لە شەوە گرنگەکەی هجرتدا لە جێگەی پێغەمبەردا خەوت بۆ پاراستنی.",
-                    desc: "Slept in the Prophet's bed during Hijrah to deceive Quraish.",
-                    filmMention: "🎬 لە فیلمی الرسالةدا: لە سەرەتای هجرتدا لە جێگەی پێغەمبەردا دەخەوێت بۆ چەواشەکردنی سیخوڕەکانی قورەیش." 
-                },
-                { 
-                    id: "abujahl",
-                    name: "Abu Jahl (Amr ibn Hisham)", 
-                    role: "Enemy of Islam", 
-                    lived: "مەککە (Makkah)",
-                    famousWhy: "سەرکردەی سەرەکی دژایەتیکردنی ئیسلام و ستەمکارترین کەس بوو بەرامبەر موسڵمانانی سەرەتای مەککە.",
-                    desc: "Leader of the opposition against Muslims in Makkah.",
-                    filmMention: "🎬 لە فیلمی الرسالةدا: وەک سەرەکیترین دوژمن و سەرکردەی ستەمکاری قورەیش ڕۆڵی دەبینرێت." 
+                    filmMention: "🎬 لە فیلمی الرسالةدا: دیمەنی ئیسلامهێنانی حەمزە یەکێکە لە دیارترین دیمەنەکان." 
                 }
             ],
             arjuzahQuizzes: {
@@ -525,13 +526,18 @@
 
         function renderRoadmap() {
             const container = document.getElementById('roadmapGrid');
-            container.innerHTML = seerahData.levels.map(l => `
+            container.innerHTML = seerahData.tiers.map(t => `
                 <div class="card level-card">
-                    <h4>${l.name}</h4>
-                    <p style="color: var(--text-muted); margin: 0.5rem 0 1rem 0;">${l.desc}</p>
-                    <button class="btn btn-primary" onclick="switchTab('lesson')">View Lesson →</button>
+                    <h4>${t.name}</h4>
+                    <p style="color: var(--text-muted); margin: 0.5rem 0 1rem 0;">${t.desc}</p>
+                    <button class="btn btn-primary" onclick="loadLessonByTier(${t.lessonId})">Start Tier Lesson →</button>
                 </div>
             `).join('');
+        }
+
+        function loadLessonByTier(lessonId) {
+            currentLessonId = lessonId;
+            switchTab('lesson');
         }
 
         function renderLesson(id) {
@@ -541,12 +547,13 @@
             const container = document.getElementById('lessonContentContainer');
             if (lessonMode === 'student') {
                 container.innerHTML = `
-                    <span class="badge" style="background: var(--primary-light); color: var(--primary-emerald);">Level 1 Lesson</span>
+                    <span class="badge" style="background: var(--primary-light); color: var(--primary-emerald);">Tier: ${l.tier.toUpperCase()}</span>
                     <h2 style="margin-top: 0.5rem;">${l.title}</h2>
-                    <p style="margin: 1rem 0; font-size: 1.05rem;">${l.simpleExplanation}</p>
+                    <p style="margin: 1rem 0; font-size: 1.05rem; line-height: 1.8;">${l.simpleExplanation}</p>
                     <div style="background: var(--bg-primary); padding: 1rem; border-radius: 8px; margin-top: 1rem;">
-                        <p><strong>📖 Quranic Ref:</strong> ${l.quranRef}</p>
-                        <p style="margin-top: 0.5rem;"><strong>⚡ Hadith Ref:</strong> ${l.hadithRef}</p>
+                        <p><strong>📖 Quranic Context:</strong> ${l.quranRef}</p>
+                        <p style="margin-top: 0.5rem;"><strong>⚡ Hadith Reference:</strong> ${l.hadithRef}</p>
+                        <p style="margin-top: 0.5rem; color: var(--gold-accent);"><strong>📚 Classical Book Reference:</strong> ${l.famousBookRef}</p>
                     </div>
                 `;
             } else {
