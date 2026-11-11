@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seerah Academy | Interactive Learning Platform</title>
+    <title>DriveSync Academy | Google Drive & Cloud Collaboration Platform</title>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-primary: #f8fafc;
             --bg-card: #ffffff;
             --text-main: #0f172a;
             --text-muted: #475569;
-            --primary-emerald: #065f46;
-            --primary-light: #d1fae5;
-            --primary-hover: #047857;
-            --gold-accent: #d97706;
-            --gold-light: #fef3c7;
+            --primary-emerald: #1a73e8; /* Google Blue */
+            --primary-light: #e8f0fe;
+            --primary-hover: #1557b0;
+            --gold-accent: #fbbc04; /* Google Yellow */
+            --gold-light: #fef7e0;
             --border-color: #e2e8f0;
             --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
             --radius: 12px;
@@ -27,18 +27,17 @@
             --bg-card: #1e293b;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
-            --primary-emerald: #10b981;
-            --primary-light: #064e3b;
-            --primary-hover: #34d399;
-            --gold-accent: #fbbf24;
-            --gold-light: #78350f;
+            --primary-emerald: #4285f4;
+            --primary-light: #172b4d;
+            --primary-hover: #669df6;
+            --gold-accent: #fbbc04;
+            --gold-light: #4c3b0f;
             --border-color: #334155;
             --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
         body { background-color: var(--bg-primary); color: var(--text-main); transition: background-color 0.3s, color 0.3s; line-height: 1.6; }
-        .arabic { font-family: 'Amiri', serif; font-size: 1.25rem; direction: rtl; }
 
         /* Header Navigation */
         header { background-color: var(--bg-card); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 100; }
@@ -132,7 +131,7 @@
     <header>
         <div class="nav-container">
             <a href="#" class="logo" onclick="switchTab('home')">
-                <span>🕌</span> Seerah Academy
+                <span>📁</span> DriveSync Academy
             </a>
             <div class="controls">
                 <input type="text" id="searchInput" class="search-box" placeholder="Search lessons..." onkeyup="handleSearch()">
@@ -143,9 +142,9 @@
             <button class="tab-btn active" onclick="switchTab('home')">Home</button>
             <button class="tab-btn" onclick="switchTab('roadmap')">3-Tier Learning Roadmap</button>
             <button class="tab-btn" onclick="switchTab('lesson')">Lessons & References</button>
-            <button class="tab-btn" onclick="switchTab('arjuzah')">Al-Resalah Film Quiz</button>
+            <button class="tab-btn" onclick="switchTab('arjuzah')">Google Drive Video Tutorial</button>
             <button class="tab-btn" onclick="switchTab('timeline')">Deep Timeline</button>
-            <button class="tab-btn" onclick="switchTab('people')">Important People</button>
+            <button class="tab-btn" onclick="switchTab('people')">Key Cloud Concepts</button>
             <button class="tab-btn" onclick="switchTab('notes')">My Notes & Revision</button>
         </nav>
     </header>
@@ -155,9 +154,9 @@
         <!-- 1. HOME PAGE -->
         <section id="home" class="page active">
             <div class="card" style="background: linear-gradient(135deg, var(--primary-light), var(--bg-card));">
-                <h2>Welcome to Seerah Academy</h2>
+                <h2>Welcome to DriveSync Academy</h2>
                 <p style="margin-top: 0.5rem; color: var(--text-muted);">
-                    Explore authentic historical milestones from classical reference books like <strong>الرحيق المختوم (Al-Raheeq Al-Makhtum)</strong> and <strong>سيرة ابن هشام (Ibn Hisham)</strong> with embedded Quranic context.
+                    Master cloud file storage, file sharing permissions, team collaboration, and workflow automation using <strong>Google Drive</strong> and Google Workspace tools.
                 </p>
                 <div style="margin-top: 1.5rem;">
                     <button class="btn btn-primary" onclick="switchTab('roadmap')">Explore 3-Tier Roadmap →</button>
@@ -212,22 +211,22 @@
             </div>
         </section>
 
-        <!-- 4. AL-RISALAH FILM & 5-CHAPTER QUIZ PAGE -->
+        <!-- 4. GOOGLE DRIVE VIDEO & 5-CHAPTER QUIZ PAGE -->
         <section id="arjuzah" class="page">
-            <h2>Al-Resalah Film 5-Chapter Quiz & References</h2>
-            <p style="color: var(--text-muted); margin-bottom: 1rem;">تەماشای فیلمی «الرسالة» بکە و بە پێی بەشەکان کویزەکان ئەنجام بدە!</p>
+            <h2>Google Drive Video Tutorial & 5-Chapter Quiz</h2>
+            <p style="color: var(--text-muted); margin-bottom: 1rem;">فێکاری و ڕاهێنانی بەکارهێنانی گووگڵ درایڤ و کویزەکان لەسەر هەر بەشێک!</p>
 
             <a href="https://www.youtube.com/watch?v=9niQMEUQSf8" target="_blank" class="film-poster-card">
                 <div>
-                    <span class="badge" style="background: var(--gold-light); color: var(--gold-accent);">Clickable Film Link</span>
-                    <h3 style="margin-top: 0.4rem;">🎥 فیلمی الرسالة (The Message) - Full Movie</h3>
-                    <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 0.2rem;">کلیک بکە بۆ تەماشاکردنی فیلمەکە لە یوتیوب</p>
+                    <span class="badge" style="background: var(--gold-light); color: var(--gold-accent);">Clickable Tutorial Link</span>
+                    <h3 style="margin-top: 0.4rem;">🎥 Google Drive Ultimate Masterclass - Full Tutorial</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 0.2rem;">کلیک بکە بۆ تەماشاکردنی فێرکارییەکە لە یوتیوب</p>
                 </div>
                 <span class="btn btn-primary" style="white-space: nowrap;">▶ Play on YouTube</span>
             </a>
 
             <div class="card" style="border-top: 4px solid var(--primary-emerald);">
-                <h3>⏱️ هەڵبژاردنی بەشی کاتی فیلم بۆ کویز (Choose Film Chapter/Timestamp)</h3>
+                <h3>⏱️ هەڵبژاردنی بەشی فێرکاری بۆ کویز (Choose Tutorial Chapter)</h3>
                 <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; margin-top: 0.8rem;">
                     <div>
                         <label><b>زمان / Language:</b></label><br>
@@ -239,13 +238,13 @@
                     </div>
 
                     <div>
-                        <label><b>بەشی کاتی فیلم (5 Chapters):</b></label><br>
+                        <label><b>بەشی فێرکاری (5 Chapters):</b></label><br>
                         <select id="arjQuizChapter" class="select-control" style="margin-top:0.3rem;">
-                            <option value="part1">بەشی 1: سەرەتا و عام الفيل (0:00 - 30:00)</option>
-                            <option value="part2">بەشی 2: سەرەتای بانگەواز و نیگا (30:00 - 1:00:00)</option>
-                            <option value="part3">بەشی 3: ئەشکەنجە، کۆچی حەبەشە و هجرت (1:00:00 - 1:30:00)</option>
-                            <option value="part4">بەشی 4: جەنگە گەورەکان (بەدر و أحد) (1:30:00 - 2:00:00)</option>
-                            <option value="part5">بەشی 5: فەتحی مەککە و کۆتایی فیلم (2:00:00 - کۆتایی)</option>
+                            <option value="part1">بەشی 1: دروستکردنی فۆڵدەر و بارکردنی فایل (Upload & Organization)</option>
+                            <option value="part2">بەشی 2: ڕێکخستنی دەسەڵات و هاوبەشکردن (Sharing & Permissions)</option>
+                            <option value="part3">بەشی 3: گەڕان و بەکارهێنانی فلتەرە پێشکەوتووەکان (Search & Filters)</option>
+                            <option value="part4">بەشی 4: هاوکاری ڕاستەوخۆ و مێژووی وەشان (Collaboration & Version History)</option>
+                            <option value="part5">بەشی 5: بەڕێوەبردنی بۆشایی بیرگە و پاشماوەکان (Storage & Trash Management)</option>
                         </select>
                     </div>
                 </div>
@@ -258,15 +257,15 @@
 
         <!-- 5. ULTRA DEEP TIMELINE PAGE -->
         <section id="timeline" class="page">
-            <h2>Comprehensive Ultra-Deep Seerah Chronology</h2>
-            <p style="color: var(--text-muted); margin-bottom: 1rem;">نەخشەیەکی مێژوویی شیکراوە بۆ تێگەیشتن لە ڕووداوە گرنگەکانی سیرە:</p>
+            <h2>Comprehensive Google Drive Evolution Timeline</h2>
+            <p style="color: var(--text-muted); margin-bottom: 1rem;">مێژووی پەرەسەندنی گووگڵ درایڤ و خزمەتگوزارییە هەورییەکان:</p>
             <div class="timeline" id="timelineContainer"></div>
         </section>
 
         <!-- 6. IMPORTANT PEOPLE PAGE -->
         <section id="people" class="page">
-            <h2>Important Figures in the Seerah</h2>
-            <p style="color: var(--text-muted); margin-bottom: 1rem;">کەسایەتییە دیارەکانی ناو سیرەی پێغەمبەر ﷺ. <b>کلیک لەسەر هەر کەسێک بکە</b>:</p>
+            <h2>Key Google Drive Concepts & Features</h2>
+            <p style="color: var(--text-muted); margin-bottom: 1rem;">بنەما و تایبەتمەندییە سەرەکییەکانی گووگڵ درایڤ. <b>کلیک لەسەر هەر یەکێک بکە</b>:</p>
             <div class="level-grid" id="peopleGrid" style="margin-top: 1rem;"></div>
         </section>
 
@@ -289,7 +288,7 @@
     <div id="personModal" class="modal-overlay">
         <div class="modal-card">
             <div class="modal-header">
-                <h3 id="modalPersonName" style="color: var(--primary-emerald);">Person Details</h3>
+                <h3 id="modalPersonName" style="color: var(--primary-emerald);">Concept Details</h3>
                 <button class="close-btn" onclick="closePersonModal()">✕</button>
             </div>
             <div id="modalPersonContent"></div>
@@ -304,19 +303,19 @@
                 { 
                     id: "beginner", 
                     name: "Tier 1: Beginner (سەرەتایی)", 
-                    desc: "Focuses on lineage, the Arabian Peninsula context, birth of the Prophet ﷺ, and early life events referenced in Ibn Hisham.",
+                    desc: "Learn how to create a Google account, upload files and folders, organize your dashboard, and access your data from mobile or web.",
                     lessonId: 101
                 },
                 { 
                     id: "intermediate", 
                     name: "Tier 2: Intermediate (ناوەند)", 
-                    desc: "Covers the first revelation in Cave Hira, secret and public invitation, persecution in Makkah, and migration to Abyssinia.",
+                    desc: "Master file sharing permissions (Viewer, Commenter, Editor), link generation, and real-time collaboration with colleagues.",
                     lessonId: 102
                 },
                 { 
                     id: "advanced", 
                     name: "Tier 3: Advanced (پێشکەوتوو)", 
-                    desc: "Deep analysis of strategic military campaigns (Badr & Uhud), the Treaty of Hudaybiyyah, and the Conquest of Makkah based on Al-Raheeq Al-Makhtum.",
+                    desc: "Explore Google Drive Shared Drives, advanced search operators, version history recovery, and storage space optimization.",
                     lessonId: 103
                 }
             ],
@@ -324,345 +323,473 @@
                 {
                     id: 101,
                     tier: "beginner",
-                    title: "Lesson 1: The Noble Lineage & Year of the Elephant (عام الفيل)",
-                    simpleExplanation: "According to classical sources like Ibn Hisham, the Prophet Muhammad ﷺ was born into the noble clan of Banu Hashim within the tribe of Quraish. His birth occurred in 570 CE, known as the Year of the Elephant, when Abraha attempted to destroy the Ka'bah.",
-                    quranRef: "Surah Al-Fil (105:1-5): 'Did you not see how your Lord dealt with the companions of the elephant?'",
-                    hadithRef: "Sahih Muslim: 'I am Muhammad, the son of Abdullah, the son of Abdul-Muttalib...'",
-                    famousBookRef: "Source Reference: سيرة ابن هشام (Ibn Hisham's Seerah) - Chapter on Noble Ancestry.",
+                    title: "Lesson 1: Introduction to Google Drive Interface & File Uploads",
+                    simpleExplanation: "Google Drive is a cloud storage and synchronization service developed by Google. In this lesson, you will learn how to navigate the left sidebar, create custom folders, use color coding, and upload files from your computer or phone securely.",
+                    quranRef: "Core Cloud Concept: Centralized cloud storage allows you to access your documents anywhere without risking physical hardware loss.",
+                    hadithRef: "Best Practice: 'Keep your digital workspace organized as cleanliness is part of efficiency.'",
+                    famousBookRef: "Source Reference: Official Google Workspace Learning Center - Drive Basics.",
                     quiz: {
-                        question: "In which year did the event of the Elephant (عام الفيل) take place in Makkah?",
-                        options: ["570 CE", "610 CE", "622 CE", "632 CE"],
+                        question: "What is the primary function of Google Drive?",
+                        options: ["Cloud file storage and sharing", "Video game streaming", "Physical hardware manufacturing", "Email client only"],
                         correct: 0,
-                        explanation: "The Year of the Elephant corresponds to 570 CE, the year of the Prophet's birth."
+                        explanation: "Google Drive lets you store, share, and access your files securely in the cloud."
                     },
                     teacherMode: {
-                        keyPoints: ["Explain the geopolitical context of pre-Islamic Arabia", "Highlight Surah Al-Fil as a divine protection of the Ka'bah"],
-                        childVer: "Allah protected His sacred House from Abraha's army with flocks of birds.",
-                        summary: "Establishes the historical foundation and divine protection surrounding the Prophet's birth."
+                        keyPoints: ["Explain cloud storage vs local storage", "Demonstrate drag-and-drop file uploading"],
+                        childVer: "Google Drive is like a giant digital backpack in the sky where you can keep all your homework safe.",
+                        summary: "Establishes foundational skills for navigating and uploading files to cloud storage."
                     }
                 },
                 {
                     id: 102,
                     tier: "intermediate",
-                    title: "Lesson 2: First Revelation in Cave Hira & Early Persecution",
-                    simpleExplanation: "At the age of 40, while meditating in Cave Hira, Angel Jibril brought the very first revelation of the Quran (Surah Al-Alaq). This marked the transition from pre-Islamic ignorance to divine guidance. As Islam spread publicly, early believers faced severe opposition from Quraish leaders.",
-                    quranRef: "Surah Al-Alaq (96:1-5): 'Recite in the name of your Lord who created...'",
-                    hadithRef: "Sahih Bukhari #3: The detailed narration of the first revelation and Khadijah's comforting words.",
-                    famousBookRef: "Source Reference: الرحيق المختوم (Al-Raheeq Al-Makhtum by Safi-ur-Rahman al-Mubarakpuri) - Chapter on First Revelation.",
+                    title: "Lesson 2: Sharing Files, Link Permissions, and Collaboration",
+                    simpleExplanation: "Google Drive enables seamless collaboration by allowing you to share files and folders with specific individuals or anyone with a link. You can assign permissions such as Viewer, Commenter, or Editor to control document access.",
+                    quranRef: "Core Collaboration Principle: Teamwork and sharing resources foster efficiency and collective success.",
+                    hadithRef: "Productivity Tip: Collaborative editing speeds up project completion and minimizes errors.",
+                    famousBookRef: "Source Reference: Google Drive Collaboration & Permission Guidelines.",
                     quiz: {
-                        question: "Which Surah and verses were revealed first to Prophet Muhammad ﷺ in Cave Hira?",
-                        options: ["Surah Al-Fatihah (1-7)", "Surah Al-Alaq (1-5)", "Surah Al-Muzzammil (1-4)", "Surah Al-Mudaththir (1-3)"],
+                        question: "Which permission allows a user to modify and edit a shared document directly?",
+                        options: ["Viewer", "Editor", "Commenter only", "Blocked"],
                         correct: 1,
-                        explanation: "The first five verses of Surah Al-Alaq were the initial revelation."
+                        explanation: "The Editor permission grants users full access to change and update document contents."
                     },
                     teacherMode: {
-                        keyPoints: ["Discuss the psychological weight of the first revelation", "Explain the supportive role of Khadijah (RA)"],
-                        childVer: "Jibril visited the Prophet in the cave and commanded him to read in Allah's name.",
-                        summary: "Details the commencement of prophethood and the beginning of patience under persecution."
+                        keyPoints: ["Discuss security risks of 'Anyone with the link can edit'", "Show how to leave inline comments"],
+                        childVer: "Sharing a link lets your classmates work on the exact same project presentation at the same time.",
+                        summary: "Covers safe and effective file sharing protocols for group projects."
                     }
                 },
                 {
                     id: 103,
                     tier: "advanced",
-                    title: "Lesson 3: Strategic Lessons from the Battle of Badr & Uhud",
-                    simpleExplanation: "Analyzed thoroughly in Al-Raheeq Al-Makhtum, the Battle of Badr (2 AH) established the Muslim community as a recognized sovereign force despite being heavily outnumbered. The subsequent Battle of Uhud tested discipline, obedience to leadership, and perseverance through trial.",
-                    quranRef: "Surah Ali 'Imran (3:123): 'And already had Allah given you victory at Badr when you were weak...'",
-                    hadithRef: "Sahih Bukhari: Narratives concerning the angelic assistance at Badr and the lessons of Uhud.",
-                    famousBookRef: "Source Reference: الرحيق المختوم (Al-Raheeq Al-Makhtum) - Military Campaigns Analysis.",
+                    title: "Lesson 3: Advanced Search Operators, Shared Drives & Version History",
+                    simpleExplanation: "For power users, Google Drive includes advanced search filters (e.g., type:pdf, owner:name) and Shared Drives for organizations. You can also restore previous versions of documents to undo unwanted edits.",
+                    quranRef: "Efficiency Principle: Advanced tools and structured organization save valuable time.",
+                    hadithRef: "Mastery Tip: Knowing your version history protects you against accidental data loss.",
+                    famousBookRef: "Source Reference: Advanced Google Workspace Administrator Guide.",
                     quiz: {
-                        question: "In which Hijri year did the pivotal Battle of Badr take place?",
-                        options: ["1 AH", "2 AH", "5 AH", "8 AH"],
-                        correct: 1,
-                        explanation: "The Battle of Badr occurred in the month of Ramadan, 2 AH."
+                        question: "Where do deleted files go in Google Drive before being permanently removed after 30 days?",
+                        options: ["Trash / Bin", "Archive", "Inbox", "Shared folder"],
+                        correct: 0,
+                        explanation: "Deleted files are moved to the Trash where they remain for 30 days before permanent deletion."
                     },
                     teacherMode: {
-                        keyPoints: ["Examine military strategy, command structure, and divine intervention", "Analyze why discipline on the mountain at Uhud was crucial"],
-                        childVer: "Badr taught us that true strength comes from trust in Allah and unity.",
-                        summary: "Provides advanced tactical and spiritual insights into early Islamic statehood and warfare."
+                        keyPoints: ["Explain file ownership in organizational Shared Drives", "Demonstrate how to restore a previous document version"],
+                        summary: "Provides advanced technical mastery of drive management and data recovery."
                     }
                 }
             ],
             timeline: [
-                { year: "570 CE", title: "Year of the Elephant & Birth", desc: "Birth of Prophet Muhammad ﷺ in Makkah; death of his father Abdullah before birth." },
-                { year: "610 CE", title: "The First Revelation (First Wahy)", desc: "Angel Jibril visits Prophet Muhammad ﷺ in Cave Hira with Surah Al-Alaq." },
-                { year: "615 CE", title: "Migration to Abyssinia (Habashah)", desc: "Early Muslims migrate to escape severe persecution by Quraish." },
-                { year: "622 CE", title: "The Great Hijrah to Madinah", desc: "Migration to Yathrib, marking Year 1 of the Islamic Hijri Calendar." },
-                { year: "624 CE", title: "The Great Battle of Badr", desc: "First major military victory for Muslims against Quraish forces (2 AH)." },
-                { year: "630 CE", title: "Conquest of Makkah (Fath Makkah)", desc: "Peaceful victory and general amnesty declared ('اذهبوا فأنتم الطلقاء')." }
+                { year: "2012", title: "Google Drive Launch", desc: "Google officially launched Google Drive, offering 5GB of free cloud storage initially." },
+                { year: "2014", title: "Google Drive for Work", desc: "Introduction of enterprise-grade security and unlimited storage options for businesses and schools." },
+                { year: "2017", title: "Backup and Sync / File Stream", desc: "Release of desktop synchronization tools to mirror local computer folders with the cloud." },
+                { year: "2018", title: "Team Drives / Shared Drives", desc: "Introduction of Team Drives (later renamed Shared Drives) owned by organizations rather than individuals." },
+                { year: "2020+", title: "AI Integration & Smart Chips", desc: "Integration of AI search features, workspace smart chips, and enhanced security warnings." }
             ],
             people: [
                 { 
-                    id: "khadijah",
-                    name: "Khadijah bint Khuwaylid (رَضِيَ ٱللَّٰهُ عَنْهَا)", 
-                    role: "First Wife & First Believer", 
-                    lived: "مەککە (Makkah)",
-                    famousWhy: "یەکەم کەس بوو کە باوەڕی بە پەیامبەری هێنا و تەواوی سامان و پشتیوانی خۆی بەخشە.",
-                    desc: "Supported the Prophet ﷺ emotionally and financially at the onset of Islam.",
-                    filmMention: "🎬 لە فیلمی الرسالةدا: ڕۆڵی گەورەی هەیە لە پاڵپشتیکردنی پێغەمبەر ﷺ لە سەرەتای نیگا." 
+                    id: "sharing",
+                    name: "Access & Sharing Permissions", 
+                    role: "Viewer, Commenter, Editor", 
+                    lived: "Security & Control",
+                    famousWhy: "کۆنتڕۆڵکردنی دەسەڵاتی بەکارهێنەران بۆ بینین، ڕوونکردنەوە، یان دەستکاریکردنی فایلەکان.",
+                    desc: "Granular control over who can open, review, or edit your shared files.",
+                    filmMention: "🎬 لە فێرکارییەکەدا: چۆنیەتی ڕێگری لە دەستکاریکردنی نەخوازراو بەڕێوەدەبات." 
                 },
                 { 
-                    id: "abubakr",
-                    name: "Abu Bakr Al-Siddiq (رَضِيَ ٱللَّٰهُ عَنْهُ)", 
-                    role: "Best Friend & First Caliph", 
-                    lived: "مەککە و مدینە (Makkah & Madinah)",
-                    famousWhy: "یەکەم پیاوی پێگەیشتوو بوو کە ئیسلام بوو، هەروەها یاوەری پێغەمبەر ﷺ بوو لە غاری سەور.",
-                    desc: "The first adult male to accept Islam and loyal companion during Hijrah.",
-                    filmMention: "🎬 لە فیلمی الرسالةدا: وەک هاوڕێی نزیک و یاوەری پێغەمبەر ﷺ دەردەکەوێت." 
+                    id: "storage",
+                    name: "Cloud Storage & Sync", 
+                    role: "Google One & Workspace", 
+                    lived: "Infrastructure",
+                    famousWhy: "پاراستنی داتاکان لە هەوردا و بەردەستبوونیان لە هەر ئامێرێکەوە.",
+                    desc: "Access your files seamlessly across mobile, tablet, and desktop devices.",
+                    filmMention: "🎬 لە فێرکارییەکەدا: دڵنیابوونەوە لە بەردەستبوونی فایلەکان لە کاتی نەبوونی ئینتەرنێت." 
                 },
                 { 
-                    id: "hamza",
-                    name: "Hamza ibn Abdul-Muttalib (رَضِيَ ٱللَّٰهُ عَنْهُ)", 
-                    role: "Uncle & Lion of Allah", 
-                    lived: "مەککە (Makkah)",
-                    famousWhy: "بە شێری خودا و پێغەمبەر ناسرابوو، بە بوێری بەرگری لە بانگەوازی ئیسلام کرد.",
-                    desc: "Fierce defender of Islam who embraced faith to protect his nephew.",
-                    filmMention: "🎬 لە فیلمی الرسالةدا: دیمەنی ئیسلامهێنانی حەمزە یەکێکە لە دیارترین دیمەنەکان." 
+                    id: "version",
+                    name: "Version History", 
+                    role: "Data Recovery", 
+                    lived: "Safety & Backup",
+                    famousWhy: "گەڕانەوە بۆ وەشانی پێشووی فایلەکان لە کاتی هەڵە یان سڕینەوەی بەڕێکەوت.",
+                    desc: "Track every change made to your document and revert to older versions instantly.",
+                    filmMention: "🎬 لە فێرکارییەکەدا: چارەسەرکردنی کێشەی دەستکاری هەڵە لە دۆکیومێنتەکاندا." 
                 }
             ],
             arjuzahQuizzes: {
                 ckb: {
                     part1: [
-                        { q: "[بەشی 1] لە سەرەتای فیلمەکەدا، پەیامبەر ﷺ لە چ ساڵێکدا لەدایکبووە؟", opts: ["ساڵی فیل (عام الفيل)", "ساڵی خەم", "ساڵی حەج"], c: 0, exp: "فیلمەکە بە ڕووداوی عام الفيل دەست پێدەکات." },
-                        { q: "[بەشی 1] ناوی باوکی پێغەمبەر ﷺ چی بوو؟", opts: ["عەبدوڵڵا", "عەبدولموتەڵیب", "ئەبو تالیب"], c: 0, exp: "ناوی باوکی عەبدوڵڵا بوو." }
+                        { q: "[بەشی 1] بۆ بارکردنی فایل لە گووگڵ درایڤدا، دەبێت سەرەتا لە کوێ کلیک بکەیت؟", opts: ["گمەکی نیو (New Button)", "سێتینگ", "پا پاکەرەوە"], c: 0, exp: "دوگمەی New لە گۆشەی چەپی سەرەوە بەکاردێت بۆ دروستکردنی فۆڵدەر و بارکردن." },
+                        { q: "[بەشی 1] گووگڵ درایڤ چەند گیگابایت بەخۆڕایی لە سەرەتادا دەبەخشێت؟", opts: ["15 گیگابایت", "5 گیگابایت", "100 گیگابایت"], c: 0, exp: "گووگڵ درایڤ 15 گیگابایت بۆخۆڕایی پێشکەش دەکات." }
                     ],
                     part2: [
-                        { q: "[بەشی 2] یەکەم نیگای خوای گەورە لە کوێ دابەزی؟", opts: ["غاری حەرا", "غاری سەور", "شاخەکان"], c: 0, exp: "یەکەم نیگا لە غاری حەرا دابەزی." },
-                        { q: "[بەشی 2] یەکەم ژن کە باوەڕی به پەیامبەری هێنا کێ بوو؟", opts: ["خەدیجە بنت خوەیلید", "عائیشە", "فاتیحە"], c: 0, exp: "خەدیجە (رَضِيَ ٱللَّٰهُ عَنْهَا) یەکەم کەس بوو." }
+                        { q: "[بەشی 2] کامیان دەسەڵاتی گۆڕانکاری لە فایلە هاوبەشەکاندا دەدات بە کەسانی تر؟", opts: ["ئێدیتۆر (Editor)", "ڤیوەر (Viewer)", "کۆمێنتەر (Commenter)"], c: 0, exp: "ئێدیتۆر ڕێگەی گۆڕانکاری دەدات." },
+                        { q: "[بەشی 2] چۆن دەتوانین لینکێک دروست بکەین کە تەنها کەسانی دیاریکراو بینەری بن؟", opts: ["لە ڕێگەی بەشی Share و دیاریکردنی ایمەیلی کەسەکان", "بە بڵاوکردنەوەی لە فەیسبووک", "بە سڕینەوەی فۆڵدەرەکە"], c: 0, exp: "لە ڕێگەی Share کردن بە ایمەیلی تایبەت." }
                     ],
                     part3: [
-                        { q: "[بەشی 3] موسڵمانان بۆ کام وڵات کۆچی سەرەتاییان کرد بۆ ڕزگاربوون لە ئەشکەنجە؟", opts: ["حەبەشە (ئەتیوپیا)", "شام", "یمن"], c: 0, exp: "کۆچی حەبەشە یەکەم کۆچی گەورەی ئیسلام بوو." },
-                        { q: "[بەشی 3] کام سەحابە بە خۆڕاگری بەرامبەر ئەشکەنجەی توند ناسرابوو لە مەککەدا؟", opts: ["بِلَال ابن رَبَاح", "عومەر", "عوسمان"], c: 0, exp: "بلال نموونەی باڵای خۆڕاگری بوو." }
+                        { q: "[بەشی 3] بۆ گەڕان بەدوای تەنها فایلی پی دی ئێف (PDF) لە درایڤدا چی بەکاردەهێنیت؟", opts: ["type:pdf", "search:all", "doc:pdf"], c: 0, exp: "فلتەری type:pdf بۆ گەڕانی خێرا بەکاردێت." },
+                        { q: "[بەشی 3] ئایا دەتوانیت لە درایڤدا بەپێی ناوی خاوەن فایلەکەش گەڕان ئەنجام بدەیت؟", opts: ["بەڵێ، بە بەکارهێنانی owner:name", "نەخێر هەرگیز", "تەنها لە موبایل دەبێت"], c: 0, exp: "بەڵێ، دەتوانیت فلتەری خاوەن فایل بەکاربهێنیت." }
                     ],
                     part4: [
-                        { q: "[بەشی 4] یەکەم جەنگی گەورەی نێوان موسڵمانان و قورەیش کام بوو؟", opts: ["جەنگی بَدْر", "جەنگی أحد", "جەنگی خەندەق"], c: 0, exp: "جەنگی بدر یەکەم سەرکەوونی گەورە بوو." },
-                        { q: "[بەشی 4] لە جەنگی أحددا، مامی پێغەمبەر ﷺ کێ شهید بوو؟", opts: ["حەمزە ابن عەبدولموتەڵیب", "عەباس", "عەلی"], c: 0, exp: "حەمزەی شێری خودا لە أحد شەهید بوو." }
+                        { q: "[بەشی 4] مێژووی وەشان (Version History) چییە لە گووگڵ دۆکس؟", opts: ["بینین و گەڕانەوە بۆ وەشانی پێشووی نووسراوەکان", "سڕینەوەی تەواوی کۆمپیوتەر", "گۆڕینی زمانی نووسین"], c: 0, exp: "Version History ڕێگەت پێدەدات وەشانەکانی پێشوو بگەڕێنیتەوە." },
+                        { q: "[بەشی 4] ئایا چەند کەس دەتوانن لە یەک کاتدا لەسەر یەک فایل کار بکەن؟", opts: ["چەندین کەس بەیەکەوە", "تەنها یەک کەس", "تەنها دوو کەس"], c: 0, exp: "گووگڵ درایڤ پشتگیری هاوکاری چەند کەسێک دەکات لە یەک کاتدا." }
                     ],
                     part5: [
-                        { q: "[بەشی 5] فەتحی مەککە لە چ ساڵێکی کۆچیدا ڕوویدا؟", opts: ["ساڵی 8ی کۆچی", "ساڵی 2ی کۆچی", "ساڵی 10ی کۆچی"], c: 0, exp: "فەتحی مەککە لە ساڵی هەشتەمی کۆچی بوو." },
-                        { q: "[بەشی 5] دوای فەتحی مەککە، هەڵسوکەوتی پێغەمبەر ﷺ بەرامبەر بێباوەڕانی قورەیش چۆن بوو؟", opts: ["لێخۆشبوون و ئازادکردن ('اذهبوا فأنتم الطلقاء')", "تۆڵەسەندنەوە", "دەرکردن"], c: 0, exp: "فەرمووی: بڕۆن ئێوە ئازادن." }
+                        { q: "[بەشی 5] فایلە سڕدراوەکان بۆ ماوەی چەند ڕۆژ لە باشتریت (Trash) دەمێننەوە پێش سڕینەوەی هەمیشەیی؟", opts: ["30 ڕۆژ", "10 ڕۆژ", "سێ ڕۆژ"], c: 0, exp: "فایلەکان بۆ ماوەی 30 ڕۆژ لە پاشماوەکان دەمێننەوە." },
+                        { q: "[بەشی 5] بۆ زیادکردنی بۆشایی بیرگە (Storage) چی بەکاردێت؟", opts: ["کڕینی پلانی Google One", "سڕینی مۆنیستۆر", "گۆڕینی ڕەنگی سکرین"], c: 0, exp: "دەتوانیت پلانەکانی Google One بەکاربهێنیت." }
                     ]
                 },
                 ar: {
                     part1: [
-                        { q: "[الجزء 1] بأي عام هُجمت الكعبة وبدأ فيلم الرسالة؟", opts: ["عام الفيل", "عام الحزن", "عام الهجرة"], c: 0, exp: "يبدأ الفيلم بقصة أصحاب الفيل." },
-                        { q: "[الجزء 1] ما اسم والد النبي صلى الله عليه وسلم؟", opts: ["عبدالله", "عبدالمطلب", "أبو طالب"], c: 0, exp: "والده هو عبدالله رضي الله عنه." }
+                        { q: "[الجزء 1] أين تضغط لإنشاء مجلد جديد أو رفع ملف في Google Drive؟", opts: ["زر جديد (New Button)", "الإعدادات", "سلة المهملات"], c: 0, exp: "يستخدم زر New لإنشاء الملفات والمجلدات." },
+                        { q: "[الجزء 1] كم تبلغ المساحة المجانية التي تمنحها Google Drive؟", opts: ["15 جيجابايت", "5 جيجابايت", "100 جيجابايت"], c: 0, exp: "تقدم جوجل 15 جيجابايت مجاناً." }
                     ],
                     part2: [
-                        { q: "[الجزء 2] أين نزلت أول آية من الوحي؟", opts: ["غار حراء", "غار ثور", "المسجد الحرام"], c: 0, exp: "نزلت في غار حراء." },
-                        { q: "[الجزء 2] من هي أول امرأة أسلمت؟", opts: ["خديجة بنت خويلد", "عائشة", "فاطمة"], c: 0, exp: "السيدة خديجة رضي الله عنها." }
+                        { q: "[الجزء 2] ما هو مستوى الصلاحية الذي يسمح للمستخدم بتعديل الملف؟", opts: ["محرر (Editor)", "عارض (Viewer)", "معلق (Commenter)"], c: 0, exp: "صلاحية محرر (Editor) تسمح بالتعديل الكامل." },
+                        { q: "[الجزء 2] كيف تشارك ملفاً مع شخص معين بأمان؟", opts: ["عبر إدخال بريده الإلكتروني في إعدادات المشاركة", "بنشر الرابط على وسائل التواصل", "بحذف الملف"], c: 0, exp: "عن طريق مشاركة الرابط مع البريد الإلكتروني المحدد." }
                     ],
                     part3: [
-                        { q: "[الجزء 3] إلى أي بلاد كانت الهجرة الأولى للمسلمين فراراً من التعذيب؟", opts: ["الحبشة", "الشام", "اليمن"], c: 0, exp: "هجرة المسلمين إلى الحبشة." },
-                        { q: "[الجزء 3] من هو الصحابي الذي اشتره بصبره العظيم تحت التعذيب؟", opts: ["بلال بن رباح", "عمر", "عثمان"], c: 0, exp: "بلال بن رباح رضي الله عنه." }
+                        { q: "[الجزء 3] كيف تبحث عن ملفات PDF فقط داخل جوجل درایڤ؟", opts: ["type:pdf", "search:file", "pdf:all"], c: 0, exp: "استخدام عامل البحث type:pdf." },
+                        { q: "[الجزء 3] هل يمكنك البحث حسب اسم المالك للملف؟", opts: ["نعم، باستخدام owner:name", "لا يمكن", "فقط عبر تطبيق الهاتف"], c: 0, exp: "نعم، عامل owner يساعد في ذلك." }
                     ],
                     part4: [
-                        { q: "[الجزء 4] ما هي أول معركة كبرى خاضها المسلمون؟", opts: ["غزوة بدر", "غزوة أحد", "غزوة الخندق"], c: 0, exp: "غزوة بدر الكبرى." },
-                        { q: "[الجزء 4] من هو عم النبي صلى الله عليه وسلم الذي استشهد في أحد؟", opts: ["حمزة بن عبدالمطلب", "العباس", "علي"], c: 0, exp: "أسد الله حمزة بن عبدالمطلب." }
+                        { q: "[الجزء 4] ما فائدة سجل الإصدارات (Version History)؟", opts: ["استعادة النسخ السابقة للملفات والتعديلات", "حذف النظام بالكامل", "تسريع الإنترنت"], c: 0, exp: "يسمح برؤية واستعادة التعديلات السابقة." },
+                        { q: "[الجزء 4] هل يدعم جوجل درایڤ التعاون الجماعي في الوقت الفعلي؟", opts: ["نعم، لعدة مستخدمين في نفس الوقت", "لا، مستخدم واحد فقط", "مستخدمان كحد أقصى"], c: 0, exp: "يدعم العمل التعاوني المتزامن." }
                     ],
                     part5: [
-                        { q: "[الجزء 5] في أي عام هجري تم فتح مكة المكرمة؟", opts: ["العام الثامن الهجري", "العام الثاني الهجري", "العام العاشر الهجري"], c: 0, exp: "فتح مكة كان في رمضان سنة 8 هـ." },
-                        { q: "[الجزء 5] ماذا قال النبي صلى الله عليه وسلم لأهل مكة يوم الفتح؟", opts: ["اذهبوا فأنتم الطلقاء", "اليوم يوم الملحمة", "اخرجوا من المدينة"], c: 0, exp: "قال: اذهبوا فأنتم الطلقاء." }
+                        { q: "[الجزء 5] كم تبقى الملفات المحذوفة في سلة المهملات قبل الحذف النهائي؟", opts: ["30 يوماً", "10 أيام", "يوم واحد"], c: 0, exp: "تبقى لمدة 30 يوماً." },
+                        { q: "[الجزء 5] كيف تزيد المساحة التخزينية في حسابك؟", opts: ["الاشتراك في Google One", "تغيير متصفح الإنترنت", "إعادة تشغيل الكمبيوتر"], c: 0, exp: "الترقية عبر Google One تزيد المساحة." }
                     ]
                 },
                 en: {
                     part1: [
-                        { q: "[Part 1] Which major event opens the film Al-Resalah?", opts: ["The Year of the Elephant", "The Year of Sorrow", "The Hijrah"], c: 0, exp: "The film opens with the Year of the Elephant." },
-                        { q: "[Part 1] What was the name of the Prophet's ﷺ father?", opts: ["Abdullah", "Abdul-Muttalib", "Abu Talib"], c: 0, exp: "His father was Abdullah." }
+                        { q: "[Part 1] Where do you click to create a new folder or upload a file in Google Drive?", opts: ["The 'New' button", "Settings", "Trash"], c: 0, exp: "The 'New' button is used for creating folders and uploading files." },
+                        { q: "[Part 1] How much free storage does Google Drive typically provide?", opts: ["15 GB", "5 GB", "100 GB"], c: 0, exp: "Google Drive provides 15 GB of free storage shared across Google services." }
                     ],
                     part2: [
-                        { q: "[Part 2] Where did the first revelation take place?", opts: ["Cave Hira", "Cave Thawr", "House of Arqam"], c: 0, exp: "It occurred in Cave Hira." },
-                        { q: "[Part 2] Who was the first person to accept Islam?", opts: ["Khadijah bint Khuwaylid", "Abu Bakr", "Ali"], c: 0, exp: "Khadijah (RA) was the first." }
+                        { q: "[Part 2] Which sharing permission allows a user to make changes to a file?", opts: ["Editor", "Viewer", "Commenter"], c: 0, exp: "The Editor permission allows making modifications." },
+                        { q: "[Part 2] How can you restrict access to a sensitive shared document?", opts: ["Share it only with specific email addresses", "Make it public to everyone", "Delete the file permanently"], c: 0, exp: "Sharing with specific emails ensures restricted secure access." }
                     ],
                     part3: [
-                        { q: "[Part 3] Where did early Muslims migrate to escape severe persecution?", opts: ["Abyssinia (Ethiopia)", "Yathrib", "Yemen"], c: 0, exp: "The migration to Abyssinia." },
-                        { q: "[Part 3] Which companion famously endured brutal torture for his faith in Makkah?", opts: ["Bilal ibn Rabah", "Hamza", "Zayd"], c: 0, exp: "Bilal ibn Rabah." }
+                        { q: "[Part 3] Which search operator helps filter only PDF documents in Google Drive?", opts: ["type:pdf", "file:pdf", "doc:pdf"], c: 0, exp: "type:pdf filters search results to PDFs." },
+                        { q: "[Part 3] Can you search for files based on the owner's name?", opts: ["Yes, using owner:name", "No", "Only on mobile devices"], c: 0, exp: "Yes, owner: filters files by owner." }
                     ],
                     part4: [
-                        { q: "[Part 4] What was the first major military battle between Muslims and Quraish?", opts: ["Battle of Badr", "Battle of Uhud", "Battle of the Trench"], c: 0, exp: "The Battle of Badr." },
-                        { q: "[Part 4] Which uncle of the Prophet ﷺ became a martyr at Uhud?", opts: ["Hamza ibn Abdul-Muttalib", "Abbas", "Ali"], c: 0, exp: "Hamza (RA)." }
+                        { q: "[Part 4] What is the purpose of 'Version History' in Google Docs?", opts: ["To view and restore previous versions of a document", "To delete the document permanently", "To change font styles"], c: 0, exp: "Version history allows restoring past edits and tracking changes." },
+                        { q: "[Part 4] Does Google Drive support real-time collaborative editing?", opts: ["Yes, multiple users simultaneously", "No, single user only", "Maximum two users"], c: 0, exp: "Multiple users can edit documents simultaneously in real-time." }
                     ],
                     part5: [
-                        { q: "[Part 5] In which year did the peaceful Conquest of Makkah occur?", opts: ["8th Year after Hijrah", "2nd Year after Hijrah", "10th Year after Hijrah"], c: 0, exp: "Conquest of Makkah occurred in 8 AH." },
-                        { q: "[Part 5] What famous words did the Prophet ﷺ say to Quraish upon conquering Makkah?", opts: ["Go, you are free ('Idhhabu fa antum al-tulaqa')", "Face your punishment", "Leave the city"], c: 0, exp: "He granted general amnesty." }
+                        { q: "[Part 5] How long do deleted items remain in the Google Drive Trash before permanent deletion?", opts: ["30 days", "7 days", "90 days"], c: 0, exp: "Deleted items stay in Trash for 30 days." },
+                        { q: "[Part 5] How can you expand your cloud storage capacity beyond the free tier?", opts: ["Upgrade to Google One", "Clear browser cache", "Restart your computer"], c: 0, exp: "Google One subscription plans provide additional storage." }
                     ]
                 }
             }
         };
 
-        let currentTab = 'home';
+        // Application State
         let currentLessonId = 101;
-        let lessonMode = 'student';
-        let bookmarkedLessons = JSON.parse(localStorage.getItem('seerah_bookmarks') || '[]');
-        let userNotes = JSON.parse(localStorage.getItem('seerah_notes') || '{}');
-        let lessonStatuses = JSON.parse(localStorage.getItem('seerah_statuses') || '{}');
+        let currentLessonMode = 'student';
+        let userProgress = {
+            completedLessons: [],
+            bookmarks: [],
+            notes: {},
+            statuses: {}
+        };
 
+        // Initialization
+        window.onload = function() {
+            loadSavedProgress();
+            renderRoadmap();
+            renderLesson(currentLessonId);
+            renderTimeline();
+            renderPeople();
+            updateOverallProgress();
+        };
+
+        // Tab Switching
         function switchTab(tabId) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
             
             document.getElementById(tabId).classList.add('active');
-            currentTab = tabId;
+            
+            event && event.currentTarget && event.currentTarget.classList.contains('tab-btn') 
+                ? event.currentTarget.classList.add('active')
+                : document.querySelectorAll('.tab-btn').forEach(btn => {
+                    if(btn.getAttribute('onclick')?.includes(tabId)) btn.classList.add('active');
+                  });
 
-            document.querySelectorAll('.tab-btn').forEach(b => {
-                if(b.getAttribute('onclick')?.includes(tabId)) {
-                    b.classList.add('active');
-                }
-            });
-
-            window.scrollTo(0, 0);
-            if (tabId === 'roadmap') renderRoadmap();
-            if (tabId === 'lesson') renderLesson(currentLessonId);
-            if (tabId === 'timeline') renderTimeline();
-            if (tabId === 'people') renderPeople();
-            if (tabId === 'notes') renderNotesHub();
-            updateOverallProgress();
+            if(tabId === 'notes') {
+                renderNotesAndBookmarks();
+            }
+            window.scrollTo({top: 0, behavior: 'smooth'});
         }
 
+        // Theme Toggle
         function toggleTheme() {
-            const html = document.documentElement;
-            const current = html.getAttribute('data-theme');
-            html.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+            const body = document.body;
+            const currentTheme = body.getAttribute('data-theme');
+            if(currentTheme === 'dark') {
+                body.removeAttribute('data-theme');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+            }
         }
 
+        // Render Roadmap
         function renderRoadmap() {
-            const container = document.getElementById('roadmapGrid');
-            container.innerHTML = seerahData.tiers.map(t => `
+            const grid = document.getElementById('roadmapGrid');
+            grid.innerHTML = seerahData.tiers.map(tier => `
                 <div class="card level-card">
-                    <h4>${t.name}</h4>
-                    <p style="color: var(--text-muted); margin: 0.5rem 0 1rem 0;">${t.desc}</p>
-                    <button class="btn btn-primary" onclick="loadLessonByTier(${t.lessonId})">Start Tier Lesson →</button>
+                    <span class="badge" style="background: var(--primary-light); color: var(--primary-emerald);">${tier.id.toUpperCase()}</span>
+                    <h3 style="margin-top: 0.5rem; margin-bottom: 0.5rem;">${tier.name}</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem;">${tier.desc}</p>
+                    <button class="btn btn-primary" onclick="loadLessonFromRoadmap(${tier.lessonId})">Start Tier Lesson →</button>
                 </div>
             `).join('');
         }
 
-        function loadLessonByTier(lessonId) {
-            currentLessonId = lessonId;
+        function loadLessonFromRoadmap(id) {
+            currentLessonId = id;
             switchTab('lesson');
+            renderLesson(id);
         }
 
+        // Render Lesson View
         function renderLesson(id) {
-            const l = seerahData.lessons.find(x => x.id === id) || seerahData.lessons[0];
-            currentLessonId = l.id;
-
+            currentLessonId = id;
+            const lesson = seerahData.lessons.find(l => l.id === id) || seerahData.lessons[0];
             const container = document.getElementById('lessonContentContainer');
-            if (lessonMode === 'student') {
-                container.innerHTML = `
-                    <span class="badge" style="background: var(--primary-light); color: var(--primary-emerald);">Tier: ${l.tier.toUpperCase()}</span>
-                    <h2 style="margin-top: 0.5rem;">${l.title}</h2>
-                    <p style="margin: 1rem 0; font-size: 1.05rem; line-height: 1.8;">${l.simpleExplanation}</p>
-                    <div style="background: var(--bg-primary); padding: 1rem; border-radius: 8px; margin-top: 1rem;">
-                        <p><strong>📖 Quranic Context:</strong> ${l.quranRef}</p>
-                        <p style="margin-top: 0.5rem;"><strong>⚡ Hadith Reference:</strong> ${l.hadithRef}</p>
-                        <p style="margin-top: 0.5rem; color: var(--gold-accent);"><strong>📚 Classical Book Reference:</strong> ${l.famousBookRef}</p>
-                    </div>
-                `;
-            } else {
-                container.innerHTML = `
-                    <span class="badge" style="background: var(--gold-light); color: var(--gold-accent);">Teacher Mode 🎓</span>
-                    <h2 style="margin-top: 0.5rem;">[Teacher View] ${l.title}</h2>
-                    <ul style="margin: 1rem 0; padding-left: 1.2rem;">
-                        ${l.teacherMode.keyPoints.map(kp => `<li style="margin-bottom: 0.5rem;">${kp}</li>`).join('')}
-                    </ul>
-                    <div style="background: var(--bg-primary); padding: 1rem; border-radius: 8px;">
-                        <p><strong>Child-friendly Version:</strong> ${l.teacherMode.childVer}</p>
-                        <p style="margin-top: 0.5rem;"><strong>Pedagogical Summary:</strong> ${l.teacherMode.summary}</p>
-                    </div>
-                `;
-            }
 
-            const quizDiv = document.getElementById('quizContainer');
-            quizDiv.innerHTML = `
-                <p><strong>Q: ${l.quiz.question}</strong></p>
-                <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.8rem;" id="quizOptions">
-                    ${l.quiz.options.map((opt, idx) => `
-                        <button class="btn btn-secondary" style="justify-content: flex-start;" onclick="checkQuiz(${idx}, ${l.quiz.correct})">${opt}</button>
-                    `).join('')}
-                </div>
-                <p id="quizFeedback" style="margin-top: 0.8rem; font-weight: 600;"></p>
+            let contentHTML = `
+                <span class="badge" style="background: var(--gold-light); color: var(--gold-accent);">Tier: ${lesson.tier.toUpperCase()}</span>
+                <h2 style="margin-top: 0.5rem; margin-bottom: 1rem;">${lesson.title}</h2>
             `;
 
-            document.getElementById('lessonNotesArea').value = userNotes[l.id] || '';
-            document.getElementById('statusSelect').value = lessonStatuses[l.id] || 'Not Started';
-            updateBookmarkIcon();
-        }
-
-        function checkQuiz(selected, correct) {
-            const feedback = document.getElementById('quizFeedback');
-            if (selected === correct) {
-                feedback.style.color = 'var(--primary-emerald)';
-                feedback.innerText = "✓ Correct! Great job.";
+            if(currentLessonMode === 'student') {
+                contentHTML += `
+                    <p style="font-size: 1.05rem; margin-bottom: 1.2rem;">${lesson.simpleExplanation}</p>
+                    <div style="background: var(--bg-primary); padding: 1rem; border-radius: 8px; margin-bottom: 1rem; border-left: 4px solid var(--primary-emerald);">
+                        <p><b>💡 Core Principle:</b> ${lesson.quranRef}</p>
+                    </div>
+                    <div style="background: var(--bg-primary); padding: 1rem; border-radius: 8px; margin-bottom: 1rem; border-left: 4px solid var(--gold-accent);">
+                        <p><b>⚙️ Best Practice:</b> ${lesson.hadithRef}</p>
+                    </div>
+                    <p style="font-style: italic; color: var(--text-muted); font-size: 0.9rem;">${lesson.famousBookRef}</p>
+                `;
             } else {
-                feedback.style.color = '#dc2626';
-                feedback.innerText = "✗ Incorrect. Try reviewing the lesson details.";
+                // Teacher Mode Content
+                contentHTML += `
+                    <div style="background: var(--primary-light); color: var(--primary-emerald); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                        <h4 style="margin-bottom: 0.3rem;">🎓 Teacher Mode Pedagogical Breakdown</h4>
+                        <p style="font-size: 0.95rem;">${lesson.teacherMode.summary}</p>
+                    </div>
+                    <h4>Key Pedagogical Points:</h4>
+                    <ul style="margin-top: 0.5rem; margin-bottom: 1rem; padding-left: 1.2rem;">
+                        ${lesson.teacherMode.keyPoints.map(kp => `<li style="margin-bottom: 0.3rem;">${kp}</li>`).join('')}
+                    </ul>
+                    <div style="background: var(--bg-primary); padding: 1rem; border-radius: 8px; border-left: 4px solid var(--gold-accent);">
+                        <p><b>Simplified Class Explanation:</b> "${lesson.teacherMode.childVer}"</p>
+                    </div>
+                `;
             }
+
+            container.innerHTML = contentHTML;
+
+            // Render Quiz
+            renderQuiz(lesson.quiz);
+
+            // Set notes & status
+            document.getElementById('lessonNotesArea').value = userProgress.notes[id] || '';
+            document.getElementById('statusSelect').value = userProgress.statuses[id] || 'Not Started';
+            updateBookmarkButtonState();
         }
 
         function setLessonMode(mode) {
-            lessonMode = mode;
+            currentLessonMode = mode;
             document.getElementById('studentModeBtn').classList.toggle('active', mode === 'student');
             document.getElementById('teacherModeBtn').classList.toggle('active', mode === 'teacher');
             renderLesson(currentLessonId);
         }
 
+        // Render Lesson Quiz
+        function renderQuiz(quiz) {
+            const quizContainer = document.getElementById('quizContainer');
+            quizContainer.innerHTML = `
+                <p style="font-weight: 600; margin-bottom: 0.8rem;">${quiz.question}</p>
+                <div style="display: flex; flex-direction: column; gap: 0.5rem;" id="quizOptions">
+                    ${quiz.options.map((opt, idx) => `
+                        <button class="btn btn-secondary" style="justify-content: flex-start; text-align: left;" onclick="checkQuizAnswer(${idx}, ${quiz.correct}, '${btoa(encodeURIComponent(quiz.explanation))}')">
+                            <b>${String.fromCharCode(65 + idx)}.</b> ${opt}
+                        </button>
+                    `).join('')}
+                </div>
+                <div id="quizFeedback" style="margin-top: 1rem; font-weight: 600;"></div>
+            `;
+        }
+
+        function checkQuizAnswer(selected, correct, encodedExp) {
+            const feedback = document.getElementById('quizFeedback');
+            const explanation = decodeURIComponent(atob(encodedExp));
+            const options = document.getElementById('quizOptions').children;
+
+            for(let i = 0; i < options.length; i++) {
+                options[i].disabled = true;
+                if(i === correct) {
+                    options[i].style.background = 'var(--primary-emerald)';
+                    options[i].style.color = '#fff';
+                } else if(i === selected && selected !== correct) {
+                    options[i].style.background = '#ef4444';
+                    options[i].style.color = '#fff';
+                }
+            }
+
+            if(selected === correct) {
+                feedback.style.color = 'var(--primary-emerald)';
+                feedback.innerHTML = `✅ Correct! ${explanation}`;
+                markLessonCompleted();
+            } else {
+                feedback.style.color = '#ef4444';
+                feedback.innerHTML = `❌ Incorrect. ${explanation}`;
+            }
+        }
+
+        function markLessonCompleted() {
+            if(!userProgress.completedLessons.includes(currentLessonId)) {
+                userProgress.completedLessons.push(currentLessonId);
+                userProgress.statuses[currentLessonId] = 'Completed';
+                document.getElementById('statusSelect').value = 'Completed';
+                saveProgressToStorage();
+                updateOverallProgress();
+            }
+        }
+
+        // Bookmarks & Notes
         function toggleBookmark() {
-            const idx = bookmarkedLessons.indexOf(currentLessonId);
-            if (idx > -1) bookmarkedLessons.splice(idx, 1);
-            else bookmarkedLessons.push(currentLessonId);
-            localStorage.setItem('seerah_bookmarks', JSON.stringify(bookmarkedLessons));
-            updateBookmarkIcon();
+            const index = userProgress.bookmarks.indexOf(currentLessonId);
+            if(index > -1) {
+                userProgress.bookmarks.splice(index, 1);
+            } else {
+                userProgress.bookmarks.push(currentLessonId);
+            }
+            saveProgressToStorage();
+            updateBookmarkButtonState();
         }
 
-        function updateBookmarkIcon() {
-            const isBookmarked = bookmarkedLessons.includes(currentLessonId);
-            document.getElementById('bookmarkIcon').innerText = isBookmarked ? '★' : '☆';
+        function updateBookmarkButtonState() {
+            const isBookmarked = userProgress.bookmarks.includes(currentLessonId);
+            document.getElementById('bookmarkIcon').textContent = isBookmarked ? '★' : '☆';
         }
 
-        function updateLessonStatus(val) {
-            lessonStatuses[currentLessonId] = val;
-            localStorage.setItem('seerah_statuses', JSON.stringify(lessonStatuses));
+        function updateLessonStatus(status) {
+            userProgress.statuses[currentLessonId] = status;
+            if(status === 'Completed' && !userProgress.completedLessons.includes(currentLessonId)) {
+                userProgress.completedLessons.push(currentLessonId);
+            }
+            saveProgressToStorage();
             updateOverallProgress();
         }
 
         function saveLessonNote() {
-            const text = document.getElementById('lessonNotesArea').value;
-            userNotes[currentLessonId] = text;
-            localStorage.setItem('seerah_notes', JSON.stringify(userNotes));
-            alert('Notes saved successfully!');
+            const noteText = document.getElementById('lessonNotesArea').value;
+            userProgress.notes[currentLessonId] = noteText;
+            saveProgressToStorage();
+            alert('Note saved successfully!');
         }
 
+        // Google Drive Video Tutorial Quiz Engine
+        function startArjuzahQuiz() {
+            const lang = document.getElementById('arjQuizLang').value;
+            const chapterKey = document.getElementById('arjQuizChapter').value;
+            const quizList = seerahData.arjuzahQuizzes[lang][chapterKey];
+            const container = document.getElementById('arjuzahQuizContainer');
+
+            container.style.display = 'block';
+            container.innerHTML = `
+                <h3 style="margin-bottom: 1rem;">📝 Tutorial Chapter Quiz (${chapterKey.toUpperCase()})</h3>
+                <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                    ${quizList.map((item, qIdx) => `
+                        <div style="border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;" id="filmQ_${qIdx}">
+                            <p style="font-weight: 600; margin-bottom: 0.6rem;">${qIdx + 1}. ${item.q}</p>
+                            <div style="display: flex; flex-direction: column; gap: 0.4rem;">
+                                ${item.opts.map((opt, oIdx) => `
+                                    <button class="btn btn-secondary" style="justify-content: flex-start; text-align: left;" onclick="checkFilmQuiz(${qIdx}, ${oIdx}, ${item.c}, '${btoa(encodeURIComponent(item.exp))}')">
+                                        <b>${String.fromCharCode(65 + oIdx)}.</b> ${opt}
+                                    </button>
+                                `).join('')}
+                            </div>
+                            <div id="filmFeedback_${qIdx}" style="margin-top: 0.5rem; font-weight: 600; font-size: 0.9rem;"></div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        function checkFilmQuiz(qIdx, selected, correct, encodedExp) {
+            const feedbackBox = document.getElementById(`filmFeedback_${qIdx}`);
+            const explanation = decodeURIComponent(atob(encodedExp));
+            const questionContainer = document.getElementById(`filmQ_${qIdx}`);
+            const buttons = questionContainer.querySelectorAll('button');
+
+            buttons.forEach((btn, idx) => {
+                btn.disabled = true;
+                if(idx === correct) {
+                    btn.style.background = 'var(--primary-emerald)';
+                    btn.style.color = '#fff';
+                } else if(idx === selected && selected !== correct) {
+                    btn.style.background = '#ef4444';
+                    btn.style.color = '#fff';
+                }
+            });
+
+            if(selected === correct) {
+                feedbackBox.style.color = 'var(--primary-emerald)';
+                feedbackBox.innerHTML = `✅ Correct! ${explanation}`;
+            } else {
+                feedbackBox.style.color = '#ef4444';
+                feedbackBox.innerHTML = `❌ Incorrect. ${explanation}`;
+            }
+        }
+
+        // Render Timeline
         function renderTimeline() {
             const container = document.getElementById('timelineContainer');
-            container.innerHTML = seerahData.timeline.map(t => `
+            container.innerHTML = seerahData.timeline.map(item => `
                 <div class="timeline-item">
-                    <span class="badge" style="background: var(--primary-light); color: var(--primary-emerald);">${t.year}</span>
-                    <h3 style="margin-top: 0.4rem;">${t.title}</h3>
-                    <p style="color: var(--text-muted); margin-top: 0.3rem;">${t.desc}</p>
+                    <span class="badge" style="background: var(--primary-light); color: var(--primary-emerald);">${item.year}</span>
+                    <h3 style="margin-top: 0.4rem; margin-bottom: 0.3rem;">${item.title}</h3>
+                    <p style="color: var(--text-muted);">${item.desc}</p>
                 </div>
             `).join('');
         }
 
+        // Render People Cards with Modal
         function renderPeople() {
-            const container = document.getElementById('peopleGrid');
-            container.innerHTML = seerahData.people.map(p => `
-                <div class="card person-card" onclick="openPersonModal('${p.id}')">
-                    <span class="badge" style="background: var(--gold-light); color: var(--gold-accent);">${p.role}</span>
-                    <h3 style="margin-top: 0.5rem;">${p.name}</h3>
-                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.3rem;">📍 ${p.lived}</p>
-                    <p style="margin-top: 0.6rem; font-size: 0.95rem;">${p.desc}</p>
+            const grid = document.getElementById('peopleGrid');
+            grid.innerHTML = seerahData.people.map(person => `
+                <div class="card person-card" onclick="openPersonModal('${person.id}')">
+                    <span class="badge" style="background: var(--gold-light); color: var(--gold-accent);">${person.lived}</span>
+                    <h3 style="margin-top: 0.5rem; margin-bottom: 0.3rem;">${person.name}</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-muted); font-weight: 600; margin-bottom: 0.5rem;">${person.role}</p>
+                    <p style="font-size: 0.95rem; margin-bottom: 0.8rem;">${person.desc}</p>
+                    <p class="arabic">${person.famousWhy}</p>
                 </div>
             `).join('');
         }
 
         function openPersonModal(personId) {
-            const p = seerahData.people.find(x => x.id === personId);
-            if(!p) return;
-            document.getElementById('modalPersonName').innerText = p.name;
+            const person = seerahData.people.find(p => p.id === personId);
+            if(!person) return;
+
+            document.getElementById('modalPersonName').textContent = person.name;
             document.getElementById('modalPersonContent').innerHTML = `
-                <p><strong>ڕۆڵ / Role:</strong> ${p.role}</p>
-                <p style="margin-top: 0.5rem;"><strong>شوێنی ژیان / Lived:</strong> ${p.lived}</p>
-                <p style="margin-top: 0.8rem;" class="arabic"><strong>گرنگی و ناوبانگی:</strong><br>${p.famousWhy}</p>
-                <div style="background: var(--bg-primary); padding: 1rem; border-radius: 8px; margin-top: 1rem;">
-                    <p>${p.filmMention}</p>
+                <p style="font-weight: 600; color: var(--primary-emerald); margin-bottom: 0.5rem;">Role: ${person.role}</p>
+                <p style="margin-bottom: 1rem;">${person.desc}</p>
+                <div style="background: var(--bg-primary); padding: 1rem; border-radius: 8px; margin-bottom: 1rem; border-left: 4px solid var(--gold-accent);">
+                    <p class="arabic" style="margin-bottom: 0.5rem;">${person.famousWhy}</p>
+                </div>
+                <div style="background: var(--primary-light); padding: 1rem; border-radius: 8px; color: var(--primary-emerald);">
+                    <p><b>${person.filmMention}</b></p>
                 </div>
             `;
             document.getElementById('personModal').classList.add('active');
@@ -672,576 +799,74 @@
             document.getElementById('personModal').classList.remove('active');
         }
 
-        function startArjuzahQuiz() {
-            const lang = document.getElementById('arjQuizLang').value;
-            const chapter = document.getElementById('arjQuizChapter').value;
-            const quizList = seerahData.arjuzahQuizzes[lang]?.[chapter] || [];
-            
-            const container = document.getElementById('arjuzahQuizContainer');
-            container.style.display = 'block';
+        // Render Notes & Bookmarks Page
+        function renderNotesAndBookmarks() {
+            const bookmarkList = document.getElementById('bookmarkedList');
+            const savedNotesContainer = document.getElementById('savedNotesContainer');
 
-            if(quizList.length === 0) {
-                container.innerHTML = `<p>کویز بۆ ئەم بەشە بەردەست نییە. (No quiz available for this selection yet.)</p>`;
-                return;
-            }
-
-            container.innerHTML = `
-                <h3>📝 تاقیکردنەوەی بەشی فیلم (Chapter Quiz)</h3>
-                ${quizList.map((qObj, qIdx) => `
-                    <div style="margin-top: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color);">
-                        <p><strong>${qObj.q}</strong></p>
-                        <div style="display: flex; flex-direction: column; gap: 0.4rem; margin-top: 0.5rem;">
-                            ${qObj.opts.map((opt, oIdx) => `
-                                <button class="btn btn-secondary" style="justify-content: flex-start; font-size:0.9rem;" onclick="checkArjQuiz(${qIdx}, ${oIdx}, ${qObj.c}, this)">${opt}</button>
-                            `).join('')}
-                        </div>
-                        <p id="arjFeedback_${qIdx}" style="margin-top: 0.4rem; font-size: 0.85rem; font-weight: 600;"></p>
-                    </div>
-                `).join('')}
-            `;
-        }
-
-        function checkArjQuiz(qIdx, selected, correct, btn) {
-            const feedback = document.getElementById(`arjFeedback_${qIdx}`);
-            const parent = btn.parentElement;
-            Array.from(parent.children).forEach(b => b.style.opacity = '0.7');
-            btn.style.opacity = '1';
-
-            if (selected === correct) {
-                feedback.style.color = 'var(--primary-emerald)';
-                feedback.innerText = "✓ ڕاستە! (Correct!)";
+            // Bookmarks
+            if(userProgress.bookmarks.length === 0) {
+                bookmarkList.innerHTML = `<li>No bookmarked lessons yet.</li>`;
             } else {
-                feedback.style.color = '#dc2626';
-                feedback.innerText = "✗ هەڵەیە. (Incorrect.)";
+                bookmarkList.innerHTML = userProgress.bookmarks.map(id => {
+                    const l = seerahData.lessons.find(lesson => lesson.id === id);
+                    return `<li style="margin-bottom: 0.4rem;"><a href="#" onclick="loadLessonFromRoadmap(${id})" style="color: var(--primary-emerald); font-weight: 600; text-decoration: none;">${l ? l.title : 'Lesson ' + id}</a></li>`;
+                }).join('');
+            }
+
+            // Notes
+            const noteEntries = Object.entries(userProgress.notes).filter(([id, note]) => note.trim() !== '');
+            if(noteEntries.length === 0) {
+                savedNotesContainer.innerHTML = `<p style="color: var(--text-muted);">No personal notes saved yet.</p>`;
+            } else {
+                savedNotesContainer.innerHTML = noteEntries.map(([id, note]) => {
+                    const l = seerahData.lessons.find(lesson => lesson.id == id);
+                    return `
+                        <div style="background: var(--bg-primary); padding: 1rem; border-radius: 8px; margin-bottom: 1rem; border-left: 4px solid var(--primary-emerald);">
+                            <h4 style="margin-bottom: 0.3rem;">${l ? l.title : 'Lesson ' + id}</h4>
+                            <p style="white-space: pre-wrap; font-size: 0.95rem;">${note}</p>
+                        </div>
+                    `;
+                }).join('');
             }
         }
 
-        function renderNotesHub() {
-            const bList = document.getElementById('bookmarkedList');
-            bList.innerHTML = bookmarkedLessons.length ? bookmarkedLessons.map(id => `<li>Lesson ID: ${id}</li>`).join('') : '<li>No bookmarked lessons yet.</li>';
+        // Search Functionality
+        function handleSearch() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            if(!query) return;
 
-            const nCont = document.getElementById('savedNotesContainer');
-            const keys = Object.keys(userNotes);
-            nCont.innerHTML = keys.length ? keys.map(k => `<div style="background:var(--bg-primary); padding:0.8rem; border-radius:6px; margin-bottom:0.5rem;"><p><strong>Lesson ${k}:</strong> ${userNotes[k]}</p></div>`).join('') : '<p>No notes saved yet.</p>';
+            const foundLesson = seerahData.lessons.find(l => l.title.toLowerCase().includes(query) || l.simpleExplanation.toLowerCase().includes(query));
+            if(foundLesson) {
+                loadLessonFromRoadmap(foundLesson.id);
+            }
+        }
+
+        // Storage helpers
+        function saveProgressToStorage() {
+            localStorage.setItem('driveSyncAcademyProgress', JSON.stringify(userProgress));
+            updateOverallProgress();
+        }
+
+        function loadSavedProgress() {
+            const saved = localStorage.getItem('driveSyncAcademyProgress');
+            if(saved) {
+                try {
+                    userProgress = JSON.parse(saved);
+                } catch(e) {
+                    console.error('Error loading saved progress', e);
+                }
+            }
         }
 
         function updateOverallProgress() {
-            const total = seerahData.lessons.length;
-            const completed = Object.values(lessonStatuses).filter(s => s === 'Completed').length;
-            const pct = total ? Math.round((completed / total) * 100) : 0;
-            document.getElementById('overallProgressBar').style.width = pct + '%';
-            document.getElementById('overallProgressText').innerText = pct + '% Completed';
-        }
+            const totalLessons = seerahData.lessons.length;
+            const completedCount = userProgress.completedLessons.length;
+            const percentage = Math.round((completedCount / totalLessons) * 100);
 
-        function handleSearch() {
-            const query = document.getElementById('searchInput').value.toLowerCase();
-            if(query.length > 2) {
-                switchTab('lesson');
-            }
+            document.getElementById('overallProgressBar').style.width = percentage + '%';
+            document.getElementById('overallProgressText').textContent = `${percentage}% Completed (${completedCount} of ${totalLessons} Lessons)`;
         }
-
-        updateOverallProgress();
     </script>
 </body>
 </html>
-<!DOCTYPE html>
-<html lang="ku" dir="ltr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Serah - فێرکاری سیرە و مێژوو</title>
-    <style>
-        /* دیزاینی گشتی وێبسایتەکە */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f7f6;
-            color: #333;
-            margin: 0;
-            padding: 20px;
-        }
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        header h1 {
-            color: #2c3e50;
-            margin-bottom: 5px;
-        }
-        header p {
-            color: #7f8c8d;
-        }
-
-        /* بەشی کتێبخانە و گەڕان */
-        .library-container {
-            max-width: 700px;
-            margin: 0 auto;
-            background: #ffffff;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-        }
-        .library-container h2 {
-            color: #2c3e50;
-            margin-top: 0;
-            margin-bottom: 15px;
-            font-size: 22px;
-        }
-        #searchInput {
-            width: 100%;
-            padding: 12px 15px;
-            font-size: 16px;
-            border: 1px solid #dcdde1;
-            border-radius: 6px;
-            margin-bottom: 20px;
-            box-sizing: border-box;
-            outline: none;
-            transition: border-color 0.3s;
-        }
-        #searchInput:focus {
-            border-color: #3498db;
-        }
-        #booksList {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-        #booksList li {
-            padding: 12px 15px;
-            background: #f8f9fa;
-            margin-bottom: 10px;
-            border: 1px solid #e9ecef;
-            border-radius: 6px;
-            transition: all 0.2s ease;
-            font-size: 15px;
-        }
-        #booksList li:hover {
-            background: #e3f2fd;
-            border-color: #90caf9;
-            transform: translateY(-1px);
-        }
-    </style>
-</head>
-<body>
-
-    <!-- سەرپەڕەی پلاتفۆرمەکە -->
-    <header>
-        <h1>Serah Platform</h1>
-        <p>پلاتفۆرمی فێرکاری و سەرچاوەکان</p>
-    </header>
-
-    <!-- بەشی کتێبخانە لەگەڵ گەڕان -->
-    <div class="library-container">
-        <h2>کتێبخانەی سیرە و مێژوو</h2>
-        
-        <!-- خانەی گەڕان -->
-        <input type="text" id="searchInput" placeholder="گەڕان بەدوای کتێبێکدا (Search books)..." onkeyup="searchBooks()">
-
-        <!-- لیستی کتێبەکان -->
-        <ul id="booksList">
-            <li>20. قصص النبيين (Stories of the Prophets by Abul Hasan Ali Hasani Nadwi)</li>
-            <li>21. سيرة خاتم النبيين (Biography of the Seal of the Prophets by Abul Hasan Ali Hasani Nadwi)</li>
-            <li>23. صور من حياة الصحابة (Glimpses from the Lives of the Companions by Abd al-Rahman Pasha)</li>
-            <li>24. صور من حياة الصحابيات (Glimpses from the Lives of the Female Companions by Abd al-Rahman Pasha)</li>
-            <li>25. صور من حياة التابعين (Glimpses from the Lives of the Successors by Abd al-Rahman Pasha)</li>
-        </ul>
-    </div>
-
-    <!-- سکریپتی جاواسکریپت بۆ گەڕان -->
-    <script>
-        function searchBooks() {
-            let input = document.getElementById('searchInput').value.toLowerCase();
-            let ul = document.getElementById('booksList');
-            let li = ul.getElementsByTagName('li');
-
-            for (let i = 0; i < li.length; i++) {
-                let txtValue = li[i].textContent || li[i].innerText;
-                if (txtValue.toLowerCase().indexOf(input) > -1) {
-                    li[i].style.display = "";
-                } else {
-                    li[i].style.display = "none";
-                }
-            }
-        }
-    </script>
-
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="ku" dir="ltr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Serah - فێرکاری سیرە و مێژوو</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f7f6;
-            color: #333;
-            margin: 0;
-            padding: 20px;
-        }
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        header h1 {
-            color: #2c3e50;
-            margin-bottom: 5px;
-        }
-        header p {
-            color: #7f8c8d;
-        }
-
-        .library-container {
-            max-width: 750px;
-            margin: 0 auto;
-            background: #ffffff;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-        }
-        .library-container h2 {
-            color: #2c3e50;
-            margin-top: 0;
-            margin-bottom: 15px;
-            font-size: 22px;
-        }
-        #searchInput {
-            width: 100%;
-            padding: 12px 15px;
-            font-size: 16px;
-            border: 1px solid #dcdde1;
-            border-radius: 6px;
-            margin-bottom: 20px;
-            box-sizing: border-box;
-            outline: none;
-            transition: border-color 0.3s;
-        }
-        #searchInput:focus {
-            border-color: #3498db;
-        }
-        #booksList {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-        #booksList li {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 15px;
-            background: #f8f9fa;
-            margin-bottom: 10px;
-            border: 1px solid #e9ecef;
-            border-radius: 6px;
-            transition: all 0.2s ease;
-            font-size: 15px;
-        }
-        #booksList li:hover {
-            background: #e3f2fd;
-            border-color: #90caf9;
-        }
-        .book-info {
-            flex-grow: 1;
-        }
-        .toread-btn {
-            background-color: #27ae60;
-            color: white;
-            border: none;
-            padding: 6px 12px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 13px;
-            transition: background 0.2s;
-        }
-        .toread-btn:hover {
-            background-color: #219653;
-        }
-        .toread-btn.read {
-            background-color: #7f8c8d;
-            text-decoration: line-through;
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <h1>Serah Platform</h1>
-        <p>پلاتفۆرمی فێرکاری و سەرچاوەکان</p>
-    </header>
-
-    <div class="library-container">
-        <h2>کتێبخانەی سیرە و مێژوو</h2>
-        
-        <!-- خانەی گەڕان -->
-        <input type="text" id="searchInput" placeholder="گەڕان بەدوای کتێبێکدا (Search books)..." onkeyup="searchBooks()">
-
-        <!-- لیستی کتێبەکان لەگەڵ دوگمەی To Read -->
-        <ul id="booksList">
-            <li>
-                <span class="book-info">20. قصص النبيين (Stories of the Prophets by Abul Hasan Ali Hasani Nadwi)</span>
-                <button class="toread-btn" onclick="toggleRead(this)">To Read</button>
-            </li>
-            <li>
-                <span class="book-info">21. سيرة خاتم النبيين (Biography of the Seal of the Prophets by Abul Hasan Ali Hasani Nadwi)</span>
-                <button class="toread-btn" onclick="toggleRead(this)">To Read</button>
-            </li>
-            <li>
-                <span class="book-info">23. صور من حياة الصحابة (Glimpses from the Lives of the Companions by Abd al-Rahman Pasha)</span>
-                <button class="toread-btn" onclick="toggleRead(this)">To Read</button>
-            </li>
-            <li>
-                <span class="book-info">24. صور من حياة الصحابيات (Glimpses from the Lives of the Female Companions by Abd al-Rahman Pasha)</span>
-                <button class="toread-btn" onclick="toggleRead(this)">To Read</button>
-            </li>
-            <li>
-                <span class="book-info">25. صور من حياة التابعين (Glimpses from the Lives of the Successors by Abd al-Rahman Pasha)</span>
-                <button class="toread-btn" onclick="toggleRead(this)">To Read</button>
-            </li>
-        </ul>
-    </div>
-
-    <script>
-        function searchBooks() {
-            let input = document.getElementById('searchInput').value.toLowerCase();
-            let ul = document.getElementById('booksList');
-            let li = ul.getElementsByTagName('li');
-
-            for (let i = 0; i < li.length; i++) {
-                let txtValue = li[i].textContent || li[i].innerText;
-                if (txtValue.toLowerCase().indexOf(input) > -1) {
-                    li[i].style.display = "flex";
-                } else {
-                    li[i].style.display = "none";
-                }
-            }
-        }
-
-        function toggleRead(button) {
-            button.classList.toggle('read');
-            if (button.classList.contains('read')) {
-                button.textContent = 'Reading / Read';
-            } else {
-                button.textContent = 'To Read';
-            }
-        }
-    </script>
-
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="ku" dir="ltr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Serah - فێرکاری سیرە و مێژوو</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f7f6;
-            color: #333;
-            margin: 0;
-            padding: 20px;
-        }
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        header h1 {
-            color: #2c3e50;
-            margin-bottom: 5px;
-        }
-        header p {
-            color: #7f8c8d;
-        }
-
-        .library-container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: #ffffff;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-        }
-        .library-container h2 {
-            color: #2c3e50;
-            margin-top: 0;
-            margin-bottom: 15px;
-            font-size: 22px;
-        }
-        #searchInput {
-            width: 100%;
-            padding: 12px 15px;
-            font-size: 16px;
-            border: 1px solid #dcdde1;
-            border-radius: 6px;
-            margin-bottom: 20px;
-            box-sizing: border-box;
-            outline: none;
-            transition: border-color 0.3s;
-        }
-        #searchInput:focus {
-            border-color: #3498db;
-        }
-        #booksList {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-        #booksList li {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 15px;
-            background: #f8f9fa;
-            margin-bottom: 10px;
-            border: 1px solid #e9ecef;
-            border-radius: 6px;
-            transition: all 0.2s ease;
-            font-size: 15px;
-        }
-        #booksList li:hover {
-            background: #e3f2fd;
-            border-color: #90caf9;
-        }
-        .book-info {
-            flex-grow: 1;
-            padding-right: 15px;
-        }
-        .actions {
-            display: flex;
-            gap: 8px;
-        }
-        .toread-btn {
-            background-color: #27ae60;
-            color: white;
-            border: none;
-            padding: 7px 12px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 13px;
-            transition: background 0.2s;
-        }
-        .toread-btn:hover {
-            background-color: #219653;
-        }
-        .toread-btn.read {
-            background-color: #7f8c8d;
-            text-decoration: line-through;
-        }
-        .pdf-btn {
-            background-color: #2980b9;
-            color: white;
-            text-decoration: none;
-            padding: 7px 12px;
-            border-radius: 4px;
-            font-size: 13px;
-            transition: background 0.2s;
-        }
-        .pdf-btn:hover {
-            background-color: #1c5980;
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <h1>Serah Platform</h1>
-        <p>پلاتفۆرمی فێرکاری و سەرچاوەکان</p>
-    </header>
-
-    <div class="library-container">
-        <h2>کتێبخانەی سیرە و مێژوو</h2>
-        
-        <!-- Search Input -->
-        <input type="text" id="searchInput" placeholder="گەڕان بەدوای کتێبێکدا (Search books)..." onkeyup="searchBooks()">
-
-        <!-- Books List -->
-        <ul id="booksList">
-            <li data-id="book-20">
-                <span class="book-info">20. قصص النبيين (Stories of the Prophets by Abul Hasan Ali Hasani Nadwi)</span>
-                <div class="actions">
-                    <a href="pdf/qisas-al-nabiyyin.pdf" target="_blank" class="pdf-btn">Read PDF</a>
-                    <button class="toread-btn" onclick="toggleRead(this, 'book-20')">To Read</button>
-                </div>
-            </li>
-            <li data-id="book-21">
-                <span class="book-info">21. سيرة خاتم النبيين (Biography of the Seal of the Prophets by Abul Hasan Ali Hasani Nadwi)</span>
-                <div class="actions">
-                    <a href="pdf/sirat-khatam-al-nabiyyin.pdf" target="_blank" class="pdf-btn">Read PDF</a>
-                    <button class="toread-btn" onclick="toggleRead(this, 'book-21')">To Read</button>
-                </div>
-            </li>
-            <li data-id="book-23">
-                <span class="book-info">23. صور من حياة الصحابة (Glimpses from the Lives of the Companions by Abd al-Rahman Pasha)</span>
-                <div class="actions">
-                    <a href="pdf/suwar-min-hayat-al-sahabah.pdf" target="_blank" class="pdf-btn">Read PDF</a>
-                    <button class="toread-btn" onclick="toggleRead(this, 'book-23')">To Read</button>
-                </div>
-            </li>
-            <li data-id="book-24">
-                <span class="book-info">24. صور من حياة الصحابيات (Glimpses from the Lives of the Female Companions by Abd al-Rahman Pasha)</span>
-                <div class="actions">
-                    <a href="https://drive.google.com/file/d/1wciDwmtuJZAf2-nS06EqSyWvMmkxCeDv/view?usp=sharing" target="_blank" class="pdf-btn">Read PDF</a>
-                    <button class="toread-btn" onclick="toggleRead(this, 'book-24')">To Read</button>
-                </div>
-            </li>
-            <li data-id="book-25">
-                <span class="book-info">25. صور من حياة التابعين (Glimpses from the Lives of the Successors by Abd al-Rahman Pasha)</span>
-                <div class="actions">
-                    <a href="https://drive.google.com/file/d/1wciDwmtuJZAf2-nS06EqSyWvMmkxCeDv/view?usp=sharing" target="_blank" class="pdf-btn">Read PDF</a>
-                    <button class="toread-btn" onclick="toggleRead(this, 'book-25')">To Read</button>
-                </div>
-            </li>
-        </ul>
-    </div>
-
-    <script>
-        // Search functionality
-        function searchBooks() {
-            let input = document.getElementById('searchInput').value.toLowerCase();
-            let ul = document.getElementById('booksList');
-            let li = ul.getElementsByTagName('li');
-
-            for (let i = 0; i < li.length; i++) {
-                let txtValue = li[i].textContent || li[i].innerText;
-                if (txtValue.toLowerCase().indexOf(input) > -1) {
-                    li[i].style.display = "flex";
-                } else {
-                    li[i].style.display = "none";
-                }
-            }
-        }
-
-        // Toggle Read Status with LocalStorage
-        function toggleRead(button, bookId) {
-            button.classList.toggle('read');
-            let isRead = button.classList.contains('read');
-            
-            if (isRead) {
-                button.textContent = 'Reading / Read';
-                localStorage.setItem(bookId, 'read');
-            } else {
-                button.textContent = 'To Read';
-                localStorage.removeItem(bookId);
-            }
-        }
-
-        // Restore Read State on Load
-        window.onload = function() {
-            let items = document.querySelectorAll('#booksList li');
-            items.forEach(li => {
-                let bookId = li.getAttribute('data-id');
-                let btn = li.querySelector('.toread-btn');
-                if (localStorage.getItem(bookId) === 'read') {
-                    btn.classList.add('read');
-                    btn.textContent = 'Reading / Read';
-                }
-            });
-        };
-    </script>
-
-</body>
-</html> 
-
-
