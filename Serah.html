@@ -36,7 +36,7 @@
             --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
         }
 
-- { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
         body { background-color: var(--bg-primary); color: var(--text-main); transition: background-color 0.3s, color 0.3s; line-height: 1.6; }
         .arabic { font-family: 'Amiri', serif; font-size: 1.25rem; direction: rtl; }
 
@@ -474,4 +474,273 @@
                         { q: "[Part 2] Who was the first person to accept Islam?", opts: ["Khadijah bint Khuwaylid", "Abu Bakr", "Ali"], c: 0, exp: "Khadijah (RA) was the first." }
                     ],
                     part3: [
-                   
+                        { q: "[Part 3] Where did early Muslims migrate to escape severe persecution?", opts: ["Abyssinia (Ethiopia)", "Yathrib", "Yemen"], c: 0, exp: "The migration to Abyssinia." },
+                        { q: "[Part 3] Which companion famously endured brutal torture for his faith in Makkah?", opts: ["Bilal ibn Rabah", "Hamza", "Zayd"], c: 0, exp: "Bilal ibn Rabah." }
+                    ],
+                    part4: [
+                        { q: "[Part 4] What was the first major military battle between Muslims and Quraish?", opts: ["Battle of Badr", "Battle of Uhud", "Battle of the Trench"], c: 0, exp: "The Battle of Badr." },
+                        { q: "[Part 4] Which uncle of the Prophet ﷺ became a martyr at Uhud?", opts: ["Hamza ibn Abdul-Muttalib", "Abbas", "Ali"], c: 0, exp: "Hamza (RA)." }
+                    ],
+                    part5: [
+                        { q: "[Part 5] In which year did the peaceful Conquest of Makkah occur?", opts: ["8th Year after Hijrah", "2nd Year after Hijrah", "10th Year after Hijrah"], c: 0, exp: "Conquest of Makkah occurred in 8 AH." },
+                        { q: "[Part 5] What famous words did the Prophet ﷺ say to Quraish upon conquering Makkah?", opts: ["Go, you are free ('Idhhabu fa antum al-tulaqa')", "Face your punishment", "Leave the city"], c: 0, exp: "He granted general amnesty." }
+                    ]
+                }
+            }
+        };
+
+        let currentTab = 'home';
+        let currentLessonId = 101;
+        let lessonMode = 'student';
+        let bookmarkedLessons = JSON.parse(localStorage.getItem('seerah_bookmarks') || '[]');
+        let userNotes = JSON.parse(localStorage.getItem('seerah_notes') || '{}');
+        let lessonStatuses = JSON.parse(localStorage.getItem('seerah_statuses') || '{}');
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            currentTab = tabId;
+
+            document.querySelectorAll('.tab-btn').forEach(b => {
+                if(b.getAttribute('onclick')?.includes(tabId)) {
+                    b.classList.add('active');
+                }
+            });
+
+            window.scrollTo(0, 0);
+            if (tabId === 'roadmap') renderRoadmap();
+            if (tabId === 'lesson') renderLesson(currentLessonId);
+            if (tabId === 'timeline') renderTimeline();
+            if (tabId === 'people') renderPeople();
+            if (tabId === 'notes') renderNotesHub();
+            updateOverallProgress();
+        }
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            const current = html.getAttribute('data-theme');
+            html.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+        }
+
+        function renderRoadmap() {
+            const container = document.getElementById('roadmapGrid');
+            container.innerHTML = seerahData.tiers.map(t => `
+                <div class="card level-card">
+                    <h4>${t.name}</h4>
+                    <p style="color: var(--text-muted); margin: 0.5rem 0 1rem 0;">${t.desc}</p>
+                    <button class="btn btn-primary" onclick="loadLessonByTier(${t.lessonId})">Start Tier Lesson →</button>
+                </div>
+            `).join('');
+        }
+
+        function loadLessonByTier(lessonId) {
+            currentLessonId = lessonId;
+            switchTab('lesson');
+        }
+
+        function renderLesson(id) {
+            const l = seerahData.lessons.find(x => x.id === id) || seerahData.lessons[0];
+            currentLessonId = l.id;
+
+            const container = document.getElementById('lessonContentContainer');
+            if (lessonMode === 'student') {
+                container.innerHTML = `
+                    <span class="badge" style="background: var(--primary-light); color: var(--primary-emerald);">Tier: ${l.tier.toUpperCase()}</span>
+                    <h2 style="margin-top: 0.5rem;">${l.title}</h2>
+                    <p style="margin: 1rem 0; font-size: 1.05rem; line-height: 1.8;">${l.simpleExplanation}</p>
+                    <div style="background: var(--bg-primary); padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                        <p><strong>📖 Quranic Context:</strong> ${l.quranRef}</p>
+                        <p style="margin-top: 0.5rem;"><strong>⚡ Hadith Reference:</strong> ${l.hadithRef}</p>
+                        <p style="margin-top: 0.5rem; color: var(--gold-accent);"><strong>📚 Classical Book Reference:</strong> ${l.famousBookRef}</p>
+                    </div>
+                `;
+            } else {
+                container.innerHTML = `
+                    <span class="badge" style="background: var(--gold-light); color: var(--gold-accent);">Teacher Mode 🎓</span>
+                    <h2 style="margin-top: 0.5rem;">[Teacher View] ${l.title}</h2>
+                    <ul style="margin: 1rem 0; padding-left: 1.2rem;">
+                        ${l.teacherMode.keyPoints.map(kp => `<li style="margin-bottom: 0.5rem;">${kp}</li>`).join('')}
+                    </ul>
+                    <div style="background: var(--bg-primary); padding: 1rem; border-radius: 8px;">
+                        <p><strong>Child-friendly Version:</strong> ${l.teacherMode.childVer}</p>
+                        <p style="margin-top: 0.5rem;"><strong>Pedagogical Summary:</strong> ${l.teacherMode.summary}</p>
+                    </div>
+                `;
+            }
+
+            const quizDiv = document.getElementById('quizContainer');
+            quizDiv.innerHTML = `
+                <p><strong>Q: ${l.quiz.question}</strong></p>
+                <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.8rem;" id="quizOptions">
+                    ${l.quiz.options.map((opt, idx) => `
+                        <button class="btn btn-secondary" style="justify-content: flex-start;" onclick="checkQuiz(${idx}, ${l.quiz.correct})">${opt}</button>
+                    `).join('')}
+                </div>
+                <p id="quizFeedback" style="margin-top: 0.8rem; font-weight: 600;"></p>
+            `;
+
+            document.getElementById('lessonNotesArea').value = userNotes[l.id] || '';
+            document.getElementById('statusSelect').value = lessonStatuses[l.id] || 'Not Started';
+            updateBookmarkIcon();
+        }
+
+        function checkQuiz(selected, correct) {
+            const feedback = document.getElementById('quizFeedback');
+            if (selected === correct) {
+                feedback.style.color = 'var(--primary-emerald)';
+                feedback.innerText = "✓ Correct! Great job.";
+            } else {
+                feedback.style.color = '#dc2626';
+                feedback.innerText = "✗ Incorrect. Try reviewing the lesson details.";
+            }
+        }
+
+        function setLessonMode(mode) {
+            lessonMode = mode;
+            document.getElementById('studentModeBtn').classList.toggle('active', mode === 'student');
+            document.getElementById('teacherModeBtn').classList.toggle('active', mode === 'teacher');
+            renderLesson(currentLessonId);
+        }
+
+        function toggleBookmark() {
+            const idx = bookmarkedLessons.indexOf(currentLessonId);
+            if (idx > -1) bookmarkedLessons.splice(idx, 1);
+            else bookmarkedLessons.push(currentLessonId);
+            localStorage.setItem('seerah_bookmarks', JSON.stringify(bookmarkedLessons));
+            updateBookmarkIcon();
+        }
+
+        function updateBookmarkIcon() {
+            const isBookmarked = bookmarkedLessons.includes(currentLessonId);
+            document.getElementById('bookmarkIcon').innerText = isBookmarked ? '★' : '☆';
+        }
+
+        function updateLessonStatus(val) {
+            lessonStatuses[currentLessonId] = val;
+            localStorage.setItem('seerah_statuses', JSON.stringify(lessonStatuses));
+            updateOverallProgress();
+        }
+
+        function saveLessonNote() {
+            const text = document.getElementById('lessonNotesArea').value;
+            userNotes[currentLessonId] = text;
+            localStorage.setItem('seerah_notes', JSON.stringify(userNotes));
+            alert('Notes saved successfully!');
+        }
+
+        function renderTimeline() {
+            const container = document.getElementById('timelineContainer');
+            container.innerHTML = seerahData.timeline.map(t => `
+                <div class="timeline-item">
+                    <span class="badge" style="background: var(--primary-light); color: var(--primary-emerald);">${t.year}</span>
+                    <h3 style="margin-top: 0.4rem;">${t.title}</h3>
+                    <p style="color: var(--text-muted); margin-top: 0.3rem;">${t.desc}</p>
+                </div>
+            `).join('');
+        }
+
+        function renderPeople() {
+            const container = document.getElementById('peopleGrid');
+            container.innerHTML = seerahData.people.map(p => `
+                <div class="card person-card" onclick="openPersonModal('${p.id}')">
+                    <span class="badge" style="background: var(--gold-light); color: var(--gold-accent);">${p.role}</span>
+                    <h3 style="margin-top: 0.5rem;">${p.name}</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.3rem;">📍 ${p.lived}</p>
+                    <p style="margin-top: 0.6rem; font-size: 0.95rem;">${p.desc}</p>
+                </div>
+            `).join('');
+        }
+
+        function openPersonModal(personId) {
+            const p = seerahData.people.find(x => x.id === personId);
+            if(!p) return;
+            document.getElementById('modalPersonName').innerText = p.name;
+            document.getElementById('modalPersonContent').innerHTML = `
+                <p><strong>ڕۆڵ / Role:</strong> ${p.role}</p>
+                <p style="margin-top: 0.5rem;"><strong>شوێنی ژیان / Lived:</strong> ${p.lived}</p>
+                <p style="margin-top: 0.8rem;" class="arabic"><strong>گرنگی و ناوبانگی:</strong><br>${p.famousWhy}</p>
+                <div style="background: var(--bg-primary); padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                    <p>${p.filmMention}</p>
+                </div>
+            `;
+            document.getElementById('personModal').classList.add('active');
+        }
+
+        function closePersonModal() {
+            document.getElementById('personModal').classList.remove('active');
+        }
+
+        function startArjuzahQuiz() {
+            const lang = document.getElementById('arjQuizLang').value;
+            const chapter = document.getElementById('arjQuizChapter').value;
+            const quizList = seerahData.arjuzahQuizzes[lang]?.[chapter] || [];
+            
+            const container = document.getElementById('arjuzahQuizContainer');
+            container.style.display = 'block';
+
+            if(quizList.length === 0) {
+                container.innerHTML = `<p>کویز بۆ ئەم بەشە بەردەست نییە. (No quiz available for this selection yet.)</p>`;
+                return;
+            }
+
+            container.innerHTML = `
+                <h3>📝 تاقیکردنەوەی بەشی فیلم (Chapter Quiz)</h3>
+                ${quizList.map((qObj, qIdx) => `
+                    <div style="margin-top: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color);">
+                        <p><strong>${qObj.q}</strong></p>
+                        <div style="display: flex; flex-direction: column; gap: 0.4rem; margin-top: 0.5rem;">
+                            ${qObj.opts.map((opt, oIdx) => `
+                                <button class="btn btn-secondary" style="justify-content: flex-start; font-size:0.9rem;" onclick="checkArjQuiz(${qIdx}, ${oIdx}, ${qObj.c}, this)">${opt}</button>
+                            `).join('')}
+                        </div>
+                        <p id="arjFeedback_${qIdx}" style="margin-top: 0.4rem; font-size: 0.85rem; font-weight: 600;"></p>
+                    </div>
+                `).join('')}
+            `;
+        }
+
+        function checkArjQuiz(qIdx, selected, correct, btn) {
+            const feedback = document.getElementById(`arjFeedback_${qIdx}`);
+            const parent = btn.parentElement;
+            Array.from(parent.children).forEach(b => b.style.opacity = '0.7');
+            btn.style.opacity = '1';
+
+            if (selected === correct) {
+                feedback.style.color = 'var(--primary-emerald)';
+                feedback.innerText = "✓ ڕاستە! (Correct!)";
+            } else {
+                feedback.style.color = '#dc2626';
+                feedback.innerText = "✗ هەڵەیە. (Incorrect.)";
+            }
+        }
+
+        function renderNotesHub() {
+            const bList = document.getElementById('bookmarkedList');
+            bList.innerHTML = bookmarkedLessons.length ? bookmarkedLessons.map(id => `<li>Lesson ID: ${id}</li>`).join('') : '<li>No bookmarked lessons yet.</li>';
+
+            const nCont = document.getElementById('savedNotesContainer');
+            const keys = Object.keys(userNotes);
+            nCont.innerHTML = keys.length ? keys.map(k => `<div style="background:var(--bg-primary); padding:0.8rem; border-radius:6px; margin-bottom:0.5rem;"><p><strong>Lesson ${k}:</strong> ${userNotes[k]}</p></div>`).join('') : '<p>No notes saved yet.</p>';
+        }
+
+        function updateOverallProgress() {
+            const total = seerahData.lessons.length;
+            const completed = Object.values(lessonStatuses).filter(s => s === 'Completed').length;
+            const pct = total ? Math.round((completed / total) * 100) : 0;
+            document.getElementById('overallProgressBar').style.width = pct + '%';
+            document.getElementById('overallProgressText').innerText = pct + '% Completed';
+        }
+
+        function handleSearch() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            if(query.length > 2) {
+                switchTab('lesson');
+            }
+        }
+
+        updateOverallProgress();
+    </script>
+</body>
+</html>
